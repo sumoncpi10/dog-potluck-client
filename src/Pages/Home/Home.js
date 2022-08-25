@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Banar from "../Shared/Banar";
 import Footer from "../Shared/Footer";
 import HeaderHome from "../Shared/HeaderHome";
+import LoadProduct from './LoadProduct';
 
 const Home = () => {
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => setProducts(data))
+
+    }, []);
+
     return (
         <div>
             <>
@@ -41,11 +51,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <a href="cat-food.html"><img src="assets/img/shop/category/1.webp" width="200" height="200"
-                                                    alt="Image-HasTech" /></a>
+                                                <Link to="/cat"><img src="assets/img/shop/category/1.webp" width="200" height="200"
+                                                    alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><a href="cat-food.html">Cat Food</a></h3>
+                                                <h3 className="title"><Link to="/cat">Cat Food</Link></h3>
                                             </div>
                                         </div>
 
@@ -54,11 +64,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <a href="fish-food.html"><img src="assets/img/shop/category/2.webp" width="200" height="200"
-                                                    alt="Image-HasTech" /></a>
+                                                <Link to="/fish"><img src="assets/img/shop/category/2.webp" width="200" height="200"
+                                                    alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><a href="fish-food.html">Fish Food</a></h3>
+                                                <h3 className="title"><Link to="/fish">Fish Food</Link></h3>
                                             </div>
                                         </div>
 
@@ -67,11 +77,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <a href="bird-food.html"><img src="assets/img/shop/category/3.webp" width="200" height="200"
-                                                    alt="Image-HasTech" /></a>
+                                                <Link to="bird"><img src="assets/img/shop/category/3.webp" width="200" height="200"
+                                                    alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><a href="bird-food.html">Bird Food</a></h3>
+                                                <h3 className="title"><Link to="bird">Bird Food</Link></h3>
                                             </div>
                                         </div>
 
@@ -80,11 +90,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <a href="dog-food.html"><img src="assets/img/shop/category/4.webp" width="200" height="200"
-                                                    alt="Image-HasTech" /></a>
+                                                <Link to="dog"><img src="assets/img/shop/category/4.webp" width="200" height="200"
+                                                    alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><a href="dog-food.html">Dog Food</a></h3>
+                                                <h3 className="title"><Link to="dog">Dog Food</Link></h3>
                                             </div>
                                         </div>
 
@@ -93,11 +103,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <a href="rabbit-food.html"><img src="assets/img/shop/category/5.webp" width="200" height="200"
-                                                    alt="Image-HasTech" /></a>
+                                                <Link to="rabbit"><img src="assets/img/shop/category/5.webp" width="200" height="200"
+                                                    alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><a href="rabbit-food.html">Rabbit Food</a></h3>
+                                                <h3 className="title"><Link to="rabbit">Rabbit Food</Link></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -163,6 +173,14 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="row isotope-grid">
+                                    {
+                                        products.map(product => <LoadProduct key={product._id} product={product}></LoadProduct>)
+                                    }
+                                </div>
+                                {/* <div className="row isotope-grid">
+
+
+
                                     <div className="col-sm-6 col-lg-3 isotope-item filter_best_sellers filter_on_sall">
 
                                         <div className="product-item">
@@ -387,7 +405,7 @@ const Home = () => {
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </section>
 

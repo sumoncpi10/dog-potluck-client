@@ -4,17 +4,25 @@ import { toast } from 'react-toastify';
 const ProductAdd = () => {
     const handleAddProduct = (e) => {
         e.preventDefault();
+
         const name = e.target.name.value;
+        const category = e.target.category.value;
+        const description1 = e.target.description1.value;
+        const description2 = e.target.description2.value;
         const brand = e.target.brand.value;
-        const price = e.target.price.value;
-        const quantity = e.target.quantity.value;
+        const size = e.target.size.value;
+        const rating = e.target.rating.value;
+        const information = e.target.information.value;
+        const review = e.target.review.value;
+        const tag = e.target.tag.value;
+        const pcode = e.target.pcode.value;
         const img = e.target.img.value;
-        const description = e.target.description.value;
-        const supplier = e.target.supplier.value;
         // console.log(name, email, password);
-        const product = { name, brand, price, quantity, img, description, supplier };
+        const product = { name, category, description1, description2, brand, size, rating, information, review, tag, pcode, img };
+        console.log(product);
         // send data to the server 
-        fetch('https://thawing-earth-85807.herokuapp.com/product', {
+
+        fetch('http://localhost:5000/productAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,17 +44,19 @@ const ProductAdd = () => {
                     <div class="row mb-2">
                         <input type="text" name='name' class="form-control" placeholder="Product name" required />
                     </div>
+
                     <div class="row mb-2">
-                        <input type="text" name='category' class="form-control" placeholder="Category name" required />
+                        <select name='category' class="form-select form-control" aria-label="Default select example">
+                            <option selected>Category</option>
+                            <option value="cat">Cat Food</option>
+                            <option value="fish">Fish Food</option>
+                            <option value="bird">Bird Food</option>
+                            <option value="dog">Dog Food</option>
+                            <option value="rabbit">Rabbit Food</option>
+                        </select>
                     </div>
-                    <select class=" form-control" aria-label="Default select example">
-                        <option selected>Select Food Type</option>
-                        <option value="cat">Cat Food</option>
-                        <option value="fish">Fish Food</option>
-                        <option value="bird">Bird Food</option>
-                        <option value="dog">Dog Food</option>
-                        <option value="rabbit">Rabbit Food</option>
-                    </select>
+
+
                     <div class="row mb-2">
                         {/* <input type="textarea" name='description' class="form-control" placeholder="Description" /> */}
                         <textarea type="text" name='description1' class="form-control" placeholder="Description1" required></textarea>
@@ -68,10 +78,13 @@ const ProductAdd = () => {
                         <input type="text" name='information' class="form-control" placeholder="Information" required />
                     </div>
                     <div class="row mb-2">
-                        <input type="text" name='tag' class="form-control" placeholder="Unit Price" required />
+                        <input type="text" name='review' class="form-control" placeholder="Review" required />
                     </div>
                     <div class="row mb-2">
-                        <input type="text" name='product-code' class="form-control" placeholder="Product Code" required />
+                        <input type="text" name='tag' class="form-control" placeholder="Tag" required />
+                    </div>
+                    <div class="row mb-2">
+                        <input type="text" name='pcode' class="form-control" placeholder="Product Code" required />
                     </div>
                     <div class="row mb-2">
                         <input type="text" name='img' class="form-control" placeholder="Img Url" required />
