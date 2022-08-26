@@ -24,9 +24,9 @@ const ProductDetails = () => {
                 </div>
             </div>
 
+            <Header></Header>
 
-
-            <header class="header-area transparent">
+            {/* <header class="header-area transparent">
                 <div class="container">
                     <div class="row no-gutter align-items-center position-relative">
                         <div class="col-12">
@@ -70,7 +70,7 @@ const ProductDetails = () => {
                         </div>
                     </div>
                 </div>
-            </header>
+            </header> */}
 
 
             <main class="main-content">
@@ -110,28 +110,28 @@ const ProductDetails = () => {
                                                         <div class="swiper-slide">
                                                             <a class="lightbox-image" data-fancybox="gallery"
                                                                 href="assets/img/shop/product-single/1.webp">
-                                                                <img src="assets/img/shop/product-single/1.webp" width="570" height="675"
+                                                                <img src={product?.img} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <a class="lightbox-image" data-fancybox="gallery"
                                                                 href="assets/img/shop/product-single/2.webp">
-                                                                <img src="assets/img/shop/product-single/2.webp" width="570" height="675"
+                                                                <img src={product?.img} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <a class="lightbox-image" data-fancybox="gallery"
                                                                 href="assets/img/shop/product-single/3.webp">
-                                                                <img src="assets/img/shop/product-single/3.webp" width="570" height="675"
+                                                                <img src={product?.img} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
                                                         <div class="swiper-slide">
                                                             <a class="lightbox-image" data-fancybox="gallery"
                                                                 href="assets/img/shop/product-single/4.webp">
-                                                                <img src="assets/img/shop/product-single/4.webp" width="570" height="675"
+                                                                <img src={product?.img} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
@@ -141,19 +141,19 @@ const ProductDetails = () => {
                                                     <div class="swiper single-product-nav single-product-nav-slider">
                                                         <div class="swiper-wrapper">
                                                             <div class="swiper-slide">
-                                                                <img src="assets/img/shop/product-single/nav1.webp" width="127" height="127"
+                                                                <img src={product?.img} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <img src="assets/img/shop/product-single/nav2.webp" width="127" height="127"
+                                                                <img src={product?.img} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <img src="assets/img/shop/product-single/nav3.webp" width="127" height="127"
+                                                                <img src={product?.img} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <img src="assets/img/shop/product-single/nav4.webp" width="127" height="127"
+                                                                <img src={product?.img} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                         </div>
@@ -174,7 +174,7 @@ const ProductDetails = () => {
                                         <div class="col-lg-6">
 
                                             <div class="product-single-info">
-                                                <h3 class="main-title">Fusion Backpack</h3>
+                                                <h3 class="main-title">{product?.name}</h3>
 
                                                 <div class="rating-box-wrap">
                                                     <div class="rating-box">
@@ -188,9 +188,7 @@ const ProductDetails = () => {
                                                         <a href="javascript:void(0)">(5 Customer Review)</a>
                                                     </div>
                                                 </div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incidid ut labore et
-                                                    dolore magna aliqua. Ut enim ad minim veniam, quis nol exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
+                                                <p>{product?.description1}</p>
                                                 <div class="product-single-meta">
                                                     <ul>
                                                         <li><span>SKU:</span> {product?.size}</li>
@@ -229,20 +227,12 @@ const ProductDetails = () => {
                                                         <div class="tab-pane fade show active" id="information" role="tabpanel"
                                                             aria-labelledby="information-tab">
                                                             <div class="product-information">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incidid ut
-                                                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nol exercitation ullamco
-                                                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                                                    in voluptateLorem ipsum dolor sit amet col adipisicing elit, sed do eiusmod tempor
-                                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                                                                <p>{product?.information}</p>
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                                                             <div class="product-description">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incidid ut
-                                                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nol exercitation ullamco
-                                                                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                                                    in voluptateLorem ipsum dolor sit amet col adipisicing elit, sed do eiusmod tempor
-                                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                                                                <p>{product?.description2}</p>
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
@@ -260,9 +250,7 @@ const ProductDetails = () => {
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
                                                                         <h4 class="title"><span>Admin</span> - April 8, 2022</h4>
-                                                                        <p class="desc">Donec venenatis euismod turpis sed dapibus. Maecenas augue augue,
-                                                                            iaculis id dui eget, ultricies sagittis purus. Praesent sed blandit mauris.
-                                                                            Pellentesque non auctor dolor.</p>
+                                                                        <p class="desc">{product?.review}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="comment-form-content">

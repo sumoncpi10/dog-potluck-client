@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Banar from "../Shared/Banar";
 import Footer from "../Shared/Footer";
 import HeaderHome from "../Shared/HeaderHome";
+import Product from '../Shop/Product';
 import LoadProduct from './LoadProduct';
 
 const Home = () => {
@@ -174,7 +175,7 @@ const Home = () => {
                                 </div>
                                 <div className="row isotope-grid">
                                     {
-                                        products.map(product => <LoadProduct key={product._id} product={product}></LoadProduct>)
+                                        products.map(product => <Product key={product._id} product={product}></Product>)
                                     }
                                 </div>
                                 {/* <div className="row isotope-grid">
