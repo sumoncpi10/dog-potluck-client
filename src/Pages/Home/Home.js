@@ -77,11 +77,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <Link to="bird"><img src="assets/img/shop/category/3.webp" width="200" height="200"
+                                                <Link to="/bird"><img src="assets/img/shop/category/3.webp" width="200" height="200"
                                                     alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><Link to="bird">Bird Food</Link></h3>
+                                                <h3 className="title"><Link to="/bird">Bird Food</Link></h3>
                                             </div>
                                         </div>
 
@@ -90,11 +90,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <Link to="dog"><img src="assets/img/shop/category/4.webp" width="200" height="200"
+                                                <Link to="/dog"><img src="assets/img/shop/category/4.webp" width="200" height="200"
                                                     alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><Link to="dog">Dog Food</Link></h3>
+                                                <h3 className="title"><Link to="/dog">Dog Food</Link></h3>
                                             </div>
                                         </div>
 
@@ -103,11 +103,11 @@ const Home = () => {
 
                                         <div className="product-category-item">
                                             <div className="thumb">
-                                                <Link to="rabbit"><img src="assets/img/shop/category/5.webp" width="200" height="200"
+                                                <Link to="/rabbit"><img src="assets/img/shop/category/5.webp" width="200" height="200"
                                                     alt="Image-HasTech" /></Link>
                                             </div>
                                             <div className="content">
-                                                <h3 className="title"><Link to="rabbit">Rabbit Food</Link></h3>
+                                                <h3 className="title"><Link to="/rabbit">Rabbit Food</Link></h3>
                                             </div>
                                         </div>
                                     </div>

@@ -9,6 +9,7 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import ProductDetails from "./Pages/Shop/ProductDetails";
 
 function App() {
 
@@ -19,10 +20,14 @@ function App() {
         <Route path="products" element={<Shop />}>
 
         </Route>
-        <Route path="cat" element={<Shop />} />
-        <Route path="fish" element={<Shop />} />
-        <Route path="bird" element={<Shop />} />
-        <Route path="dog" element={<Shop />} />
+        <Route path='/:id' element={
+          <ProductDetails></ProductDetails>
+        }>
+        </Route>
+        <Route path="/cat" element={<Shop />} />
+        <Route path="/fish" element={<Shop />} />
+        <Route path="/bird" element={<Shop />} />
+        <Route path="/dog" element={<Shop />} />
         <Route path="rabbit" element={<Shop />} />
         <Route path="/about-us" element={<AboutUs />}></Route>
         <Route path="/shop" element={<Shop />}></Route>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Product = ({ product }) => {
+    let navigate = useNavigate();
     const NevigateToDtail = () => {
 
-        window.location.pathname = `product/${product._id}`;
-
+        navigate(`/${product?._id}`);
     }
     return (
         <div class="col-sm-6 col-xl-3">
@@ -16,7 +16,7 @@ const Product = ({ product }) => {
                     </a>
                 </div>
                 <div class="product-info">
-                    <h4 class="title"><Link to={`product/${product?._id}`}>{product.name}</Link></h4>
+                    <h4 class="title"><Link to={`/${product?._id}`}>{product.name}</Link></h4>
                     <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
                         <div class="rating-box">
                             <i class="fa fa-star"></i>
