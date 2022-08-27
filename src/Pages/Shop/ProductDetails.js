@@ -1,18 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../Shared/Header';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Review from './Review';
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
-
+    const [reviews, setReview] = useState([]);
+    const today = new Date(),
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setProduct(data);
             })
     }, []);
+    useEffect(() => {
+        fetch(`http://localhost:5000/review/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                setReview(data);
+            })
+    }, []);
+
+    const addReview = (e) => {
+        e.preventDefault();
+
+        const ReviewComment = e.target.ReviewComment.value;
+        const Reviewname = e.target.Reviewname.value;
+        const Reviewemail = e.target.Reviewemail.value;
+
+        // console.log(name, email, password);
+        const review = { ReviewComment, Reviewname, Reviewemail, ProductID: id, today };
+        // send data to the server 
+        console.log(product)
+        fetch('http://localhost:5000/reviewAdd', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data);
+
+                toast("Review Add Successfully!");
+                e.target.reset();
+            })
+    }
     return (
 
         <div class="wrapper">
@@ -241,41 +281,35 @@ const ProductDetails = () => {
                                                                     <div class="comment-thumb">
                                                                         <img src="assets/img/shop/avatar.webp" width="60" height="60" alt="Image-HasTech" />
                                                                     </div>
-                                                                    <div class="comment-content">
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                        </div>
-                                                                        <h4 class="title"><span>Admin</span> - April 8, 2022</h4>
-                                                                        <p class="desc">{product?.review}</p>
-                                                                    </div>
+                                                                    {
+                                                                        reviews.map(review => <Review key={review._id} review={review}></Review>)
+                                                                    }
+
+
                                                                 </div>
                                                                 <div class="comment-form-content">
                                                                     <h4 class="title collapsed" data-bs-toggle="collapse"
                                                                         data-bs-target="#comment-widgetId-1">Add Reviwe</h4>
                                                                     <div id="comment-widgetId-1" class="collapse collapse-body">
                                                                         <div class="review-comment-form">
-                                                                            <form action="#">
+                                                                            <form onSubmit={addReview} method='post'>
                                                                                 <div class="row">
                                                                                     <div class="col-12">
                                                                                         <div class="form-group">
                                                                                             <label for="ReviewComment" class="form-label">Your review *</label>
-                                                                                            <textarea id="ReviewComment" class="form-control"></textarea>
+                                                                                            <textarea name='ReviewComment' id="ReviewComment" class="form-control" required></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-12">
                                                                                         <div class="form-group">
                                                                                             <label for="Reviewname" class="form-label">Name *</label>
-                                                                                            <input id="Reviewname" class="form-control" type="text" />
+                                                                                            <input name="Reviewname" id="Reviewname" class="form-control" type="text" required />
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-12">
                                                                                         <div class="form-group">
                                                                                             <label for="Reviewemail" class="form-label">Email *</label>
-                                                                                            <input id="Reviewemail" class="form-control" type="email" />
+                                                                                            <input name="Reviewemail" id="Reviewemail" class="form-control" type="email" required />
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">

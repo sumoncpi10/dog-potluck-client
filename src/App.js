@@ -17,7 +17,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="products" element={<Shop />}>
+        <Route path="/products" element={<Shop />}>
 
         </Route>
         <Route path='/:id' element={
@@ -29,8 +29,8 @@ function App() {
         <Route path="/bird" element={<Shop />} />
         <Route path="/dog" element={<Shop />} />
         <Route path="rabbit" element={<Shop />} />
-        <Route path="/about-us" element={<AboutUs />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
+        <Route path="/about-us" element={<AboutUs />}></Route>
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/login" element={<Login />}></Route>

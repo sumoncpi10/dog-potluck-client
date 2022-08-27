@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LoadProduct = ({ product }) => {
 
@@ -7,12 +8,12 @@ const LoadProduct = ({ product }) => {
 
             <div className="product-item">
                 <div className="product-thumb">
-                    <a href="single-product.html">
+                    <Link to={`/${product?._id}`}>
                         <img src={product.img} width="270" height="320" alt="Image-HasTech" />
-                    </a>
+                    </Link>
                 </div>
                 <div className="product-info">
-                    <h4 className="title"><a href="single-product.html">{product.name}</a></h4>
+                    <h4 className="title"><Link to={`/${product?._id}`}>{product.name}</Link></h4>
                     <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
                         <div className="rating-box">
                             <i className="fa fa-star"></i>
@@ -22,9 +23,9 @@ const LoadProduct = ({ product }) => {
                             <i className="fa fa-star"></i>
                         </div>
                     </div>
-                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a href="single-product.html">
+                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><Link to={`/${product?._id}`}>
                         Buy Now
-                    </a>
+                    </Link>
                     </button>
                 </div>
 

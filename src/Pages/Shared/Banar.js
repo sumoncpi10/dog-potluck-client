@@ -13,8 +13,8 @@ const Banar = () => {
                     <div class="carousel-item active">
                         <div className="swiper-slide">
                             <div className="slider-content-area" style={{ "backgroundImage": "url(assets/img/slider/slider-bg.webp)" }} >
-                                <div className="container">
-                                    <div className="slider-container">
+                                <div className="container ">
+                                    <div className="slider-container mx-5">
                                         <div className="row justify-content-between align-items-center">
                                             <div className="col-sm-6 col-md-6">
                                                 <div className="slider-content">
@@ -51,7 +51,7 @@ const Banar = () => {
                         <div className="swiper-slide">
                             <div className="slider-content-two-area " style={{ "backgroundImage": "url(assets/img/slider/slider-02.webp)", "backgroundColor": "red" }} >
                                 <div className="container">
-                                    <div className="slider-container">
+                                    <div className="slider-container py-3">
                                         <div className="row justify-content-sm-end justify-content-center align-items-center">
 
                                             <div className="col-sm-8 col-md-6 p-5">

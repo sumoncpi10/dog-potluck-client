@@ -11,9 +11,9 @@ const Product = ({ product }) => {
 
             <div class="product-item">
                 <div class="product-thumb">
-                    <a href="single-product.html">
+                    <Link to={`/${product?._id}`}>
                         <img src={product.img} width="270" height="320" alt="Image-HasTech" />
-                    </a>
+                    </Link>
                 </div>
                 <div class="product-info">
                     <h4 class="title"><Link to={`/${product?._id}`}>{product.name}</Link></h4>

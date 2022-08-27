@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import './Dashboard.css';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import ProductAdd from './Products/ProductAdd';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 const Dashboard = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
             .then(data => {
                 console.log('success', data);
 
-                // toast("Product Add Successfully!");
+                toast("Product Add Successfully!");
                 reset();
             })
     }
