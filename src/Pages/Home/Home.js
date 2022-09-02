@@ -8,13 +8,22 @@ import LoadProduct from './LoadProduct';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
+    console.log(products)
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch(`http://localhost:5000/productType/${'all'}`)
             .then(res => res.json())
-            .then(data => setProducts(data))
-
+            .then(data =>
+                setProducts(data))
     }, []);
+    const LoadAllProducts = (collection_type) => {
 
+        fetch(`http://localhost:5000/productType/${collection_type}`, {
+            method: 'GET'
+        })
+            .then(res => res.json())
+            .then(data =>
+                setProducts(data))
+    }
     return (
         <div>
             <>
@@ -165,17 +174,17 @@ const Home = () => {
                                             <h2 className="title">New Collection</h2>
                                         </div>
                                         <div className="isotope-filter">
-                                            <button className="active" data-filter="*">All</button>
-                                            <button data-filter=".filter_new">New</button>
-                                            <button data-filter=".filter_best_sellers">Best Sellers</button>
-                                            <button data-filter=".filter_featured">Featured</button>
-                                            <button data-filter=".filter_on_sall">On Sall</button>
+                                            <button onClick={() => LoadAllProducts('all')} className="active" data-filter="*">All</button>
+                                            <button onClick={() => LoadAllProducts('new')} data-filter=".filter_new">New</button>
+                                            <button onClick={() => LoadAllProducts('bestSeller')} data-filter=".filter_best_sellers">Best Sellers</button>
+                                            <button onClick={() => LoadAllProducts('featured')} data-filter=".filter_featured">Featured</button>
+                                            <button onClick={() => LoadAllProducts('onSall')} data-filter=".filter_on_sall">On Sall</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="row isotope-grid">
                                     {
-                                        products.map(product => <Product key={product._id} product={product}></Product>)
+                                        products?.map(product => <Product key={product._id} product={product}></Product>)
                                     }
                                 </div>
                                 {/* <div className="row isotope-grid">
@@ -816,6 +825,7 @@ const Home = () => {
                             <button className="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
                                 className="fa fa-chevron-left"></i></button>
                         </div>
+
                         <div className="offcanvas-body">
                             <nav id="offcanvasNav" className="offcanvas-menu-nav">
                                 <ul>

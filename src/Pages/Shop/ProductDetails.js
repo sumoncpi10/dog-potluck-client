@@ -4,6 +4,7 @@ import Header from '../Shared/Header';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Review from './Review';
+import Footer from '../Shared/Footer';
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
@@ -244,7 +245,7 @@ const ProductDetails = () => {
                                                 <div class="product-quick-action">
 
                                                     <button type="button" class="btn-product-cart" data-bs-toggle="modal" style={{ "marginLeft": "0px" }}>
-                                                        <a href="#">CHECK PRICE</a>
+                                                        <a href="https://www.facebook.com/">CHECK PRICE</a>
                                                     </button>
 
                                                 </div>
@@ -462,7 +463,7 @@ const ProductDetails = () => {
             </main>
 
 
-            <footer class="footer-area">
+            {/* <footer class="footer-area">
 
                 <div class="footer-main">
                     <div class="container pt--0 pb--0">
@@ -554,7 +555,9 @@ const ProductDetails = () => {
                     </div>
                 </div>
 
-            </footer>
+            </footer> */}
+
+            <Footer></Footer>
 
             <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 
 const Products = () => {
@@ -971,7 +972,7 @@ const Products = () => {
                 </main>
 
 
-                <footer class="footer-area">
+                {/* <footer class="footer-area">
 
                     <div class="footer-main">
                         <div class="container pt--0 pb--0">
@@ -1056,7 +1057,8 @@ const Products = () => {
                         </div>
                     </div>
 
-                </footer>
+                </footer> */}
+                <Footer></Footer>
 
                 <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
 

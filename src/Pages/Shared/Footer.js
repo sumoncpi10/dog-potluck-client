@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <footer className="footer-area">
@@ -30,10 +30,10 @@ const Footer = () => {
                                     <div className="collapse-body">
                                         <div className="widget-menu-wrap">
                                             <ul className="nav-menu">
-                                                <li><a href="about-us.html">About Us</a></li>
+                                                <li><Link to="/about-us">About Us</Link></li>
                                                 <li><a href="disclaimer.html">Privacy Policy</a></li>
                                                 <li><a href="disclaimer.html">Disclaimer</a></li>
-                                                <li><a href="contact.html">Contact Us</a></li>
+                                                <li><Link to="/contact">Contact Us</Link></li>
 
                                             </ul>
                                         </div>

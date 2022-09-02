@@ -8,8 +8,10 @@ import Products from "./Pages/Products/Products";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login";
-import Dashboard from "./Pages/Dashboard/Dashboard";
+import Dashboard from "./Pages/Dashboard/DashboardLeftSidebar";
 import ProductDetails from "./Pages/Shop/ProductDetails";
+import ProductAdd from "./Pages/Dashboard/Products/ProductAdd";
+import ManageProducts from "./Pages/Dashboard/Products/ManageProducts";
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/add-product" element={<ProductAdd />}></Route>
+        <Route path="/manageProduct" element={<ManageProducts />}></Route>
       </Routes>
 
     </>

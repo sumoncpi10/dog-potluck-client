@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 
 const AboutUs = () => {
@@ -66,7 +67,7 @@ const AboutUs = () => {
                 </main>
 
 
-                <footer className="footer-area">
+                {/* <footer className="footer-area">
 
                     <div className="footer-main">
                         <div className="container pt--0 pb--0">
@@ -152,8 +153,8 @@ const AboutUs = () => {
                         </div>
                     </div>
 
-                </footer>
-
+                </footer> */}
+                <Footer></Footer>
 
 
                 <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
