@@ -569,7 +569,7 @@ const Home = () => {
                                                 <p>Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata non proident,
                                                     sunt in culpa qui officia deserun mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
                                                     natus error.</p>
-                                                <a className="btn-theme" href="shop.html">Shop Now</a>
+                                                <Link className="btn-theme" to="/shop">Shop Now</Link>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 order-1 order-lg-2">

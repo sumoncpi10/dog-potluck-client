@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 
@@ -55,7 +56,7 @@ const AboutUs = () => {
                                             </div>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
                                             <p className="text-color-theme">Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata non proident, sunt in culpa qui officia deserun</p>
-                                            <a className="btn-theme" href="shop.html">Shop Now</a>
+                                            <Link className="btn-theme" to="/shop">Shop Now</Link>
                                         </div>
                                     </div>
                                 </div>

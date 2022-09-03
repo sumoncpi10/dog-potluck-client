@@ -1,8 +1,36 @@
 import React from 'react';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
-
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 const Contact = () => {
+
+    const addQuest = (e) => {
+        e.preventDefault();
+
+        const con_name = e.target.con_name.value;
+        const con_email = e.target.con_email.value;
+        const con_subject = e.target.con_subject.value;
+        const con_message = e.target.con_message.value;
+
+        const product = { con_name, con_email, con_subject, con_message };
+        console.log(product);
+        // send data to the server 
+
+        fetch('http://localhost:5000/questAdd', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data);
+                e.target.reset();
+                toast("Quest Sent Successfully!");
+            })
+    }
     return (
         <div>
             <div class="wrapper">
@@ -15,86 +43,7 @@ const Contact = () => {
                     </div>
                 </div>
                 <Header></Header>
-                {/* 
-                <header class="header-area transparent">
-                    <div class="container">
-                        <div class="row no-gutter align-items-center position-relative">
-                            <div class="col-12">
-                                <div class="header-align">
-                                    <div class="header-align-start">
-                                        <div class="header-logo-area">
-                                            <a href="index.html">
-                                                <img class="logo-main" src="assets/img/logo-light.webp" width="158" height="36" alt="Logo" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="header-align-center">
-                                        <div class="header-navigation-area position-relative">
-                                            <ul class="main-menu nav">
-                                                <li><a href="index.html"><span>Home</span></a></li>
-                                                <li><a href="about-us.html"><span>About</span></a></li>
-                                                <li><a href="shop.html"><span>Shop</span></a></li>
-                                                <li><a href="blog.html"><span>Blog</span></a>
-                                                    <ul class="submenu-nav submenu-nav-mega">
-                                                        <li class="mega-menu-item"><a href="#/" class="mega-title">Blog Layout</a>
-                                                            <ul>
-                                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                                <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="mega-menu-item"><a href="#/" class="mega-title">Single Blog</a>
-                                                            <ul>
-                                                                <li><a href="blog-details-no-sidebar.html">Blog Details</a></li>
-                                                                <li><a href="blog-details.html">Blog Details Left Sidebar</a></li>
-                                                                <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has-submenu"><a href="#/"><span>Pages</span></a>
-                                                    <ul class="submenu-nav">
-                                                        <li><a href="account.html"><span>Account</span></a></li>
-                                                        <li><a href="account-login.html"><span>Login</span></a></li>
-                                                        <li><a href="account-register.html"><span>Register</span></a></li>
-                                                        <li><a href="page-not-found.html"><span>Page Not Found</span></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html"><span>Contact</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="header-align-end">
-                                        <div class="header-action-area">
-                                            <div class="shopping-search">
-                                                <button class="shopping-search-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i class="pe-7s-search icon"></i></button>
-                                            </div>
-                                            <div class="shopping-account">
-                                                <a class="shopping-account-btn" href="account-login.html">
-                                                    <i class="pe-7s-users icon"></i>
-                                                </a>
-                                            </div>
-                                            <div class="shopping-wishlist">
-                                                <a class="shopping-wishlist-btn" href="shop-wishlist.html">
-                                                    <i class="pe-7s-like icon"></i>
-                                                </a>
-                                            </div>
-                                            <div class="shopping-cart">
-                                                <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasCart" aria-controls="AsideOffcanvasCart">
-                                                    <i class="pe-7s-shopbag icon"></i>
-                                                    <sup class="shop-count">2</sup>
-                                                </button>
-                                            </div>
-                                            <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
-                                                <i class="pe-7s-menu"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header> */}
+
 
 
                 <main class="main-content">
@@ -107,9 +56,9 @@ const Contact = () => {
                                         <h2 class="title">Contact Us</h2>
                                         <nav class="breadcrumb-area">
                                             <ul class="breadcrumb">
-                                                <li><a href="index.html">Home</a></li>
+                                                <li><Link to="/">Home</Link></li>
                                                 <li class="breadcrumb-sep">//</li>
-                                                <li>Contact Us</li>
+                                                <li><Link to='/contact'></Link>Contact Us</li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -172,7 +121,7 @@ const Contact = () => {
                                     <div class="contact-form-wrap">
 
                                         <div class="contact-form">
-                                            <form id="contact-form" action="https://whizthemes.com/mail-php/raju/arden/mail.php" method="POST">
+                                            <form id="contact-form" onSubmit={addQuest} method="POST">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -186,7 +135,7 @@ const Contact = () => {
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <input class="form-control" type="text" placeholder="Subject (Optinal)" />
+                                                            <input class="form-control" type="text" name="con_subject" placeholder="Subject (Optinal)" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12">

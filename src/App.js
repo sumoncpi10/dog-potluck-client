@@ -13,7 +13,7 @@ import ProductDetails from "./Pages/Shop/ProductDetails";
 import ProductAdd from "./Pages/Dashboard/Products/ProductAdd";
 import ManageProducts from "./Pages/Dashboard/Products/ManageProducts";
 import UpdateProduct from "./Pages/Dashboard/Products/UpdateProduct";
-
+import { ToastContainer } from 'react-toastify';
 function App() {
 
   return (
@@ -42,7 +42,7 @@ function App() {
         <Route path="/manageProduct" element={<ManageProducts />}></Route>
         <Route path="/updateProduct/:id" element={<UpdateProduct />}></Route>
       </Routes>
-
+      <ToastContainer />
     </>
   );
 }
