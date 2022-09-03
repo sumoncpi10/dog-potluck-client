@@ -1,12 +1,13 @@
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DashboardLeftSidebar from '../DashboardLeftSidebar';
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     const pathname = window?.location?.pathname;
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/products')
@@ -21,6 +22,13 @@ const ManageProducts = () => {
 
     }, []);
 
+    const btnEdit = id => {
+        const proceed = window.confirm('Are You Sure You Want To Delete The Product!');
+        console.log(id)
+        if (proceed) {
+            navigate(`/updateProduct/${id}`)
+        }
+    }
 
 
     const handleRemoveProduct = product => {
@@ -62,7 +70,8 @@ const ManageProducts = () => {
                                 <td><img style={{ "height": "90px" }} src={a?.img} alt="" /></td>
                                 <td>{a?.name}</td>
                                 <td>{a?.category}</td>
-                                <td><button className='border-0 rounded-circle delete-button  '><FontAwesomeIcon icon={faEdit} /></button></td>
+
+                                <td><button className='border-0 rounded-circle delete-button' onClick={() => btnEdit(a._id)}><FontAwesomeIcon icon={faEdit} /></button></td>
                                 <td><button className='border-0 rounded-circle delete-button ' onClick={() => handleRemoveProduct(a)} ><FontAwesomeIcon className='delete-icon' icon={faTrashAlt}></FontAwesomeIcon></button></td>
                             </tr>)
                         }
@@ -72,7 +81,7 @@ const ManageProducts = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     );
 };
 

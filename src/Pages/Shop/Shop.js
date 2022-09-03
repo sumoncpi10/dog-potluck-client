@@ -117,7 +117,7 @@ const Shop = () => {
                                             <ul class="breadcrumb">
                                                 <li><Link to="/">Home</Link></li>
                                                 <li class="breadcrumb-sep">//</li>
-                                                <li>{pathname == '/shop' ? 'Products' : pathname.split("/")} Food</li>
+                                                <li>{pathname == '/shop' ? 'Products' : pathname.split("/") + 'Food'} </li>
                                             </ul>
                                         </nav>
                                     </div>

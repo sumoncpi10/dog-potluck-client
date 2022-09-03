@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../Shared/Header';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +26,10 @@ const ProductDetails = () => {
                 // console.log(data)
                 setReview(data);
             })
+    }, []);
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
 
     const addReview = (e) => {
@@ -126,7 +130,7 @@ const ProductDetails = () => {
                                         <ul class="breadcrumb">
                                             <li><a href="index.html">Home</a></li>
                                             <li class="breadcrumb-sep">//</li>
-                                            <li>Products</li>
+                                            <li><Link to={'/shop'}>Products</Link></li>
                                             <li class="breadcrumb-sep">//</li>
                                             <li>{product?.name}</li>
                                         </ul>
