@@ -4,16 +4,27 @@ import Banar from "../Shared/Banar";
 import Footer from "../Shared/Footer";
 import HeaderHome from "../Shared/HeaderHome";
 import Product from '../Shop/Product';
+import DealsOfTheDay from './DealsOfTheDay';
 import LoadProduct from './LoadProduct';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
+    const [dealsOfTheDay, setdealsOfTheDay] = useState([]);
     console.log(products)
     useEffect(() => {
         fetch(`http://localhost:5000/productType/${'all'}`)
             .then(res => res.json())
             .then(data =>
                 setProducts(data))
+    }, []);
+    useEffect(() => {
+        fetch(`http://localhost:5000/dealsOfTheDay/${'deals'}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setdealsOfTheDay(data)
+            })
+
     }, []);
     const LoadAllProducts = (collection_type) => {
 
@@ -136,28 +147,30 @@ const Home = () => {
                                     <div className="col-md-6">
                                         <div className="banner-product-single-item">
                                             <div className="thumb">
-                                                <a href="shop.html">
+                                                <Link to='/cat'>
                                                     <img src="assets/img/shop/banner/1.webp" width="570" height="300" alt="Image-HasTech" />
-                                                </a>
+                                                </Link>
+
                                             </div>
                                             <div className="content">
                                                 <h5 className="sub-title">50% Off</h5>
                                                 <h5 className="title">Dog Food</h5>
-                                                <a className="btn-theme btn-theme-color btn-sm" href="sale-product-dog.html">Buy Now</a>
+                                                <Link className="btn-theme btn-theme-color btn-sm" to='/cat'>Buy Now</Link>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="banner-product-single-item">
                                             <div className="thumb">
-                                                <a href="shop.html">
+                                                <Link to='/dog'>
                                                     <img src="assets/img/shop/banner/2.webp" width="570" height="300" alt="Image-HasTech" />
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div className="content">
                                                 <h5 className="sub-title">50% Off</h5>
                                                 <h5 className="title">Cat Food</h5>
-                                                <a className="btn-theme btn-theme-color btn-sm" href="sale-product-cat.html">Buy Now</a>
+                                                <Link className="btn-theme btn-theme-color btn-sm" to='/dog'>Buy Now</Link>
+
                                             </div>
                                         </div>
                                     </div>
@@ -459,7 +472,11 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-12 col-sm-6">
+                                    {
+                                        dealsOfTheDay.map(deals => <DealsOfTheDay key={deals?._id} deals={deals}></DealsOfTheDay>)
+                                    }
+
+                                    {/* <div className="col-12 col-sm-6">
 
                                         <div className="product-item daily-product-item">
                                             <div className="row">
@@ -548,7 +565,7 @@ const Home = () => {
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </section>

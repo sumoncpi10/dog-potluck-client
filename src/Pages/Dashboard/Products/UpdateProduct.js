@@ -24,6 +24,7 @@ const UpdateProduct = () => {
         const name = e.target.name.value;
         const category = e.target.category.value;
         const collection_type = e.target.collection_type.value;
+        const dealsOfDay = e.target.dealsOfDay.value;
         const description1 = e.target.description1.value;
         const description2 = e.target.description2.value;
         const brand = e.target.brand.value;
@@ -39,7 +40,7 @@ const UpdateProduct = () => {
         const imgUrl2 = e.target.imgUrl2.value;
         const imgUrl3 = e.target.imgUrl3.value;
         // console.log(name, email, password);
-        const product = { name, category, collection_type, description1, description2, brand, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
+        const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
         console.log(product);
         fetch(`http://localhost:5000/product/${params.id}`, {
             method: 'PUT',
@@ -126,6 +127,12 @@ const UpdateProduct = () => {
         const { collection_type, ...rest } = product;
         const newBrand = e.target.value;
         const newProduct = { collection_type: newBrand, ...rest };
+        setProduct(newProduct);
+    }
+    const dealsChange = (e) => {
+        const { dealsOfDay, ...rest } = product;
+        const newBrand = e.target.value;
+        const newProduct = { dealsOfDay: newBrand, ...rest };
         setProduct(newProduct);
     }
     const brandChange = (e) => {
@@ -258,7 +265,13 @@ const UpdateProduct = () => {
                             </select>
                         </div>
 
+                        <div class="row mb-2">
+                            <select name='dealsOfDay' onChange={dealsChange} value={product?.dealsOfDay} class="form-select form-control" aria-label="Default select example">
 
+                                <option value="none" selected>None</option>
+                                <option value="deals" >Deals Of The Day</option>
+                            </select>
+                        </div>
                         <div class="row mb-2">
                             {/* <input type="textarea" name='description' class="form-control" placeholder="Description" /> */}
                             <textarea type="text" onChange={descriptionChange1} value={product.description1} name='description1' class="form-control" placeholder="Description1" required></textarea>

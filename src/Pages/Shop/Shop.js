@@ -6,14 +6,28 @@ import Product from './Product';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(2);
+    console.log(page, size);
     const pathname = window?.location?.pathname;
     console.log(pathname);
-
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('http://localhost:5000/productCount')
+            .then(res => res.json())
+            .then(data => {
+                const count = data?.count;
+                const page = Math.ceil(count / size);
+                console.log(page)
+                setPageCount(page);
+            })
+    }, []);
+    useEffect(() => {
+        fetch(`http://localhost:5000/products?page=${page}&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
+                console.log(data);
                 if (pathname === '/shop') {
                     setProducts(data);
                 }
@@ -45,8 +59,12 @@ const Shop = () => {
             }
             )
 
-    }, []);
+    }, [page, size]);
 
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
     return (
         <div>
             <div class="wrapper">
@@ -117,7 +135,7 @@ const Shop = () => {
                                             <ul class="breadcrumb">
                                                 <li><Link to="/">Home</Link></li>
                                                 <li class="breadcrumb-sep">//</li>
-                                                <li>{pathname == '/shop' ? 'Products' : pathname.split("/") + 'Food'} </li>
+                                                <li>{pathname == '/shop' ? 'Products' : pathname.split("/") + ' Food'} </li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -144,12 +162,25 @@ const Shop = () => {
                                                         <div class="col-12">
                                                             <div class="pagination-items pagination-items-style1">
                                                                 <ul class="pagination justify-content-center mb--0">
-                                                                    <li><a class="active" href="shop-four-columns.html">1</a></li>
-                                                                    <li><a href="shop-four-columns.html">2</a></li>
+                                                                    {
+                                                                        [...Array(pageCount).keys()].map(number => <li onClick={() => setPage(number)}>
+                                                                            <button className='border-0 bg-white' ><Link className={page == number ? 'active' : ''} to="/shop">{number + 1}</Link></button>
+                                                                        </li>)
+                                                                    }
+
+                                                                    {/* <li><a href="shop-four-columns.html">2</a></li>
                                                                     <li><a href="shop-four-columns.html">3</a></li>
                                                                     <li><a href="shop-four-columns.html" class="icon"><i class="fa fa-angle-right"></i></a>
+                                                                    </li> */}
+                                                                    <li>
+                                                                        <select onChange={e => setSize(e.target.value)}>
+                                                                            <option value="2" selected>2</option>
+                                                                            <option value="12">12</option>
+                                                                            <option value="24">24</option>
+                                                                        </select>
                                                                     </li>
                                                                 </ul>
+
                                                             </div>
                                                         </div>
                                                     </div>
