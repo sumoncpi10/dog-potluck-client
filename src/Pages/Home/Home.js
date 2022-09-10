@@ -230,9 +230,9 @@ const Home = () => {
         activeId.on('click', function () {
             const $this = $(this),
                 filterValue = $this.data('filter');
-            $(".isotope-grid").isotope({
-                filter: filterValue
-            });
+            // $(".isotope-grid").isotope({
+            //     filter: filterValue
+            // });
             activeId.removeClass('active');
             $this.addClass('active');
         });

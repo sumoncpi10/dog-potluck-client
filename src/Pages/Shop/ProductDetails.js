@@ -6,9 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Review from './Review';
 import Footer from '../Shared/Footer';
 // import Swiper from 'swiper';
-import Swiper, { Navigation } from 'swiper';
+import Swiper, { Navigation, Pagination } from 'swiper';
 const ProductDetails = () => {
-    Swiper.use([Navigation]);
+    Swiper.use([Navigation, Pagination]);
     (function ($) {
 
 
@@ -134,8 +134,8 @@ const ProductDetails = () => {
         // });
 
         // Fancybox Js
-        $('.image-popup').fancybox();
-        $('.video-popup').fancybox();
+        // $('.image-popup').fancybox();
+        // $('.video-popup').fancybox();
 
         // // Product Quantity JS
         // var proQty = $(".pro-qty");
