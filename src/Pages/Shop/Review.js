@@ -2,16 +2,16 @@ import React from 'react';
 
 const Review = ({ review }) => {
     return (
-        <div class="comment-content">
-            <div class="rating-box">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+        <div className="comment-content">
+            <div className="rating-box">
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
+                <i className="fa fa-star"></i>
             </div>
-            <h4 class="title"><span>{review?.Reviewname}</span> - {review.today}</h4>
-            <p class="desc red">{review?.ReviewComment}</p>
+            <h4 className="title"><span>{review?.Reviewname}</span> - {review.today}</h4>
+            <p className="desc red">{review?.ReviewComment}</p>
         </div>
     );
 };

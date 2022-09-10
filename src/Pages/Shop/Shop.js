@@ -2,95 +2,75 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
+import Loading from '../Shared/Loading';
 import Product from './Product';
-
 const Shop = () => {
+
     const [products, setProducts] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
-    const [size, setSize] = useState(2);
-    console.log(page, size);
+    const [size, setSize] = useState(8);
     const pathname = window?.location?.pathname;
-    console.log(pathname);
+    const path = pathname.split("/");
+    // const categoryy = pathname[1];
+    const [category, setCategory] = useState(path[1]);
+    console.log(page, size);
+    console.log(category);
     useEffect(() => {
-        fetch('http://localhost:5000/productCount')
+        fetch(`http://localhost:5000/productCount?category=${category ? category : ''}`)
             .then(res => res.json())
             .then(data => {
                 const count = data?.count;
                 const page = Math.ceil(count / size);
-                console.log(page)
+                // console.log(page);
                 setPageCount(page);
             })
-    }, []);
+    }, [size]);
+
     useEffect(() => {
-        fetch(`http://localhost:5000/products?page=${page}&size=${size}`)
+        fetch(`http://localhost:5000/products?page=${page}&size=${size}&category=${category ? category : ''}`)
             .then(res => res.json())
             .then(data => {
-                // setProducts(data);
-                console.log(data);
-                if (pathname === '/shop') {
-                    setProducts(data);
-                }
-                else if (pathname?.includes('cat')) {
-
-                    const filteredProducts = data.filter(item => item.category == 'cat')
-                    setProducts(filteredProducts)
-                }
-                else if (pathname?.includes('fish')) {
-
-                    const filteredProducts = data.filter(item => item.category == 'fish')
-                    setProducts(filteredProducts)
-                }
-                else if (pathname?.includes('bird')) {
-
-                    const filteredProducts = data.filter(item => item.category == 'bird')
-                    setProducts(filteredProducts)
-                }
-                else if (pathname?.includes('dog')) {
-
-                    const filteredProducts = data.filter(item => item.category == 'dog')
-                    setProducts(filteredProducts)
-                }
-                else if (pathname?.includes('rabbit')) {
-
-                    const filteredProducts = data.filter(item => item.category == 'rabbit')
-                    setProducts(filteredProducts)
-                }
+                setProducts(data);
+                // console.log(data);
             }
             )
 
-    }, [page, size]);
+    }, [page, size, category]);
 
     useEffect(() => {
         // 👇️ scroll to top on page load
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
+    if (!products) {
+        return <Loading></Loading>
+    }
     return (
         <div>
-            <div class="wrapper">
-                <div class="preloader-wrap">
-                    <div class="preloader">
-                        <div class="dog-head"></div>
-                        <div class="dog-body"></div>
+            <div className="wrapper">
+                <div className="preloader-wrap">
+                    <div className="preloader">
+                        <div className="dog-head"></div>
+                        <div className="dog-body"></div>
                     </div>
                 </div>
                 <Header></Header>
                 {/* 
-                <header class="header-area transparent">
-                    <div class="container">
-                        <div class="row no-gutter align-items-center position-relative">
-                            <div class="col-12">
-                                <div class="header-align">
-                                    <div class="header-align-start">
-                                        <div class="header-logo-area">
+                <header className="header-area transparent">
+                    <div className="container">
+                        <div className="row no-gutter align-items-center position-relative">
+                            <div className="col-12">
+                                <div className="header-align">
+                                    <div className="header-align-start">
+                                        <div className="header-logo-area">
                                             <a href="index.html">
-                                                <img class="logo-main" src="assets/img/logo-light.webp" width="158" height="36" alt="Logo" />
+                                                <img className="logo-main" src="assets/img/logo-light.webp" width="158" height="36" alt="Logo" />
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="header-align-center">
-                                        <div class="header-navigation-area position-relative">
-                                            <ul class="main-menu nav">
+                                    <div className="header-align-center">
+                                        <div className="header-navigation-area position-relative">
+                                            <ul className="main-menu nav">
                                                 <li><a href="index.html"><span>Home</span></a></li>
                                                 <li><a href="about-us.html"><span>About</span></a></li>
                                                 <li><a href="shop.html"><span>Shop</span></a></li>
@@ -102,17 +82,17 @@ const Shop = () => {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="header-align-end">
-                                        <div class="header-action-area">
-                                            <div class="shopping-search">
-                                                <button class="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
+                                    <div className="header-align-end">
+                                        <div className="header-action-area">
+                                            <div className="shopping-search">
+                                                <button className="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
                                                     data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i
-                                                        class="pe-7s-search icon"></i></button>
+                                                        className="pe-7s-search icon"></i></button>
                                             </div>
 
-                                            <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
+                                            <button className="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
                                                 aria-controls="AsideOffcanvasMenu">
-                                                <i class="pe-7s-menu"></i>
+                                                <i className="pe-7s-menu"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -123,18 +103,18 @@ const Shop = () => {
                 </header> */}
 
 
-                <main class="main-content">
+                <main className="main-content">
 
-                    <div class="page-header-area" style={{ "backgroundImage": "url(assets/img/photos/bg1.webp)" }} >
-                        <div class="container pt--0 pb--0">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="page-header-content">
-                                        <h2 class="title">Products</h2>
-                                        <nav class="breadcrumb-area">
-                                            <ul class="breadcrumb">
+                    <div className="page-header-area" style={{ "backgroundImage": "url(assets/img/photos/bg1.webp)" }} >
+                        <div className="container pt--0 pb--0">
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="page-header-content">
+                                        <h2 className="title">Products</h2>
+                                        <nav className="breadcrumb-area">
+                                            <ul className="breadcrumb">
                                                 <li><Link to="/">Home</Link></li>
-                                                <li class="breadcrumb-sep">//</li>
+                                                <li className="breadcrumb-sep">//</li>
                                                 <li>{pathname == '/shop' ? 'Products' : pathname.split("/") + ' Food'} </li>
                                             </ul>
                                         </nav>
@@ -144,24 +124,24 @@ const Shop = () => {
                         </div>
                     </div>
 
-                    <section class="product-area">
-                        <div class="container" style={{ "paddingTop": "90px" }}>
-                            <div class="row justify-content-between">
-                                <div class="col-12">
+                    <section className="product-area">
+                        <div className="container" style={{ "paddingTop": "90px" }}>
+                            <div className="row justify-content-between">
+                                <div className="col-12">
 
                                 </div>
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
+                                <div className="col-12">
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <div className="tab-content" id="nav-tabContent">
+                                                <div className="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                                                     <div className='row'>
                                                         {
                                                             products.map(product => <Product product={product} key={product._id}></Product>)
                                                         }
-                                                        <div class="col-12">
-                                                            <div class="pagination-items pagination-items-style1">
-                                                                <ul class="pagination justify-content-center mb--0">
+                                                        <div className="col-12">
+                                                            <div className="pagination-items pagination-items-style1">
+                                                                <ul className="pagination justify-content-center mb--0">
                                                                     {
                                                                         [...Array(pageCount).keys()].map(number => <li onClick={() => setPage(number)}>
                                                                             <button className='border-0 bg-white' ><Link className={page == number ? 'active' : ''} to="/shop">{number + 1}</Link></button>
@@ -170,13 +150,17 @@ const Shop = () => {
 
                                                                     {/* <li><a href="shop-four-columns.html">2</a></li>
                                                                     <li><a href="shop-four-columns.html">3</a></li>
-                                                                    <li><a href="shop-four-columns.html" class="icon"><i class="fa fa-angle-right"></i></a>
+                                                                    <li><a href="shop-four-columns.html" className="icon"><i className="fa fa-angle-right"></i></a>
                                                                     </li> */}
                                                                     <li>
                                                                         <select onChange={e => setSize(e.target.value)}>
-                                                                            <option value="2" selected>2</option>
-                                                                            <option value="12">12</option>
-                                                                            <option value="24">24</option>
+                                                                            <option value="4" >4</option>
+                                                                            <option value="8" selected>8</option>
+                                                                            <option value="16">16</option>
+                                                                            <option value="32">32</option>
+                                                                            <option value="64">66</option>
+                                                                            <option value="128">128</option>
+                                                                            <option value="256">256</option>
                                                                         </select>
                                                                     </li>
                                                                 </ul>
@@ -184,27 +168,27 @@ const Shop = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {/* <div class="row">
-                                                        <div class="col-sm-6 col-xl-3">
+                                                    {/* <div className="row">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/2.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -212,27 +196,27 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/3.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Impulse Duffle</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Impulse Duffle</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
 
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -240,26 +224,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/4.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Driven Backpack</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Driven Backpack</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -267,26 +251,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/6.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -294,26 +278,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/7.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -321,26 +305,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/8.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -348,26 +332,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/3.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Impulse Duffle</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Impulse Duffle</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -375,26 +359,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/1.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Joust Duffle Bag</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Joust Duffle Bag</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -402,26 +386,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/5.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Fusion Backpack</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Fusion Backpack</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -429,26 +413,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/4.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Driven Backpack</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Driven Backpack</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -456,26 +440,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/7.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -483,26 +467,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/8.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -510,26 +494,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/2.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -537,26 +521,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/3.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Impulse Duffle</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Impulse Duffle</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -564,26 +548,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/4.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Driven Backpack</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Driven Backpack</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -591,26 +575,26 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-3">
+                                                        <div className="col-sm-6 col-xl-3">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/6.webp" width="270" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
-                                                                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                        <div class="rating-box">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
+                                                                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                        <div className="rating-box">
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
+                                                                            <i className="fa fa-star"></i>
                                                                         </div>
                                                                     </div>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -618,52 +602,52 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="pagination-items pagination-items-style1">
-                                                                <ul class="pagination justify-content-center mb--0">
-                                                                    <li><a class="active" href="shop-four-columns.html">1</a></li>
+                                                        <div className="col-12">
+                                                            <div className="pagination-items pagination-items-style1">
+                                                                <ul className="pagination justify-content-center mb--0">
+                                                                    <li><a className="active" href="shop-four-columns.html">1</a></li>
                                                                     <li><a href="shop-four-columns.html">2</a></li>
                                                                     <li><a href="shop-four-columns.html">3</a></li>
-                                                                    <li><a href="shop-four-columns.html" class="icon"><i class="fa fa-angle-right"></i></a>
+                                                                    <li><a href="shop-four-columns.html" className="icon"><i className="fa fa-angle-right"></i></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div> */}
                                                 </div>
-                                                <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
-                                                    <div class="row">
-                                                        <div class="col-12">
+                                                <div className="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                                                    <div className="row">
+                                                        <div className="col-12">
 
-                                                            <div class="product-item product-list-item">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="product-thumb">
+                                                            <div className="product-item product-list-item">
+                                                                <div className="row">
+                                                                    <div className="col-lg-4">
+                                                                        <div className="product-thumb">
                                                                             <a href="single-product.html">
                                                                                 <img src="assets/img/shop/col2-1.webp" width="420" height="320" alt="Image-HasTech" />
                                                                             </a>
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-8">
-                                                                        <div class="product-info">
-                                                                            <h4 class="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
-                                                                            <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                                <div class="rating-box">
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
+                                                                    <div className="col-lg-8">
+                                                                        <div className="product-info">
+                                                                            <h4 className="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
+                                                                            <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                                <div className="rating-box">
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
                                                                                 </div>
                                                                             </div>
-                                                                            <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                                 href="single-product.html">Buy Now</a>
                                                                             </button>
-                                                                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
+                                                                            <p className="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
                                                                                 quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident
                                                                                 dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                                                                            <button type="button" class="btn-theme btn-sm" data-bs-toggle="modal"
+                                                                            <button type="button" className="btn-theme btn-sm" data-bs-toggle="modal"
                                                                                 data-bs-target="#action-CartAddModal">
                                                                                 Add To Cart
                                                                             </button>
@@ -673,37 +657,37 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div className="col-12">
 
-                                                            <div class="product-item product-list-item">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="product-thumb">
+                                                            <div className="product-item product-list-item">
+                                                                <div className="row">
+                                                                    <div className="col-lg-4">
+                                                                        <div className="product-thumb">
                                                                             <a href="single-product.html">
                                                                                 <img src="assets/img/shop/col2-2.webp" width="420" height="320" alt="Image-HasTech" />
                                                                             </a>
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-8">
-                                                                        <div class="product-info">
-                                                                            <h4 class="title"><a href="single-product.html">Impulse Duffle</a></h4>
-                                                                            <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                                                                <div class="rating-box">
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
-                                                                                    <i class="fa fa-star"></i>
+                                                                    <div className="col-lg-8">
+                                                                        <div className="product-info">
+                                                                            <h4 className="title"><a href="single-product.html">Impulse Duffle</a></h4>
+                                                                            <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                                                <div className="rating-box">
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
+                                                                                    <i className="fa fa-star"></i>
                                                                                 </div>
                                                                             </div>
-                                                                            <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                                 href="single-product.html">Buy Now</a>
                                                                             </button>
-                                                                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
+                                                                            <p className="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
                                                                                 quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident
                                                                                 dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                                                                            <button type="button" class="btn-theme btn-sm" data-bs-toggle="modal"
+                                                                            <button type="button" className="btn-theme btn-sm" data-bs-toggle="modal"
                                                                                 data-bs-target="#action-CartAddModal">
                                                                                 Add To Cart
                                                                             </button>
@@ -713,28 +697,28 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div className="col-12">
 
-                                                            <div class="product-item product-list-item">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="product-thumb">
+                                                            <div className="product-item product-list-item">
+                                                                <div className="row">
+                                                                    <div className="col-lg-4">
+                                                                        <div className="product-thumb">
                                                                             <a href="single-product.html">
                                                                                 <img src="assets/img/shop/col2-3.webp" width="420" height="320" alt="Image-HasTech" />
                                                                             </a>
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-8">
-                                                                        <div class="product-info">
-                                                                            <h4 class="title"><a href="single-product.html">Driven Backpack</a></h4>
-                                                                            <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <div className="col-lg-8">
+                                                                        <div className="product-info">
+                                                                            <h4 className="title"><a href="single-product.html">Driven Backpack</a></h4>
+                                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                                 href="single-product.html">Buy Now</a>
                                                                             </button>
-                                                                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
+                                                                            <p className="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
                                                                                 quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident
                                                                                 dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                                                                            <button type="button" class="btn-theme btn-sm" data-bs-toggle="modal"
+                                                                            <button type="button" className="btn-theme btn-sm" data-bs-toggle="modal"
                                                                                 data-bs-target="#action-CartAddModal">
                                                                                 Add To Cart
                                                                             </button>
@@ -744,28 +728,28 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div className="col-12">
 
-                                                            <div class="product-item product-list-item">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="product-thumb">
+                                                            <div className="product-item product-list-item">
+                                                                <div className="row">
+                                                                    <div className="col-lg-4">
+                                                                        <div className="product-thumb">
                                                                             <a href="single-product.html">
                                                                                 <img src="assets/img/shop/col2-4.webp" width="420" height="320" alt="Image-HasTech" />
                                                                             </a>
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-8">
-                                                                        <div class="product-info">
-                                                                            <h4 class="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
-                                                                            <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <div className="col-lg-8">
+                                                                        <div className="product-info">
+                                                                            <h4 className="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
+                                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                                 href="single-product.html">Buy Now</a>
                                                                             </button>
-                                                                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
+                                                                            <p className="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
                                                                                 quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident
                                                                                 dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                                                                            <button type="button" class="btn-theme btn-sm" data-bs-toggle="modal"
+                                                                            <button type="button" className="btn-theme btn-sm" data-bs-toggle="modal"
                                                                                 data-bs-target="#action-CartAddModal">
                                                                                 Add To Cart
                                                                             </button>
@@ -775,28 +759,28 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div className="col-12">
 
-                                                            <div class="product-item product-list-item">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="product-thumb">
+                                                            <div className="product-item product-list-item">
+                                                                <div className="row">
+                                                                    <div className="col-lg-4">
+                                                                        <div className="product-thumb">
                                                                             <a href="single-product.html">
                                                                                 <img src="assets/img/shop/col2-5.webp" width="420" height="320" alt="Image-HasTech" />
                                                                             </a>
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-8">
-                                                                        <div class="product-info">
-                                                                            <h4 class="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
-                                                                            <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <div className="col-lg-8">
+                                                                        <div className="product-info">
+                                                                            <h4 className="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
+                                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                                 href="single-product.html">Buy Now</a>
                                                                             </button>
-                                                                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
+                                                                            <p className="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
                                                                                 quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident
                                                                                 dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                                                                            <button type="button" class="btn-theme btn-sm" data-bs-toggle="modal"
+                                                                            <button type="button" className="btn-theme btn-sm" data-bs-toggle="modal"
                                                                                 data-bs-target="#action-CartAddModal">
                                                                                 Add To Cart
                                                                             </button>
@@ -806,28 +790,28 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div className="col-12">
 
-                                                            <div class="product-item product-list-item">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="product-thumb">
+                                                            <div className="product-item product-list-item">
+                                                                <div className="row">
+                                                                    <div className="col-lg-4">
+                                                                        <div className="product-thumb">
                                                                             <a href="single-product.html">
                                                                                 <img src="assets/img/shop/col2-6.webp" width="420" height="320" alt="Image-HasTech" />
                                                                             </a>
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-8">
-                                                                        <div class="product-info">
-                                                                            <h4 class="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
-                                                                            <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <div className="col-lg-8">
+                                                                        <div className="product-info">
+                                                                            <h4 className="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
+                                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                                 href="single-product.html">Buy Now</a>
                                                                             </button>
-                                                                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
+                                                                            <p className="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
                                                                                 quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident
                                                                                 dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                                                                            <button type="button" class="btn-theme btn-sm" data-bs-toggle="modal"
+                                                                            <button type="button" className="btn-theme btn-sm" data-bs-toggle="modal"
                                                                                 data-bs-target="#action-CartAddModal">
                                                                                 Add To Cart
                                                                             </button>
@@ -837,28 +821,28 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div className="col-12">
 
-                                                            <div class="product-item product-list-item">
-                                                                <div class="row">
-                                                                    <div class="col-lg-4">
-                                                                        <div class="product-thumb">
+                                                            <div className="product-item product-list-item">
+                                                                <div className="row">
+                                                                    <div className="col-lg-4">
+                                                                        <div className="product-thumb">
                                                                             <a href="single-product.html">
                                                                                 <img src="assets/img/shop/col2-8.webp" width="420" height="320" alt="Image-HasTech" />
                                                                             </a>
 
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-lg-8">
-                                                                        <div class="product-info">
-                                                                            <h4 class="title"><a href="single-product.html">Impulse Duffle</a></h4>
-                                                                            <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                    <div className="col-lg-8">
+                                                                        <div className="product-info">
+                                                                            <h4 className="title"><a href="single-product.html">Impulse Duffle</a></h4>
+                                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                                 href="single-product.html">Buy Now</a>
                                                                             </button>
-                                                                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
+                                                                            <p className="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
                                                                                 quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident
                                                                                 dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                                                                            <button type="button" class="btn-theme btn-sm" data-bs-toggle="modal"
+                                                                            <button type="button" className="btn-theme btn-sm" data-bs-toggle="modal"
                                                                                 data-bs-target="#action-CartAddModal">
                                                                                 Add To Cart
                                                                             </button>
@@ -868,31 +852,31 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="pagination-items pagination-items-style1">
-                                                                <ul class="pagination justify-content-center mb--0">
-                                                                    <li><a class="active" href="shop.html">1</a></li>
+                                                        <div className="col-12">
+                                                            <div className="pagination-items pagination-items-style1">
+                                                                <ul className="pagination justify-content-center mb--0">
+                                                                    <li><a className="active" href="shop.html">1</a></li>
                                                                     <li><a href="shop-four-columns.html">2</a></li>
                                                                     <li><a href="shop-three-columns.html">3</a></li>
-                                                                    <li><a href="shop.html" class="icon"><i class="fa fa-angle-right"></i></a></li>
+                                                                    <li><a href="shop.html" className="icon"><i className="fa fa-angle-right"></i></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="nav-grid2" role="tabpanel" aria-labelledby="nav-grid2-tab">
-                                                    <div class="row">
-                                                        <div class="col-sm-6 col-xl-6">
+                                                <div className="tab-pane fade" id="nav-grid2" role="tabpanel" aria-labelledby="nav-grid2-tab">
+                                                    <div className="row">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-1.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Endeavor Daytripa</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -900,17 +884,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-2.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Impulse Duffle</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Impulse Duffle</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -918,17 +902,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-3.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Driven Backpack</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Driven Backpack</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -936,17 +920,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-4.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -954,17 +938,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-5.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -972,17 +956,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-6.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -990,17 +974,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-2.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Impulse Duffle</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Impulse Duffle</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -1008,17 +992,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-7.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Joust Duffle Bag</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Joust Duffle Bag</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -1026,17 +1010,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-8.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Fusion Backpack</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Fusion Backpack</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -1044,17 +1028,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-3.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Driven Backpack</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Driven Backpack</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -1062,17 +1046,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-5.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -1080,17 +1064,17 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-sm-6 col-xl-6">
+                                                        <div className="col-sm-6 col-xl-6">
 
-                                                            <div class="product-item">
-                                                                <div class="product-thumb">
+                                                            <div className="product-item">
+                                                                <div className="product-thumb">
                                                                     <a href="single-product.html">
                                                                         <img src="assets/img/shop/col2-6.webp" width="420" height="320" alt="Image-HasTech" />
                                                                     </a>
                                                                 </div>
-                                                                <div class="product-info">
-                                                                    <h4 class="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
-                                                                    <button type="button" class="btn-product-cart" data-bs-toggle="modal"><a
+                                                                <div className="product-info">
+                                                                    <h4 className="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
+                                                                    <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
                                                                         href="single-product.html">Buy Now</a>
                                                                     </button>
                                                                 </div>
@@ -1098,13 +1082,13 @@ const Shop = () => {
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="pagination-items pagination-items-style1">
-                                                                <ul class="pagination justify-content-center mb--0">
-                                                                    <li><a class="active" href="shop.html">1</a></li>
+                                                        <div className="col-12">
+                                                            <div className="pagination-items pagination-items-style1">
+                                                                <ul className="pagination justify-content-center mb--0">
+                                                                    <li><a className="active" href="shop.html">1</a></li>
                                                                     <li><a href="shop-four-columns.html">2</a></li>
                                                                     <li><a href="shop-three-columns.html">3</a></li>
-                                                                    <li><a href="shop.html" class="icon"><i class="fa fa-angle-right"></i></a></li>
+                                                                    <li><a href="shop.html" className="icon"><i className="fa fa-angle-right"></i></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -1121,34 +1105,34 @@ const Shop = () => {
                 </main>
 
 
-                {/* <footer class="footer-area">
+                {/* <footer className="footer-area">
 
-                    <div class="footer-main">
-                        <div class="container pt--0 pb--0">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="widget-item widget-about">
-                                        <h4 class="widget-title">About Us</h4>
-                                        <p class="desc">Lorem ipsum dolor sit amet, consectel adipisicing elit, sed do eiusmod temp incidid ut
+                    <div className="footer-main">
+                        <div className="container pt--0 pb--0">
+                            <div className="row">
+                                <div className="col-md-6 col-lg-4">
+                                    <div className="widget-item widget-about">
+                                        <h4 className="widget-title">About Us</h4>
+                                        <p className="desc">Lorem ipsum dolor sit amet, consectel adipisicing elit, sed do eiusmod temp incidid ut
                                             labore et dolo</p>
-                                        <div class="social-icons">
-                                            <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
-                                            <a href="https://instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a>
+                                        <div className="social-icons">
+                                            <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i className="fa fa-facebook"></i></a>
+                                            <a href="https://instagram.com/" target="_blank" rel="noopener"><i className="fa fa-instagram"></i></a>
                                             <a href="https://www.pinterest.com/" target="_blank" rel="noopener"><i
-                                                class="fa fa-pinterest-p"></i></a>
-                                            <a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
+                                                className="fa fa-pinterest-p"></i></a>
+                                            <a href="https://twitter.com/" target="_blank" rel="noopener"><i className="fa fa-twitter"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="widget-item nav-menu-item1">
-                                        <h4 class="widget-title">Information</h4>
-                                        <h4 class="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-1">Our
+                                <div className="col-md-6 col-lg-4">
+                                    <div className="widget-item nav-menu-item1">
+                                        <h4 className="widget-title">Information</h4>
+                                        <h4 className="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-1">Our
                                             Policy</h4>
-                                        <div id="widgetId-1" class="collapse widget-collapse-body">
-                                            <div class="collapse-body">
-                                                <div class="widget-menu-wrap">
-                                                    <ul class="nav-menu">
+                                        <div id="widgetId-1" className="collapse widget-collapse-body">
+                                            <div className="collapse-body">
+                                                <div className="widget-menu-wrap">
+                                                    <ul className="nav-menu">
                                                         <li><a href="about-us.html">About Us</a></li>
                                                         <li><a href="disclaimer.html">Privacy Policy</a></li>
                                                         <li><a href="disclaimer.html">Disclaimer</a></li>
@@ -1161,29 +1145,29 @@ const Shop = () => {
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="widget-item">
-                                        <h4 class="widget-title">Contact Info:</h4>
-                                        <h4 class="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-3">
+                                <div className="col-md-6 col-lg-4">
+                                    <div className="widget-item">
+                                        <h4 className="widget-title">Contact Info:</h4>
+                                        <h4 className="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-3">
                                             Contact Info:</h4>
-                                        <div id="widgetId-3" class="collapse widget-collapse-body">
-                                            <div class="collapse-body">
-                                                <div class="widget-contact-info">
-                                                    <p class="contact-info-desc">If you have any question.please contact us at <a
+                                        <div id="widgetId-3" className="collapse widget-collapse-body">
+                                            <div className="collapse-body">
+                                                <div className="widget-contact-info">
+                                                    <p className="contact-info-desc">If you have any question.please contact us at <a
                                                         href="mailto://dogpotluck@gmail.com">dogpotluck@gmail.com</a></p>
-                                                    <div class="contact-item">
-                                                        <div class="icon">
-                                                            <i class="pe-7s-map-marker"></i>
+                                                    <div className="contact-item">
+                                                        <div className="icon">
+                                                            <i className="pe-7s-map-marker"></i>
                                                         </div>
-                                                        <div class="info">
+                                                        <div className="info">
                                                             <p>36-20 Summers Place <br />Saskatoon, SK, Canada.</p>
                                                         </div>
                                                     </div>
-                                                    <div class="contact-item phone-info">
-                                                        <div class="icon">
-                                                            <i class="pe-7s-phone"></i>
+                                                    <div className="contact-item phone-info">
+                                                        <div className="icon">
+                                                            <i className="pe-7s-phone"></i>
                                                         </div>
-                                                        <div class="info">
+                                                        <div className="info">
                                                             <p><span>Have any Question</span> <br /><a href="tel://+1 639 318 3375">+1 639 318 3375</a></p>
                                                         </div>
                                                     </div>
@@ -1196,14 +1180,14 @@ const Shop = () => {
                         </div>
                     </div>
 
-                    <div class="footer-bottom">
-                        <div class="container pt--0 pb--0">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="footer-bottom-content">
-                                        <p class="copyright">© 2022 DogPotluck. Made with <i class="fa fa-heart"></i> by <a target="_blank"
+                    <div className="footer-bottom">
+                        <div className="container pt--0 pb--0">
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="footer-bottom-content">
+                                        <p className="copyright">© 2022 DogPotluck. Made with <i className="fa fa-heart"></i> by <a target="_blank"
                                             href="#">Robin.</a></p>
-                                        <div class="payment">
+                                        <div className="payment">
                                             <a href="index.html"><img src="assets/img/logo-light.webp" width="192" height="21"
                                                 alt="Payment Logo" /></a>
                                         </div>
@@ -1216,25 +1200,25 @@ const Shop = () => {
                 </footer> */}
                 <Footer></Footer>
 
-                <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
+                <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
 
 
-                <aside class="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="product-action-view-content">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                        <i class="pe-7s-close"></i>
+                <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-body">
+                                <div className="product-action-view-content">
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal">
+                                        <i className="pe-7s-close"></i>
                                     </button>
-                                    <div class="modal-action-messages">
-                                        <i class="pe-7s-check"></i> Added to wishlist successfully!
+                                    <div className="modal-action-messages">
+                                        <i className="pe-7s-check"></i> Added to wishlist successfully!
                                     </div>
-                                    <div class="modal-action-product">
-                                        <div class="thumb">
+                                    <div className="modal-action-product">
+                                        <div className="thumb">
                                             <img src="assets/img/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320" />
                                         </div>
-                                        <h4 class="product-name"><a href="single-product.html">Joust Duffle Bag</a></h4>
+                                        <h4 className="product-name"><a href="single-product.html">Joust Duffle Bag</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -1242,22 +1226,22 @@ const Shop = () => {
                     </div>
                 </aside>
 
-                <aside class="product-action-modal modal fade" id="action-CartAddModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="product-action-view-content">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                        <i class="pe-7s-close"></i>
+                <aside className="product-action-modal modal fade" id="action-CartAddModal" tabindex="-1" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-body">
+                                <div className="product-action-view-content">
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal">
+                                        <i className="pe-7s-close"></i>
                                     </button>
-                                    <div class="modal-action-messages">
-                                        <i class="pe-7s-check"></i> Added to cart successfully!
+                                    <div className="modal-action-messages">
+                                        <i className="pe-7s-check"></i> Added to cart successfully!
                                     </div>
-                                    <div class="modal-action-product">
-                                        <div class="thumb">
+                                    <div className="modal-action-product">
+                                        <div className="thumb">
                                             <img src="assets/img/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320" />
                                         </div>
-                                        <h4 class="product-name"><a href="single-product.html">Joust Duffle Bag</a></h4>
+                                        <h4 className="product-name"><a href="single-product.html">Joust Duffle Bag</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -1265,46 +1249,46 @@ const Shop = () => {
                     </div>
                 </aside>
 
-                <aside class="product-cart-view-modal modal fade" id="action-QuickViewModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="product-quick-view-content">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                        <span class="pe-7s-close"></span>
+                <aside className="product-cart-view-modal modal fade" id="action-QuickViewModal" tabindex="-1" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-body">
+                                <div className="product-quick-view-content">
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal">
+                                        <span className="pe-7s-close"></span>
                                     </button>
-                                    <div class="container pt--0 pb--0">
-                                        <div class="row">
-                                            <div class="col-lg-6">
+                                    <div className="container pt--0 pb--0">
+                                        <div className="row">
+                                            <div className="col-lg-6">
 
-                                                <div class="product-single-thumb">
+                                                <div className="product-single-thumb">
                                                     <img src="assets/img/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech" />
                                                 </div>
 
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div className="col-lg-6">
 
-                                                <div class="product-single-info">
-                                                    <h3 class="main-title">Joust Duffle Bag</h3>
-                                                    <div class="prices">
-                                                        <span class="price">$20.19</span>
+                                                <div className="product-single-info">
+                                                    <h3 className="main-title">Joust Duffle Bag</h3>
+                                                    <div className="prices">
+                                                        <span className="price">$20.19</span>
                                                     </div>
-                                                    <div class="rating-box-wrap">
-                                                        <div class="rating-box">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
+                                                    <div className="rating-box-wrap">
+                                                        <div className="rating-box">
+                                                            <i className="fa fa-star"></i>
+                                                            <i className="fa fa-star"></i>
+                                                            <i className="fa fa-star"></i>
+                                                            <i className="fa fa-star"></i>
+                                                            <i className="fa fa-star"></i>
                                                         </div>
-                                                        <div class="review-status">
+                                                        <div className="review-status">
                                                             <a href="javascript:void(0)">(5 Customer Review)</a>
                                                         </div>
                                                     </div>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incidid ut labore et
                                                         dolore magna aliqua. Ut enim ad minim veniam, quis nol exercitation ullamco laboris nisi ut
                                                         aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
-                                                    <div class="product-single-meta">
+                                                    <div className="product-single-meta">
                                                         <ul>
                                                             <li><span>SKU:</span> Ch-256xl</li>
                                                             <li><span>Categories:</span>
@@ -1316,23 +1300,23 @@ const Shop = () => {
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <div class="product-quick-action">
-                                                        <div class="qty-wrap">
-                                                            <div class="pro-qty">
+                                                    <div className="product-quick-action">
+                                                        <div className="qty-wrap">
+                                                            <div className="pro-qty">
                                                                 <input type="text" title="Quantity" value="01" />
                                                             </div>
                                                         </div>
-                                                        <button type="button" class="btn-product-cart" data-bs-toggle="modal"
+                                                        <button type="button" className="btn-product-cart" data-bs-toggle="modal"
                                                             data-bs-target="#action-CartAddModal">
                                                             Add To Cart
                                                         </button>
-                                                        <button type="button" class="btn-product-wishlist" data-bs-toggle="modal"
+                                                        <button type="button" className="btn-product-wishlist" data-bs-toggle="modal"
                                                             data-bs-target="#action-WishlistModal">
-                                                            <i class="pe-7s-like"></i>
+                                                            <i className="pe-7s-like"></i>
                                                         </button>
-                                                        <button type="button" class="btn-product-quick-view" data-bs-toggle="modal"
+                                                        <button type="button" className="btn-product-quick-view" data-bs-toggle="modal"
                                                             data-bs-target="#action-QuickViewModal">
-                                                            <i class="pe-7s-look"></i>
+                                                            <i className="pe-7s-look"></i>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1346,58 +1330,58 @@ const Shop = () => {
                     </div>
                 </aside>
 
-                <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart"
+                <aside className="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart"
                     aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h1 class="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
-                        <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i
-                            class="fa fa-chevron-right"></i></button>
+                    <div className="offcanvas-header">
+                        <h1 className="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
+                        <button className="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i
+                            className="fa fa-chevron-right"></i></button>
                     </div>
-                    <div class="offcanvas-body">
-                        <ul class="aside-cart-product-list">
-                            <li class="aside-product-list-item">
-                                <a href="#/" class="remove">×</a>
+                    <div className="offcanvas-body">
+                        <ul className="aside-cart-product-list">
+                            <li className="aside-product-list-item">
+                                <a href="#/" className="remove">×</a>
                                 <a href="single-product.html">
                                     <img src="assets/img/shop/product-mini/1.webp" width="90" height="110" alt="Image-HasTech" />
-                                    <span class="product-title">Leather Mens Slipper</span>
+                                    <span className="product-title">Leather Mens Slipper</span>
                                 </a>
-                                <span class="product-price">1 × £69.99</span>
+                                <span className="product-price">1 × £69.99</span>
                             </li>
-                            <li class="aside-product-list-item">
-                                <a href="#/" class="remove">×</a>
+                            <li className="aside-product-list-item">
+                                <a href="#/" className="remove">×</a>
                                 <a href="single-product.html">
                                     <img src="assets/img/shop/product-mini/2.webp" width="90" height="110" alt="Image-HasTech" />
-                                    <span class="product-title">Quickiin Mens shoes</span>
+                                    <span className="product-title">Quickiin Mens shoes</span>
                                 </a>
-                                <span class="product-price">1 × £20.00</span>
+                                <span className="product-price">1 × £20.00</span>
                             </li>
                         </ul>
-                        <p class="cart-total"><span>Subtotal:</span><span class="amount">£89.99</span></p>
-                        <a class="btn-total" href="shop-cart.html">View cart</a>
-                        <a class="btn-total" href="shop-checkout.html">Checkout</a>
-                        <a class="d-block text-end lh-1" href="shop-checkout.html"><img src="assets/img/photos/paypal.webp" width="133"
+                        <p className="cart-total"><span>Subtotal:</span><span className="amount">£89.99</span></p>
+                        <a className="btn-total" href="shop-cart.html">View cart</a>
+                        <a className="btn-total" href="shop-checkout.html">Checkout</a>
+                        <a className="d-block text-end lh-1" href="shop-checkout.html"><img src="assets/img/photos/paypal.webp" width="133"
                             height="26" alt="Has-image" /></a>
                     </div>
                 </aside>
 
-                <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch"
+                <aside className="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch"
                     aria-labelledby="offcanvasTopLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="d-none" id="offcanvasTopLabel">Aside Search</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                            class="pe-7s-close"></i></button>
+                    <div className="offcanvas-header">
+                        <h5 className="d-none" id="offcanvasTopLabel">Aside Search</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                            className="pe-7s-close"></i></button>
                     </div>
-                    <div class="offcanvas-body">
-                        <div class="container pt--0 pb--0">
-                            <div class="search-box-form-wrap">
-                                <div class="search-note">
+                    <div className="offcanvas-body">
+                        <div className="container pt--0 pb--0">
+                            <div className="search-box-form-wrap">
+                                <div className="search-note">
                                     <p>Start typing and press Enter to search</p>
                                 </div>
                                 <form action="#" method="post">
-                                    <div class="search-form position-relative">
-                                        <label for="search-input" class="visually-hidden">Search</label>
-                                        <input id="search-input" type="search" class="form-control" placeholder="Search entire store…" />
-                                        <button class="search-button"><i class="fa fa-search"></i></button>
+                                    <div className="search-form position-relative">
+                                        <label for="search-input" className="visually-hidden">Search</label>
+                                        <input id="search-input" type="search" className="form-control" placeholder="Search entire store…" />
+                                        <button className="search-button"><i className="fa fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -1405,36 +1389,36 @@ const Shop = () => {
                     </div>
                 </aside>
 
-                <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu"
+                <aside className="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu"
                     aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header">
-                        <h1 class="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
-                        <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
-                            class="fa fa-chevron-left"></i></button>
+                    <div className="offcanvas-header">
+                        <h1 className="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
+                        <button className="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
+                            className="fa fa-chevron-left"></i></button>
                     </div>
-                    <div class="offcanvas-body">
-                        <nav id="offcanvasNav" class="offcanvas-menu-nav">
+                    <div className="offcanvas-body">
+                        <nav id="offcanvasNav" className="offcanvas-menu-nav">
                             <ul>
-                                <li class="offcanvas-nav-parent">
-                                    <a class="offcanvas-nav-item" href="index.html">Home</a>
+                                <li className="offcanvas-nav-parent">
+                                    <a className="offcanvas-nav-item" href="index.html">Home</a>
 
                                 </li>
 
-                                <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.html">About</a></li>
+                                <li className="offcanvas-nav-parent"><a className="offcanvas-nav-item" href="about-us.html">About</a></li>
 
-                                <li class="offcanvas-nav-parent">
-                                    <a class="offcanvas-nav-item" href="shop.html">Shop</a>
-
-                                </li>
-
-                                <li class="offcanvas-nav-parent">
-                                    <a class="offcanvas-nav-item" href="blog-details.html">Blog</a>
+                                <li className="offcanvas-nav-parent">
+                                    <a className="offcanvas-nav-item" href="shop.html">Shop</a>
 
                                 </li>
 
+                                <li className="offcanvas-nav-parent">
+                                    <a className="offcanvas-nav-item" href="blog-details.html">Blog</a>
+
+                                </li>
 
 
-                                <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.html">Contact</a></li>
+
+                                <li className="offcanvas-nav-parent"><a className="offcanvas-nav-item" href="contact.html">Contact</a></li>
                             </ul>
                         </nav>
                     </div>

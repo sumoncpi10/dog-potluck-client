@@ -6,8 +6,272 @@ import HeaderHome from "../Shared/HeaderHome";
 import Product from '../Shop/Product';
 import DealsOfTheDay from './DealsOfTheDay';
 import LoadProduct from './LoadProduct';
-
+import Loading from '../Shared/Loading';
+// import $ from "jquery";
+import Swiper from 'swiper';
 const Home = () => {
+
+    (function ($) {
+
+        "use strict";
+
+        // Preloader
+        function stylePreloader() {
+            $('body').addClass('preloader-deactive');
+        }
+
+        // Background Image Js
+        const bgSelector = $("[data-bg-img]");
+        bgSelector.each(function (index, elem) {
+            let element = $(elem),
+                bgSource = element.data('bg-img');
+            element.css('background-image', 'url(' + bgSource + ')');
+        });
+
+        // Background Color Js
+        const Bgcolorcl = $("[data-bg-color]");
+        Bgcolorcl.each(function (index, elem) {
+            let element = $(elem),
+                Bgcolor = element.data('bg-color');
+            element.css('background-color', Bgcolor);
+        });
+
+        // Offcanvas Nav Js
+        var $offcanvasNav = $("#offcanvasNav a");
+        $offcanvasNav.on("click", function () {
+            var link = $(this);
+            var closestUl = link.closest("ul");
+            var activeLinks = closestUl.find(".active");
+            var closestLi = link.closest("li");
+            var linkStatus = closestLi.hasClass("active");
+            var count = 0;
+
+            closestUl.find("ul").slideUp(function () {
+                if (++count == closestUl.find("ul").length)
+                    activeLinks.removeClass("active");
+            });
+
+            if (!linkStatus) {
+                closestLi.children("ul").slideDown();
+                closestLi.addClass("active");
+            }
+        });
+
+        // Menu Activeion Js
+        var cururl = window.location.pathname;
+        var curpage = cururl.substr(cururl.lastIndexOf('/') + 1);
+        var hash = window.location.hash.substr(1);
+        if ((curpage === "" || curpage === "/" || curpage === "admin") && hash === "") {
+        } else {
+            $(".header-navigation-area li").each(function () {
+                $(this).removeClass("active");
+            });
+            if (hash != "")
+                $(".header-navigation-area li a[href='" + hash + "']").parents("li").addClass("active");
+            else
+                $(".header-navigation-area li a[href='" + curpage + "']").parents("li").addClass("active");
+        }
+
+        // Swiper Default Slider Js
+        var mainlSlider = new Swiper('.default-slider-container', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            loop: true,
+            speed: 700,
+            spaceBetween: 0,
+            effect: 'fade',
+            autoHeight: true, //enable auto height
+            fadeEffect: {
+                crossFade: true,
+            },
+            navigation: {
+                nextEl: '.default-slider-container .swiper-btn-next',
+                prevEl: '.default-slider-container .swiper-btn-prev',
+            },
+        });
+
+        // Product Single Thumb Slider Js
+        var ProductNav = new Swiper('.single-product-nav-slider', {
+            spaceBetween: 20,
+            slidesPerView: 3,
+            mousewheel: {
+                invert: true,
+            },
+            navigation: {
+                nextEl: '.product-single-swiper-wrap .swiper-btn-next',
+                prevEl: '.product-single-swiper-wrap .swiper-btn-prev',
+            },
+        });
+        var ProductThumb = new Swiper('.single-product-thumb-slider', {
+            effect: 'fade',
+            mousewheelControl: true,
+            fadeEffect: {
+                crossFade: true,
+            },
+            thumbs: {
+                swiper: ProductNav,
+            }
+        });
+
+        // Testimonial Slider Js
+        var testimonialSlider = new Swiper('.testimonial-slider-container', {
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+            allowTouchMove: false,
+            spaceBetween: 30,
+            speed: 600,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                992: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                },
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    allowTouchMove: true,
+                },
+            }
+        });
+
+        // Fancybox Js
+        $('.image-popup').fancybox();
+        $('.video-popup').fancybox();
+
+        // Product Quantity JS
+        var proQty = $(".pro-qty");
+        proQty.append('<div class= "dec qty-btn">-</div>');
+        proQty.append('<div className="inc qty-btn">+</div>');
+        $('.qty-btn').on('click', function (e) {
+            e.preventDefault();
+            var $button = $(this);
+            var oldValue = $button.parent().find('input').val();
+            if ($button.hasClass('inc')) {
+                var newVal = parseFloat(oldValue) + 1;
+            } else {
+                // Don't allow decrementing below zero
+                if (oldValue > 1) {
+                    var newVal = parseFloat(oldValue) - 1;
+                } else {
+                    newVal = 1;
+                }
+            }
+            $button.parent().find('input').val(newVal);
+        });
+
+        // // Countdown Js 
+        $(".ht-countdown").each(function (index, element) {
+            var $element = $(element),
+                $date = $element.data('date');
+            $element.countdown($date, function (event) {
+                var $this = $(this).html(event.strftime(''
+                    +
+                    '<div className="countdown-item"><span className="countdown-item__time">%D</span><span className="countdown-item__label">days</span></div>' +
+                    '<div className="countdown-item"><span className="countdown-item__time">%H</span><span className="countdown-item__label">Hours</span></div>' +
+                    '<div className="countdown-item"><span className="countdown-item__time">%M</span><span className="countdown-item__label">Mins</span></div>' +
+                    '<div className="countdown-item"><span className="countdown-item__time">%S</span><span className="countdown-item__label">Secs</span></div>'));
+            });
+        });
+
+        // Price Range
+        $(".js-range-slider").ionRangeSlider({
+            skin: "round",
+            hide_min_max: true,    // show/hide MIN and MAX labels
+            prefix: "$",
+        });
+
+        // Ajax Contact Form JS
+        var form = $('#contact-form');
+        var formMessages = $('.form-message');
+
+        $(form).submit(function (e) {
+            e.preventDefault();
+            var formData = form.serialize();
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: formData
+            }).done(function (response) {
+                // Make sure that the formMessages div has the 'success' class.
+                $(formMessages).removeClass('alert alert-danger');
+                $(formMessages).addClass('alert alert-success fade show');
+
+                // Set the message text.
+                formMessages.html("<button type='button' class='btn-close' data-bs-dismiss='alert'>&times;</button>");
+                formMessages.append(response);
+
+                // Clear the form.
+                $('#contact-form input,#contact-form textarea').val('');
+            }).fail(function (data) {
+                // Make sure that the formMessages div has the 'error' class.
+                $(formMessages).removeClass('alert alert-success');
+                $(formMessages).addClass('alert alert-danger fade show');
+
+                // Set the message text.
+                if (data.responseText === '') {
+                    formMessages.html("<button type='button' class='btn-close' data-bs-dismiss='alert'>&times;</button>");
+                    formMessages.append(data.responseText);
+                } else {
+                    $(formMessages).text('Oops! An error occurred and your message could not be sent.');
+                }
+            });
+        });
+
+        // Portfolio Filter Js
+        const activeId = $(".isotope-filter button");
+        // $(".isotope-grid").isotope();
+        activeId.on('click', function () {
+            const $this = $(this),
+                filterValue = $this.data('filter');
+            $(".isotope-grid").isotope({
+                filter: filterValue
+            });
+            activeId.removeClass('active');
+            $this.addClass('active');
+        });
+
+        // scrollToTop Js
+        function scrollToTop() {
+            var $scrollUp = $('#scroll-to-top'),
+                $lastScrollTop = 0,
+                $window = $(window);
+            $window.on('scroll', function () {
+                var st = $(this).scrollTop();
+                if (st > $lastScrollTop) {
+                    $scrollUp.removeClass('show');
+                } else {
+                    if ($window.scrollTop() > 120) {
+                        $scrollUp.addClass('show');
+                    } else {
+                        $scrollUp.removeClass('show');
+                    }
+                }
+                $lastScrollTop = st;
+            });
+            $scrollUp.on('click', function (evt) {
+                $('html, body').animate({ scrollTop: 0 }, 50);
+                evt.preventDefault();
+            });
+        }
+        scrollToTop();
+
+        /* ==========================================================================
+           When document is loading, do
+           ========================================================================== */
+        var varWindow = $(window);
+        varWindow.on('load', function () {
+            // stylePreloader
+            stylePreloader();
+        });
+
+    })(window.jQuery);
     const [products, setProducts] = useState([]);
     const [dealsOfTheDay, setdealsOfTheDay] = useState([]);
     console.log(products)
@@ -35,13 +299,14 @@ const Home = () => {
             .then(data =>
                 setProducts(data))
     }
+    if (!products) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <>
-                <Banar />
+                {/* <Banar /> */}
                 <div className="wrapper">
-
-
                     <div className="preloader-wrap">
                         <div className="preloader">
                             <div className="dog-head"></div>
@@ -51,9 +316,87 @@ const Home = () => {
 
                     {/* header  */}
                     <HeaderHome></HeaderHome>
-
-
                     <main className="main-content">
+                        <section className="home-slider-area">
+                            <div className="swiper home-slider-container default-slider-container">
+                                <div className="swiper-wrapper home-slider-wrapper slider-default">
+                                    <div className="swiper-slide">
+                                        <div className="slider-content-area" data-bg-img="assets/img/slider/slider-bg.webp">
+                                            <div className="container">
+                                                <div className="slider-container">
+                                                    <div className="row justify-content-between align-items-center">
+                                                        <div className="col-sm-6 col-md-6">
+                                                            <div className="slider-content">
+                                                                <div className="content">
+                                                                    <div className="sub-title-box">
+                                                                        <h5 className="sub-title">Up To 40% Off</h5>
+                                                                    </div>
+                                                                    <div className="title-box">
+                                                                        <h2 className="title">A Greate Meal With Your Pet</h2>
+                                                                    </div>
+                                                                    <div className="btn-box">
+                                                                        <a className="btn-theme text-dark" href="shop.html">Shop Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-sm-6 col-md-6">
+                                                            <div className="slider-thumb mousemove">
+                                                                <div className="thumb">
+                                                                    <img src="assets/img/slider/slider-01.webp" width="585" height="579" alt="Image-HasTech" />
+                                                                    <div className="shape-one"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <div className="slider-content-two-area" data-bg-img="assets/img/slider/slider-02.webp">
+                                            <div className="container">
+                                                <div className="slider-container">
+                                                    <div className="row justify-content-sm-end justify-content-center align-items-center">
+                                                        <div className="col-sm-8 col-md-6">
+                                                            <div className="slider-content">
+                                                                <div className="content">
+                                                                    <div className="sub-title-box">
+                                                                        <h5 className="sub-title">100% Genue Products</h5>
+                                                                    </div>
+                                                                    <div className="title-box">
+                                                                        <h2 className="title">This Food Best Your Pet</h2>
+                                                                    </div>
+                                                                    <div className="desc-box">
+                                                                        <p className="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, seddo do eiusmod tempor incidid ut labore.</p>
+                                                                    </div>
+                                                                    <div className="btn-box">
+                                                                        <a className="btn-theme text-dark" href="shop.html">Shop Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="home-overlay"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="swiper-btn-wrap">
+                                    <div className="swiper-btn-prev">
+                                        <i className="pe-7s-angle-left"></i>
+                                    </div>
+                                    <div className="swiper-btn-next">
+                                        <i className="pe-7s-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
 
 
 
@@ -721,7 +1064,7 @@ const Home = () => {
                                                 <div className="col-lg-6">
 
                                                     <div className="product-single-thumb">
-                                                        <img src="assets/img/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech" />
+                                                        <img src="/assets/img/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech" />
                                                     </div>
 
                                                 </div>
@@ -873,7 +1216,7 @@ const Home = () => {
 
                 </div>
             </>
-        </div>
+        </div >
     );
 };
 

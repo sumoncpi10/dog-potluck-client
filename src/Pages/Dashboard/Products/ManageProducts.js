@@ -2,6 +2,7 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../Shared/Loading';
 import DashboardLeftSidebar from '../DashboardLeftSidebar';
 
 const ManageProducts = () => {
@@ -10,7 +11,7 @@ const ManageProducts = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch(`http://localhost:5000/products?category=${'shop'}`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
@@ -23,7 +24,7 @@ const ManageProducts = () => {
     }, []);
 
     const btnEdit = id => {
-        const proceed = window.confirm('Are You Sure You Want To Delete The Product!');
+        const proceed = window.confirm('Are You Sure You Want To Update The Product!');
         console.log(id)
         if (proceed) {
             navigate(`/updateProduct/${id}`)
@@ -47,12 +48,15 @@ const ManageProducts = () => {
             // removeFromDb(product.id);
         }
     }
+    if (!products) {
+        return <Loading></Loading>
+    }
     return (
         <div className='d-flex'>
             <DashboardLeftSidebar></DashboardLeftSidebar>
             <div className='container '>
                 <h2 className='text-2xl font-bold pb-3' style={{ "color": "purple" }}>Welcome to <span className='text-2xl' style={{ "color": "blue" }}>Admin's</span> Dashboard</h2>
-                <table class="table table-hover table-bordered">
+                <table className="table table-hover table-bordered">
                     <thead className='bg-success'>
                         <tr>
                             <th scope="col ">Sl No</th>

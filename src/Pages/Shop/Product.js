@@ -7,26 +7,26 @@ const Product = ({ product }) => {
         navigate(`/${product?._id}`);
     }
     return (
-        <div class="col-sm-6 col-xl-3">
+        <div className="col-sm-6 col-xl-3">
 
-            <div class="product-item">
-                <div class="product-thumb">
+            <div className="product-item">
+                <div className="product-thumb">
                     <Link to={`/${product?._id}`}>
                         <img src={product.img} width="270" height="320" alt="Image-HasTech" />
                     </Link>
                 </div>
-                <div class="product-info">
-                    <h4 class="title"><Link to={`/${product?._id}`}>{product.name}</Link></h4>
-                    <div class="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                        <div class="rating-box">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                <div className="product-info">
+                    <h4 className="title"><Link to={`/${product?._id}`}>{product.name}</Link></h4>
+                    <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                        <div className="rating-box">
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
+                            <i className="fa fa-star"></i>
                         </div>
                     </div>
-                    <button onClick={NevigateToDtail} type="button" class="btn-product-cart" data-bs-toggle="modal">Buy Now
+                    <button onClick={NevigateToDtail} type="button" className="btn-product-cart" data-bs-toggle="modal">Buy Now
                     </button>
                 </div>
 

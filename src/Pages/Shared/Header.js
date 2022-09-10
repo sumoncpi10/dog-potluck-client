@@ -22,7 +22,7 @@ const Header = () => {
                                             <li><Link to="/"><span>Home</span></Link></li>
                                             <li><Link to="/about-us"><span>About</span></Link></li>
                                             <li><Link to="/shop"><span>Shop</span></Link></li>
-                                            <li><Link to="/blog"><span>Blog</span></Link>
+                                            <li><Link to="/blogs"><span>Blog</span></Link>
                                                 {/* <ul className="submenu-nav submenu-nav-mega">
                                                         <li className="mega-menu-item"><a href="#/" className="mega-title">Blog Layout</a>
                                                             <ul>

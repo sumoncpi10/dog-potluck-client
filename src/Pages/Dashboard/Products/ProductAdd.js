@@ -52,16 +52,16 @@ const ProductAdd = () => {
         <div className='d-flex'>
             <DashboardLeftSidebar></DashboardLeftSidebar>
 
-            <div className='container'>
+            <div className='container p-5'>
                 <h1 className='mb-4'>Add Your Product</h1>
                 <form onSubmit={handleAddProduct}>
-                    <div class="d-flex flex-column justify-content-center mx-auto">
-                        <div class="row mb-2">
-                            <input type="text" name='name' class="form-control" placeholder="Product name" required />
+                    <div className="d-flex flex-column justify-content-center mx-auto">
+                        <div className="row mb-2">
+                            <input type="text" name='name' className="form-control" placeholder="Product name" required />
                         </div>
 
-                        <div class="row mb-2">
-                            <select name='category' class="form-select form-control" aria-label="Default select example">
+                        <div className="row mb-2">
+                            <select name='category' className="form-select form-control" aria-label="Default select example">
                                 <option selected>Category</option>
                                 <option value="cat">Cat Food</option>
                                 <option value="fish">Fish Food</option>
@@ -70,8 +70,8 @@ const ProductAdd = () => {
                                 <option value="rabbit">Rabbit Food</option>
                             </select>
                         </div>
-                        <div class="row mb-2">
-                            <select name='collection_type' class="form-select form-control" aria-label="Default select example">
+                        <div className="row mb-2">
+                            <select name='collection_type' className="form-select form-control" aria-label="Default select example">
                                 <option selected>Collection Type</option>
                                 <option value="avg">AVERAGE</option>
                                 <option value="all">All</option>
@@ -81,59 +81,59 @@ const ProductAdd = () => {
                                 <option value="onSall">ON SALL</option>
                             </select>
                         </div>
-                        <div class="row mb-2">
-                            <select name='dealsOfDay' class="form-select form-control" aria-label="Default select example">
+                        <div className="row mb-2">
+                            <select name='dealsOfDay' className="form-select form-control" aria-label="Default select example">
                                 <option value="none" selected>None</option>
                                 <option value="deals" >Deals Of The Day</option>
                             </select>
                         </div>
 
-                        <div class="row mb-2">
-                            {/* <input type="textarea" name='description' class="form-control" placeholder="Description" /> */}
-                            <textarea type="text" name='description1' class="form-control" placeholder="Description1" required></textarea>
+                        <div className="row mb-2">
+                            {/* <input type="textarea" name='description' className="form-control" placeholder="Description" /> */}
+                            <textarea type="text" name='description1' className="form-control" placeholder="Description1" ></textarea>
                         </div>
-                        <div class="row mb-2">
-                            {/* <input type="textarea" name='description' class="form-control" placeholder="Description" /> */}
-                            <textarea type="text" name='description2' class="form-control" placeholder="Description2" required></textarea>
+                        <div className="row mb-2">
+                            {/* <input type="textarea" name='description' className="form-control" placeholder="Description" /> */}
+                            <textarea type="text" name='description2' className="form-control" placeholder="Description2" ></textarea>
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='brand' class="form-control" placeholder="Brand name" required />
+                        <div className="row mb-2">
+                            <input type="text" name='brand' className="form-control" placeholder="Brand name" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='size' class="form-control" placeholder="Size" required />
+                        <div className="row mb-2">
+                            <input type="text" name='size' className="form-control" placeholder="Size" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='rating' class="form-control" placeholder="Rating" required />
+                        <div className="row mb-2">
+                            <input type="text" name='rating' className="form-control" placeholder="Rating" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='information' class="form-control" placeholder="Information" required />
+                        <div className="row mb-2">
+                            <input type="text" name='information' className="form-control" placeholder="Information" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='review' class="form-control" placeholder="Review" required />
+                        <div className="row mb-2">
+                            <input type="text" name='review' className="form-control" placeholder="Review" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='tag' class="form-control" placeholder="Tag" required />
+                        <div className="row mb-2">
+                            <input type="text" name='tag' className="form-control" placeholder="Tag" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='pcode' class="form-control" placeholder="Product Code" required />
+                        <div className="row mb-2">
+                            <input type="text" name='pcode' className="form-control" placeholder="Product Code" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='priceUrl' class="form-control" placeholder="Price Url" required />
+                        <div className="row mb-2">
+                            <input type="text" name='priceUrl' className="form-control" placeholder="Price Url" required />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='imgUrl1' class="form-control" placeholder="Img Url 1" required />
+                        <div className="row mb-2">
+                            <input type="text" name='img' className="form-control" placeholder="Img Url Main" required />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='img' class="form-control" placeholder="Img Url 1" required />
+                        <div className="row mb-2">
+                            <input type="text" name='imgUrl1' className="form-control" placeholder="Img Url 1" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='imgUrl2' class="form-control" placeholder="Img Url 2" required />
+                        <div className="row mb-2">
+                            <input type="text" name='imgUrl2' className="form-control" placeholder="Img Url 2" />
                         </div>
-                        <div class="row mb-2">
-                            <input type="text" name='imgUrl3' class="form-control" placeholder="Img Url 3" required />
+                        <div className="row mb-2">
+                            <input type="text" name='imgUrl3' className="form-control" placeholder="Img Url 3" />
                         </div>
                     </div>
-                    <button class="btn btn-primary m-3" type="submit">Add Product</button>
+                    <button className="btn btn-primary m-3" type="submit">Add Product</button>
                 </form>
             </div>
 
