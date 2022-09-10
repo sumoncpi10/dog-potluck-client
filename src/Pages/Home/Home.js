@@ -490,7 +490,7 @@ const Home = () => {
                                     <div className="col-md-6">
                                         <div className="banner-product-single-item">
                                             <div className="thumb">
-                                                <Link to='/cat'>
+                                                <Link to='/dog'>
                                                     <img src="assets/img/shop/banner/1.webp" width="570" height="300" alt="Image-HasTech" />
                                                 </Link>
 
@@ -498,21 +498,21 @@ const Home = () => {
                                             <div className="content">
                                                 <h5 className="sub-title">50% Off</h5>
                                                 <h5 className="title">Dog Food</h5>
-                                                <Link className="btn-theme btn-theme-color btn-sm" to='/cat'>Buy Now</Link>
+                                                <Link className="btn-theme btn-theme-color btn-sm" to='/dog'>Buy Now</Link>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="banner-product-single-item">
                                             <div className="thumb">
-                                                <Link to='/dog'>
+                                                <Link to='/cat'>
                                                     <img src="assets/img/shop/banner/2.webp" width="570" height="300" alt="Image-HasTech" />
                                                 </Link>
                                             </div>
                                             <div className="content">
                                                 <h5 className="sub-title">50% Off</h5>
                                                 <h5 className="title">Cat Food</h5>
-                                                <Link className="btn-theme btn-theme-color btn-sm" to='/dog'>Buy Now</Link>
+                                                <Link className="btn-theme btn-theme-color btn-sm" to='/cat'>Buy Now</Link>
 
                                             </div>
                                         </div>
