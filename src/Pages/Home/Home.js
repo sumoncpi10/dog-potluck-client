@@ -8,9 +8,9 @@ import DealsOfTheDay from './DealsOfTheDay';
 import LoadProduct from './LoadProduct';
 import Loading from '../Shared/Loading';
 // import $ from "jquery";
-import Swiper from 'swiper';
+import Swiper, { Navigation } from 'swiper';
 const Home = () => {
-
+    Swiper.use([Navigation]);
     (function ($) {
 
         "use strict";
