@@ -1061,7 +1061,7 @@ const Products = () => {
                 <Footer></Footer>
 
                 <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
-
+                {/* 
 
                 <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
@@ -1270,7 +1270,7 @@ const Products = () => {
                             </ul>
                         </nav>
                     </div>
-                </aside>
+                </aside> */}
 
             </div>
         </div>

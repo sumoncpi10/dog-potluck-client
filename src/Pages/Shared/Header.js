@@ -12,7 +12,7 @@ const Header = () => {
                                 <div className="header-align-start">
                                     <div className="header-logo-area">
                                         <Link to="/">
-                                            <img className="logo-main" src="assets/img/logo-light.webp" width="158" height="36" alt="Logo" />
+                                            <img className="logo-main" src="/assets/img/logo-light.webp" width="158" height="36" alt="Logo" />
                                         </Link>
                                     </div>
                                 </div>
@@ -23,31 +23,9 @@ const Header = () => {
                                             <li><Link to="/about-us"><span>About</span></Link></li>
                                             <li><Link to="/shop"><span>Shop</span></Link></li>
                                             <li><Link to="/blogs"><span>Blog</span></Link>
-                                                {/* <ul className="submenu-nav submenu-nav-mega">
-                                                        <li className="mega-menu-item"><a href="#/" className="mega-title">Blog Layout</a>
-                                                            <ul>
-                                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                                <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li className="mega-menu-item"><a href="#/" className="mega-title">Single Blog</a>
-                                                            <ul>
-                                                                <li><a href="blog-details-no-sidebar.html">Blog Details</a></li>
-                                                                <li><a href="blog-details.html">Blog Details Left Sidebar</a></li>
-                                                                <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul> */}
+
                                             </li>
-                                            <li className="has-submenu"><a to="#/"><span>Pages</span></a>
-                                                {/* <ul className="submenu-nav">
-                                                        <li><a href="account.html"><span>Account</span></a></li>
-                                                        <li><a href="account-login.html"><span>Login</span></a></li>
-                                                        <li><a href="account-register.html"><span>Register</span></a></li>
-                                                        <li><a href="page-not-found.html"><span>Page Not Found</span></a></li>
-                                                    </ul> */}
-                                            </li>
+
                                             <li><Link to="/contact"><span>Contact</span></Link></li>
                                         </ul>
                                     </div>

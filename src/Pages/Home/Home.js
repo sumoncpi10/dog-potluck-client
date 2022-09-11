@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import Banar from "../Shared/Banar";
 import Footer from "../Shared/Footer";
 import HeaderHome from "../Shared/HeaderHome";
+import Aside from "../Shared/Aside";
 import Product from '../Shop/Product';
 import DealsOfTheDay from './DealsOfTheDay';
 import LoadProduct from './LoadProduct';
 import Loading from '../Shared/Loading';
 // import $ from "jquery";
 import Swiper, { Navigation } from 'swiper';
+import Blog from '../Blog/Blog';
 const Home = () => {
     Swiper.use([Navigation]);
     (function ($) {
@@ -299,6 +301,18 @@ const Home = () => {
             .then(data =>
                 setProducts(data))
     }
+    const [blogs, setBlogs] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/blogs?limit=${'3'}`)
+            .then(res => res.json())
+            .then(data => {
+                setBlogs(data);
+                console.log(data);
+            }
+            )
+
+    }, []);
     if (!products) {
         return <Loading></Loading>
     }
@@ -790,7 +804,7 @@ const Home = () => {
                                             <h2 className="title">Best Deal Offer</h2>
                                             <p className="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                                 incididunt ut labore etlop.</p>
-                                            <a className="btn-theme text-dark" href="best-deal-offer.html">Buy Now</a>
+                                            <Link className="btn-theme text-dark" to="/shop">Buy Now</Link>
                                             <img className="shape-object" src="assets/img/shape/object1.webp" width="316" height="302"
                                                 alt="Image-HasTech" />
                                         </div>
@@ -953,7 +967,10 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-6 col-lg-4">
+                                    {
+                                        blogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
+                                    }
+                                    {/* <div className="col-md-6 col-lg-4">
 
                                         <div className="post-item">
                                             <div className="thumb">
@@ -973,8 +990,8 @@ const Home = () => {
                                             </div>
                                         </div>
 
-                                    </div>
-                                    <div className="col-md-6 col-lg-4">
+                                    </div> */}
+                                    {/* <div className="col-md-6 col-lg-4">
 
                                         <div className="post-item">
                                             <div className="thumb">
@@ -1016,7 +1033,7 @@ const Home = () => {
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </section>
@@ -1028,191 +1045,7 @@ const Home = () => {
                     <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
 
 
-                    <aside className="product-action-modal modal fade" id="action-CartAddModal" tabIndex="-1" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered">
-                            <div className="modal-content">
-                                <div className="modal-body">
-                                    <div className="product-action-view-content">
-                                        <button type="button" className="btn-close" data-bs-dismiss="modal">
-                                            <i className="pe-7s-close"></i>
-                                        </button>
-                                        <div className="modal-action-messages">
-                                            <i className="pe-7s-check"></i> Added to cart successfully!
-                                        </div>
-                                        <div className="modal-action-product">
-                                            <div className="thumb">
-                                                <img src="assets/img/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320" />
-                                            </div>
-                                            <h4 className="product-name"><a href="single-product.html">Joust Duffle Bag</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-
-                    <aside className="product-cart-view-modal modal fade" id="action-QuickViewModal" tabIndex="-1" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered">
-                            <div className="modal-content">
-                                <div className="modal-body">
-                                    <div className="product-quick-view-content">
-                                        <button type="button" className="btn-close" data-bs-dismiss="modal">
-                                            <span className="pe-7s-close"></span>
-                                        </button>
-                                        <div className="container pt--0 pb--0">
-                                            <div className="row">
-                                                <div className="col-lg-6">
-
-                                                    <div className="product-single-thumb">
-                                                        <img src="/assets/img/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech" />
-                                                    </div>
-
-                                                </div>
-                                                <div className="col-lg-6">
-
-                                                    <div className="product-single-info">
-                                                        <h3 className="main-title">Joust Duffle Bag</h3>
-
-                                                        <div className="rating-box-wrap">
-                                                            <div className="rating-box">
-                                                                <i className="fa fa-star"></i>
-                                                                <i className="fa fa-star"></i>
-                                                                <i className="fa fa-star"></i>
-                                                                <i className="fa fa-star"></i>
-                                                                <i className="fa fa-star"></i>
-                                                            </div>
-                                                            <div className="review-status">
-                                                                <a href="javascript:void(0)">(5 Customer Review)</a>
-                                                            </div>
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incidid ut labore et
-                                                            dolore magna aliqua. Ut enim ad minim veniam, quis nol exercitation ullamco laboris nisi ut
-                                                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
-                                                        <div className="product-single-meta">
-                                                            <ul>
-                                                                <li><span>SKU:</span> Ch-256xl</li>
-                                                                <li><span>Categories:</span>
-                                                                    <a href="shop.html">Pet Food. eCommerce</a>
-                                                                </li>
-                                                                <li><span>Tags:</span>
-                                                                    <a href="shop.html">Petfood. Pet</a>,
-                                                                    <a href="shop.html">Animal.</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div className="product-quick-action">
-
-                                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"
-                                                                data-bs-target="#action-CartAddModal" style={{ "marginLeft": "0px" }}>
-                                                                <a href="single-product.html">Buy Now</a>
-                                                            </button>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-
-                    <aside className="aside-cart-wrapper offcanvas offcanvas-end" tabIndex="-1" id="AsideOffcanvasCart"
-                        aria-labelledby="offcanvasRightLabel">
-                        <div className="offcanvas-header">
-                            <h1 className="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
-                            <button className="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i
-                                className="fa fa-chevron-right"></i></button>
-                        </div>
-                        <div className="offcanvas-body">
-                            <ul className="aside-cart-product-list">
-                                <li className="aside-product-list-item">
-                                    <a href="#/" className="remove">×</a>
-                                    <a href="single-product.html">
-                                        <img src="assets/img/shop/product-mini/1.webp" width="90" height="110" alt="Image-HasTech" />
-                                        <span className="product-title">Leather Mens Slipper</span>
-                                    </a>
-                                    <span className="product-price">1 × £69.99</span>
-                                </li>
-                                <li className="aside-product-list-item">
-                                    <a href="#/" className="remove">×</a>
-                                    <a href="single-product.html">
-                                        <img src="assets/img/shop/product-mini/2.webp" width="90" height="110" alt="Image-HasTech" />
-                                        <span className="product-title">Quickiin Mens shoes</span>
-                                    </a>
-                                    <span className="product-price">1 × £20.00</span>
-                                </li>
-                            </ul>
-                            <p className="cart-total"><span>Subtotal:</span><span className="amount">£89.99</span></p>
-                            <a className="btn-total" href="shop-cart.html">View cart</a>
-                            <a className="btn-total" href="shop-checkout.html">Checkout</a>
-                            <a className="d-block text-end lh-1" href="shop-checkout.html"><img src="assets/img/photos/paypal.webp" width="133"
-                                height="26" alt="Has-image" /></a>
-                        </div>
-                    </aside>
-
-                    <aside className="aside-search-box-wrapper offcanvas offcanvas-top" tabIndex="-1" id="AsideOffcanvasSearch"
-                        aria-labelledby="offcanvasTopLabel">
-                        <div className="offcanvas-header">
-                            <h5 className="d-none" id="offcanvasTopLabel">Aside Search</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                                className="pe-7s-close"></i></button>
-                        </div>
-                        <div className="offcanvas-body">
-                            <div className="container pt--0 pb--0">
-                                <div className="search-box-form-wrap">
-                                    <div className="search-note">
-                                        <p>Start typing and press Enter to search</p>
-                                    </div>
-                                    <form action="#" method="post">
-                                        <div className="search-form position-relative">
-                                            <label htmlFor="search-input" className="visually-hidden">Search</label>
-                                            <input id="search-input" type="search" className="form-control" placeholder="Search entire store…" />
-                                            <button className="search-button"><i className="fa fa-search"></i></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-
-                    <aside className="off-canvas-wrapper offcanvas offcanvas-start" tabIndex="-1" id="AsideOffcanvasMenu"
-                        aria-labelledby="offcanvasExampleLabel">
-                        <div className="offcanvas-header">
-                            <h1 className="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
-                            <button className="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
-                                className="fa fa-chevron-left"></i></button>
-                        </div>
-
-                        <div className="offcanvas-body">
-                            <nav id="offcanvasNav" className="offcanvas-menu-nav">
-                                <ul>
-                                    <li className="offcanvas-nav-parent">
-                                        <a className="offcanvas-nav-item" href="index.html">Home</a>
-
-                                    </li>
-
-                                    <li className="offcanvas-nav-parent"><a className="offcanvas-nav-item" href="about-us.html">About</a></li>
-
-                                    <li className="offcanvas-nav-parent">
-                                        <a className="offcanvas-nav-item" href="shop.html">Shop</a>
-
-                                    </li>
-
-                                    <li className="offcanvas-nav-parent">
-                                        <a className="offcanvas-nav-item" href="blog-details.html">Blog</a>
-
-                                    </li>
-
-
-
-                                    <li className="offcanvas-nav-parent"><a className="offcanvas-nav-item" href="contact.html">Contact</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </aside>
+                    <Aside></Aside>
 
                 </div>
             </>

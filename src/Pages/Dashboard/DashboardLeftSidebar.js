@@ -67,7 +67,19 @@ const DashboardLeftSidebar = () => {
                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><Link to="/add-product" className="link-dark rounded">Add Product</Link></li>
                             <li><Link to="/manageProduct" className="link-dark rounded">Manage All Product</Link></li>
-                            <li><Link to="/admin/view" className="link-dark rounded">Overview</Link></li>
+                            {/* <li><Link to="/admin/view" className="link-dark rounded">Overview</Link></li> */}
+                            {/* <li><a href="#" className="link-dark rounded">Annually</a></li> */}
+                        </ul>
+                    </div>
+                </li>
+                <li className="mb-1">
+                    <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+                        Message
+                    </button>
+                    <div className="collapse " id="dashboard-collapse">
+                        <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><Link to="/manageMessage" className="link-dark rounded">Manage All Message</Link></li>
+                            {/* <li><Link to="/admin/view" className="link-dark rounded">Overview</Link></li> */}
                             {/* <li><a href="#" className="link-dark rounded">Annually</a></li> */}
                         </ul>
                     </div>
@@ -79,7 +91,7 @@ const DashboardLeftSidebar = () => {
                     <div className="collapse " id="dashboard-collapse">
                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><Link to="/add-blog" className="link-dark rounded">Add Blog</Link></li>
-                            <li><Link to="/manageBlog" className="link-dark rounded">Manage All Blog</Link></li>
+                            {/* <li><Link to="/manageBlog" className="link-dark rounded">Manage All Blog</Link></li> */}
                             {/* <li><Link to="/admin/view" className="link-dark rounded">Overview</Link></li> */}
                             {/* <li><a href="#" className="link-dark rounded">Annually</a></li> */}
                         </ul>

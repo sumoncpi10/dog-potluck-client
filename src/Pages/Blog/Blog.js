@@ -5,6 +5,7 @@ const Blog = ({ blog }) => {
     const navigate = useNavigate();
     console.log(blog);
     return (
+
         <div className="col-md-6 col-lg-4">
 
             <div className="post-item">

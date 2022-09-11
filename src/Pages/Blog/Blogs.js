@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
+import Aside from '../Shared/Aside';
 import Blog from './Blog';
 
 const Blogs = () => {
@@ -59,7 +60,7 @@ const Blogs = () => {
                                     blogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
                                 }
 
-                                <div className="col-12">
+                                {/* <div className="col-12">
                                     <div className="pagination-items pagination-items-style1">
                                         <ul className="pagination justify-content-center mb--0">
                                             <li><a className="active" href="shop.html">1</a></li>
@@ -68,7 +69,7 @@ const Blogs = () => {
                                             <li><a href="shop.html" className="icon"><i className="fa fa-angle-right"></i></a></li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </section>
@@ -80,8 +81,9 @@ const Blogs = () => {
                 <Footer></Footer>
                 <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
 
+                <Aside></Aside>
 
-                <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
+                {/* <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-body">
@@ -344,7 +346,7 @@ const Blogs = () => {
                             </ul>
                         </nav>
                     </div>
-                </aside>
+                </aside> */}
 
             </div>
         </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
+import Aside from '../Shared/Aside';
 
 const AboutUs = () => {
     return (
@@ -159,7 +160,8 @@ const AboutUs = () => {
 
 
                 <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
-
+                <Aside></Aside>
+                {/* 
                 <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
@@ -395,7 +397,7 @@ const AboutUs = () => {
                             </ul>
                         </nav>
                     </div>
-                </aside>
+                </aside> */}
 
             </div>
         </div>
