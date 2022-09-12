@@ -14,12 +14,12 @@ const ProductDetails = () => {
 
 
     (function ($) {
-        "use strict";
+        // "use strict";
 
-        // Preloader
-        function stylePreloader() {
-            $('body').addClass('preloader-deactive');
-        }
+        // // Preloader
+        // function stylePreloader() {
+        //     $('body').addClass('preloader-deactive');
+        // }
 
         // // Background Image Js
         // const bgSelector = $("[data-bg-img]");
@@ -267,10 +267,10 @@ const ProductDetails = () => {
            When document is loading, do
            ========================================================================== */
         var varWindow = $(window);
-        varWindow.on('load', function () {
-            // stylePreloader
-            stylePreloader();
-        });
+        // varWindow.on('load', function () {
+        //     // stylePreloader
+        //     stylePreloader();
+        // });
 
 
 
@@ -279,6 +279,7 @@ const ProductDetails = () => {
 
     const { id } = useParams();
     const [product, setProduct] = useState([]);
+    const [products, setProducts] = useState([]);
     // const [reviews, setReview] = useState([]);
     const [selectedProductImg, setselectedProductImg] = useState('');
     const today = new Date(),
@@ -292,6 +293,16 @@ const ProductDetails = () => {
                 setselectedProductImg(data.img)
             })
     }, []);
+    useEffect(() => {
+        fetch(`http://localhost:5000/products?category=${product?.category ? product.category : ''}`)
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data);
+                console.log(data);
+            }
+            )
+
+    }, [product?.category]);
     // useEffect(() => {
     //     fetch(`http://localhost:5000/review/${id}`)
     //         .then(res => res.json())
@@ -581,34 +592,37 @@ const ProductDetails = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-sm-6 col-lg-3">
+                            {
+                                products.map(product => <div className="col-sm-6 col-lg-3">
 
-                                <div className="product-item">
-                                    <div className="product-thumb">
-                                        <a href="single-product.html">
-                                            <img src="assets/img/shop/5.webp" width="270" height="320" alt="Image-HasTech" />
-                                        </a>
-                                    </div>
-                                    <div className="product-info">
-                                        <h4 className="title"><a href="single-product.html">Fusion Backpack</a></h4>
-                                        <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                            <div className="rating-box">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
+                                    <div className="product-item">
+                                        <div className="product-thumb">
+                                            <Link to={product._id}>
+                                                <img src={product.img} width="270" height="320" alt="Image-HasTech" />
+                                            </Link>
                                         </div>
-                                        <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
-                                            href="single-product.html">Buy Now</a>
-                                        </button>
+                                        <div className="product-info">
+                                            <h4 className="title"><Link to={product._id}>{product.name}</Link></h4>
+                                            <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
+                                                <div className="rating-box">
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <button type="button" className="btn-product-cart" data-bs-toggle="modal"><Link
+                                                to={product?._id}>Buy Now</Link>
+                                            </button>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                </div>)
+                            }
 
-                            </div>
-                            <div className="col-sm-6 col-lg-3">
+                            {/* <div className="col-sm-6 col-lg-3">
 
                                 <div className="product-item">
                                     <div className="product-thumb">
@@ -688,7 +702,7 @@ const ProductDetails = () => {
 
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>

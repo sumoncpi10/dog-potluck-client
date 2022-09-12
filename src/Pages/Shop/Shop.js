@@ -17,7 +17,7 @@ const Shop = () => {
     console.log(page, size);
     console.log(category);
     useEffect(() => {
-        fetch(`http://localhost:5000/productCount?category=${category ? category : ''}`)
+        fetch(`http://localhost:5000/productCount?view=${'detail'}category=${category ? category : ''}`)
             .then(res => res.json())
             .then(data => {
                 const count = data?.count;
