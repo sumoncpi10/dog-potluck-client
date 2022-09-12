@@ -97,7 +97,7 @@ const DashboardLeftSidebar = () => {
                         </ul>
                     </div>
                 </li>
-                <li className="mb-1">
+                {/* <li className="mb-1">
                     <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
                         Orders
                     </button>
@@ -109,7 +109,7 @@ const DashboardLeftSidebar = () => {
                             <li><a href="#" className="link-dark rounded">Returned</a></li>
                         </ul>
                     </div>
-                </li>
+                </li> */}
                 <li className="border-top my-3"></li>
                 <li className="mb-1">
                     <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">

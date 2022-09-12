@@ -13,6 +13,7 @@ import ProductDetails from "./Pages/Shop/ProductDetails";
 import ProductAdd from "./Pages/Dashboard/Products/ProductAdd";
 import ManageProducts from "./Pages/Dashboard/Products/ManageProducts";
 import UpdateProduct from "./Pages/Dashboard/Products/UpdateProduct";
+import ManageAllMassage from "./Pages/Dashboard/Message/ManageAllMassage";
 import { ToastContainer } from 'react-toastify';
 import AddBlog from "./Pages/Dashboard/Blog/AddBlog";
 import BlogDetails from "./Pages/Dashboard/Blog/BlogDetails";
@@ -45,6 +46,7 @@ function App() {
         <Route path="/add-product" element={<ProductAdd />}></Route>
         <Route path="/manageProduct" element={<ManageProducts />}></Route>
         <Route path="/updateProduct/:id" element={<UpdateProduct />}></Route>
+        <Route path="/manageMessage" element={<ManageAllMassage />}></Route>
         <Route path="/add-blog" element={<AddBlog />}></Route>
       </Routes>
       <ToastContainer />

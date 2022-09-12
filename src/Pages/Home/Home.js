@@ -349,7 +349,7 @@ const Home = () => {
                                                                         <h2 className="title">A Greate Meal With Your Pet</h2>
                                                                     </div>
                                                                     <div className="btn-box">
-                                                                        <a className="btn-theme text-dark" href="shop.html">Shop Now</a>
+                                                                        <Link className="btn-theme text-dark" to="/dog">Shop Now</Link>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -385,7 +385,7 @@ const Home = () => {
                                                                         <p className="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, seddo do eiusmod tempor incidid ut labore.</p>
                                                                     </div>
                                                                     <div className="btn-box">
-                                                                        <a className="btn-theme text-dark" href="shop.html">Shop Now</a>
+                                                                        <Link className="btn-theme text-dark" to="/cat">Shop Now</Link>
                                                                     </div>
                                                                 </div>
                                                             </div>

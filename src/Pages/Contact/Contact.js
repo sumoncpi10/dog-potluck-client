@@ -126,12 +126,12 @@ const Contact = () => {
                                                 <div className="row">
                                                     <div className="col-md-6">
                                                         <div className="form-group">
-                                                            <input className="form-control" type="text" name="con_name" placeholder="Name *" />
+                                                            <input className="form-control" type="text" name="con_name" placeholder="Name *" required />
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group">
-                                                            <input className="form-control" type="email" name="con_email" placeholder="Email *" />
+                                                            <input className="form-control" type="email" name="con_email" placeholder="Email *" required />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
@@ -141,7 +141,7 @@ const Contact = () => {
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="form-group mb--0">
-                                                            <textarea className="form-control" name="con_message" placeholder="Message"></textarea>
+                                                            <textarea className="form-control" name="con_message" placeholder="Message" required></textarea>
                                                         </div>
                                                     </div>
                                                     <div className="col-12">

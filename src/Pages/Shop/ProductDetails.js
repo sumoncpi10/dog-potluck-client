@@ -12,11 +12,14 @@ import Swiper, { Navigation, Pagination } from 'swiper';
 const ProductDetails = () => {
     Swiper.use([Navigation, Pagination]);
 
+
     (function ($) {
-        $(".fancybox").fancybox({
-            openEffect: 'fade',
-            closeEffect: 'fade'
-        });
+        "use strict";
+
+        // Preloader
+        function stylePreloader() {
+            $('body').addClass('preloader-deactive');
+        }
 
         // // Background Image Js
         // const bgSelector = $("[data-bg-img]");
@@ -141,7 +144,7 @@ const ProductDetails = () => {
 
         // Fancybox Js
         $('.image-popup').fancybox();
-        // $('.video-popup').fancybox();
+        $('.video-popup').fancybox();
 
         // // Product Quantity JS
         // var proQty = $(".pro-qty");
@@ -223,17 +226,17 @@ const ProductDetails = () => {
         // });
 
         // Portfolio Filter Js
-        const activeId = $(".isotope-filter button");
-        $(".isotope-grid").isotope();
-        activeId.on('click', function () {
-            const $this = $(this),
-                filterValue = $this.data('filter');
-            $(".isotope-grid").isotope({
-                filter: filterValue
-            });
-            activeId.removeClass('active');
-            $this.addClass('active');
-        });
+        // const activeId = $(".isotope-filter button");
+        // $(".isotope-grid").isotope();
+        // activeId.on('click', function () {
+        //     const $this = $(this),
+        //         filterValue = $this.data('filter');
+        //     $(".isotope-grid").isotope({
+        //         filter: filterValue
+        //     });
+        //     activeId.removeClass('active');
+        //     $this.addClass('active');
+        // });
 
         // scrollToTop Js
         function scrollToTop() {
@@ -264,15 +267,20 @@ const ProductDetails = () => {
            When document is loading, do
            ========================================================================== */
         var varWindow = $(window);
-        // varWindow.on('load', function () {
-        //     // stylePreloader
-        //     stylePreloader();
-        // });
+        varWindow.on('load', function () {
+            // stylePreloader
+            stylePreloader();
+        });
+
+
 
     })(window.jQuery);
+
+
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     const [reviews, setReview] = useState([]);
+    const [selectedProductImg, setselectedProductImg] = useState('');
     const today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     useEffect(() => {
@@ -281,6 +289,7 @@ const ProductDetails = () => {
             .then(data => {
                 // console.log(data)
                 setProduct(data);
+                setselectedProductImg(data.img)
             })
     }, []);
     useEffect(() => {
@@ -295,7 +304,10 @@ const ProductDetails = () => {
         // 👇️ scroll to top on page load
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
+    const selectedImg = (e) => {
+        setselectedProductImg(e);
 
+    }
     const addReview = (e) => {
         e.preventDefault();
 
@@ -335,53 +347,6 @@ const ProductDetails = () => {
 
             <Header></Header>
 
-            {/* <header className="header-area transparent">
-                <div className="container">
-                    <div className="row no-gutter align-items-center position-relative">
-                        <div className="col-12">
-                            <div className="header-align">
-                                <div className="header-align-start">
-                                    <div className="header-logo-area">
-                                        <a href="index.html">
-                                            <img className="logo-main" src="assets/img/logo-light.webp" width="158" height="36" alt="Logo" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="header-align-center">
-                                    <div className="header-navigation-area position-relative">
-                                        <ul className="main-menu nav">
-                                            <li><a href="index.html"><span>Home</span></a></li>
-                                            <li><a href="about-us.html"><span>About</span></a></li>
-                                            <li><a href="shop.html"><span>Shop</span></a></li>
-                                            <li><a href="blog.html"><span>Blog</span></a>
-
-                                            </li>
-
-                                            <li><a href="contact.html"><span>Contact</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="header-align-end">
-                                    <div className="header-action-area">
-                                        <div className="shopping-search">
-                                            <button className="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
-                                                data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i
-                                                    className="pe-7s-search icon"></i></button>
-                                        </div>
-
-                                        <button className="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
-                                            aria-controls="AsideOffcanvasMenu">
-                                            <i className="pe-7s-menu"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header> */}
-
-
             <main className="main-content">
 
                 <div className="page-header-area" style={{ "backgroundImage": "url(assets/img/photos/bg1.webp)" }}>
@@ -418,51 +383,51 @@ const ProductDetails = () => {
                                                     <div className="swiper-wrapper">
                                                         <div className="swiper-slide">
                                                             <a className="lightbox-image" data-fancybox="gallery"
-                                                                href="assets/img/shop/product-single/1.webp">
-                                                                <img src={product?.img} width="570" height="675"
+                                                                href={selectedProductImg}>
+                                                                <img src={selectedProductImg} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
-                                                        <div className="swiper-slide">
+                                                        {/* <div className="swiper-slide">
                                                             <a className="lightbox-image" data-fancybox="gallery"
-                                                                href="assets/img/shop/product-single/2.webp">
+                                                                href={product?.imgUrl1}>
                                                                 <img src={product?.imgUrl1} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
                                                         <div className="swiper-slide">
                                                             <a className="lightbox-image" data-fancybox="gallery"
-                                                                href="assets/img/shop/product-single/3.webp">
+                                                                href={product?.imgUrl2}>
                                                                 <img src={product?.imgUrl2} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
                                                         <div className="swiper-slide">
                                                             <a className="lightbox-image" data-fancybox="gallery"
-                                                                href="assets/img/shop/product-single/4.webp">
+                                                                href={product?.imgUrl3}>
                                                                 <img src={product?.imgUrl3} width="570" height="675"
                                                                     alt="Image-HasTech" />
                                                             </a>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                                 <div className="product-single-swiper-wrap position-relative">
                                                     <div className="swiper single-product-nav single-product-nav-slider">
                                                         <div className="swiper-wrapper">
                                                             <div className="swiper-slide">
-                                                                <img src={product?.img} width="127" height="127"
+                                                                <img src={product?.img} onClick={() => { selectedImg(product?.img) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div className="swiper-slide">
-                                                                <img src={product?.imgUrl1} width="127" height="127"
+                                                                <img src={product?.imgUrl1} onClick={() => { selectedImg(product?.imgUrl1) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div className="swiper-slide">
-                                                                <img src={product?.imgUrl2} width="127" height="127"
+                                                                <img src={product?.imgUrl2} onClick={() => { selectedImg(product?.imgUrl2) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div className="swiper-slide">
-                                                                <img src={product?.imgUrl3} width="127" height="127"
+                                                                <img src={product?.imgUrl3} onClick={() => { selectedImg(product?.imgUrl3) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                         </div>
