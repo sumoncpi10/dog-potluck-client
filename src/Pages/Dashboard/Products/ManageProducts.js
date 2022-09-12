@@ -15,7 +15,7 @@ const ManageProducts = () => {
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
-                console.log(data);
+                // console.log(data);
                 setProducts(data);
 
             }
@@ -25,7 +25,7 @@ const ManageProducts = () => {
 
     const btnEdit = id => {
         const proceed = window.confirm('Are You Sure You Want To Update The Product!');
-        console.log(id)
+        // console.log(id)
         if (proceed) {
             navigate(`/updateProduct/${id}`)
         }
@@ -34,7 +34,7 @@ const ManageProducts = () => {
 
     const handleRemoveProduct = product => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Product!');
-        console.log(product)
+        //console.log(product)
         if (proceed) {
             fetch(`http://localhost:5000/product/${product._id}`, {
                 method: 'DELETE'

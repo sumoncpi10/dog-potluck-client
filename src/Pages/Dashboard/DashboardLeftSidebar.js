@@ -32,7 +32,7 @@ const DashboardLeftSidebar = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
+                // console.log('success', data);
 
                 toast("Product Add Successfully!");
                 reset();

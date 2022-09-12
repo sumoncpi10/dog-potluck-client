@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Blog = ({ blog }) => {
     const navigate = useNavigate();
-    console.log(blog);
+    // console.log(blog);
     return (
 
         <div className="col-md-6 col-lg-4">

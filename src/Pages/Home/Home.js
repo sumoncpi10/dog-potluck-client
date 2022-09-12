@@ -287,7 +287,7 @@ const Home = () => {
         fetch(`http://localhost:5000/dealsOfTheDay/${'deals'}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setdealsOfTheDay(data)
             })
 
@@ -308,7 +308,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);
-                console.log(data);
+                // console.log(data);
             }
             )
 

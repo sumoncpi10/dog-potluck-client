@@ -17,7 +17,7 @@ const ManageAllMassage = () => {
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
-                console.log(data);
+                // console.log(data);
                 setMessage(data);
             }
             )
@@ -25,7 +25,7 @@ const ManageAllMassage = () => {
 
     const btnEdit = id => {
         const proceed = window.confirm('Are You Sure You Want To Update The Product!');
-        console.log(id)
+        // console.log(id)
         if (proceed) {
             navigate(`/updateProduct/${id}`)
         }
@@ -34,7 +34,7 @@ const ManageAllMassage = () => {
 
     const handleRemoveProduct = product => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Quest!');
-        console.log(product)
+        //console.log(product)
         if (proceed) {
             fetch(`http://localhost:5000/quest/${product._id}`, {
                 method: 'DELETE'

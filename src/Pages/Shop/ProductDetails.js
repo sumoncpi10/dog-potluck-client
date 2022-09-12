@@ -329,7 +329,7 @@ const ProductDetails = () => {
     //     // console.log(name, email, password);
     //     const review = { ReviewComment, Reviewname, Reviewemail, ProductID: id, today };
     //     // send data to the server 
-    //     console.log(product)
+    //     //console.log(product)
     //     fetch('http://localhost:5000/reviewAdd', {
     //         method: 'POST',
     //         headers: {

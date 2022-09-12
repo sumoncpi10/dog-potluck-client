@@ -15,7 +15,7 @@ const Contact = () => {
         const con_message = e.target.con_message.value;
 
         const product = { con_name, con_email, con_subject, con_message };
-        console.log(product);
+        // //console.log(product);
         // send data to the server 
 
         fetch('http://localhost:5000/questAdd', {
@@ -27,7 +27,7 @@ const Contact = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
+                // console.log('success', data);
                 e.target.reset();
                 toast("Quest Sent Successfully!");
             })

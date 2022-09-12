@@ -13,7 +13,7 @@ const UpdateProduct = () => {
         fetch(`http://localhost:5000/product/${params.id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setProduct(data);
             })
     }, []);
@@ -41,7 +41,7 @@ const UpdateProduct = () => {
         const imgUrl3 = e.target.imgUrl3.value;
         // console.log(name, email, password);
         const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
-        console.log(product);
+        //console.log(product);
         fetch(`http://localhost:5000/product/${params.id}`, {
             method: 'PUT',
             headers: {
@@ -51,7 +51,7 @@ const UpdateProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
+                // console.log('success', data);
                 e.target.reset();
                 toast("Product Update Successfully!");
             })
@@ -73,7 +73,7 @@ const UpdateProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
+                // console.log('success', data);
                 e.target.reset();
                 toast("Quantity Update Successfully!");
             })
@@ -100,7 +100,7 @@ const UpdateProduct = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log('success', data);
+                    // console.log('success', data);
                     // e.target.reset();
                     toast("Quantity Update Successfully!");
                 })

@@ -6,7 +6,7 @@ const AddBlog = () => {
     // var d = new Date();
     // var monthName = months[d.getMonth()];
     var date = months[new Date().getMonth()] + ' ' + new Date().getDate() + ' ' + new Date().getFullYear();
-    console.log(date)
+    // console.log(date)
     const handleAddBlog = (e) => {
         e.preventDefault();
 
@@ -22,7 +22,7 @@ const AddBlog = () => {
         const img = e.target.img.value;
 
         const product = { Tittle1, category, Tittle2, boldDescription, description1, description2, description3, img, date };
-        console.log(product);
+        // //console.log(product);
         // send data to the server 
 
         fetch('http://localhost:5000/blogAdd', {
@@ -34,7 +34,7 @@ const AddBlog = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
+                // console.log('success', data);
                 e.target.reset();
                 toast("Blog Add Successfully!");
             })

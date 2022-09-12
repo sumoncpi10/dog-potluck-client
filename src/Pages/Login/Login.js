@@ -7,7 +7,7 @@ const Login = () => {
     const navigate = useNavigate();
     const btnLogin = (e) => {
         e.preventDefault();
-        console.log(e.target.email.value);
+        // console.log(e.target.email.value);
         const username = e.target.email.value;
         const password = e.target.password.value;
         // const user = { username, password }
@@ -19,11 +19,11 @@ const Login = () => {
                 setDuser(data);
 
                 if (data?.username === username && data?.password === password) {
-                    console.log('vaild');
+                    // console.log('vaild');
                     navigate(`/dashboard`);
                 }
                 else {
-                    console.log('invalid user')
+                    // console.log('invalid user')
                 }
 
 

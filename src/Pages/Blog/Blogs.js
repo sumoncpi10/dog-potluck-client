@@ -12,7 +12,7 @@ const Blogs = () => {
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);
-                console.log(data);
+                // console.log(data);
             }
             )
 

@@ -28,7 +28,7 @@ const ProductAdd = () => {
         const imgUrl3 = e.target.imgUrl3.value;
         // console.log(name, email, password);
         const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
-        console.log(product);
+        //console.log(product);
         // send data to the server 
 
         fetch('http://localhost:5000/productAdd', {
@@ -40,7 +40,7 @@ const ProductAdd = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data);
+                // console.log('success', data);
                 e.target.reset();
                 toast("Product Add Successfully!");
             })
