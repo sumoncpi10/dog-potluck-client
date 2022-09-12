@@ -279,7 +279,7 @@ const ProductDetails = () => {
 
     const { id } = useParams();
     const [product, setProduct] = useState([]);
-    const [reviews, setReview] = useState([]);
+    // const [reviews, setReview] = useState([]);
     const [selectedProductImg, setselectedProductImg] = useState('');
     const today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -292,14 +292,14 @@ const ProductDetails = () => {
                 setselectedProductImg(data.img)
             })
     }, []);
-    useEffect(() => {
-        fetch(`http://localhost:5000/review/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                setReview(data);
-            })
-    }, []);
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/review/${id}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             // console.log(data)
+    //             setReview(data);
+    //         })
+    // }, []);
     useEffect(() => {
         // 👇️ scroll to top on page load
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -308,32 +308,32 @@ const ProductDetails = () => {
         setselectedProductImg(e);
 
     }
-    const addReview = (e) => {
-        e.preventDefault();
+    // const addReview = (e) => {
+    //     e.preventDefault();
 
-        const ReviewComment = e.target.ReviewComment.value;
-        const Reviewname = e.target.Reviewname.value;
-        const Reviewemail = e.target.Reviewemail.value;
+    //     const ReviewComment = e.target.ReviewComment.value;
+    //     const Reviewname = e.target.Reviewname.value;
+    //     const Reviewemail = e.target.Reviewemail.value;
 
-        // console.log(name, email, password);
-        const review = { ReviewComment, Reviewname, Reviewemail, ProductID: id, today };
-        // send data to the server 
-        console.log(product)
-        fetch('http://localhost:5000/reviewAdd', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(review)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('success', data);
+    //     // console.log(name, email, password);
+    //     const review = { ReviewComment, Reviewname, Reviewemail, ProductID: id, today };
+    //     // send data to the server 
+    //     console.log(product)
+    //     fetch('http://localhost:5000/reviewAdd', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(review)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log('success', data);
 
-                toast("Review Add Successfully!");
-                e.target.reset();
-            })
-    }
+    //             toast("Review Add Successfully!");
+    //             e.target.reset();
+    //         })
+    // }
     return (
 
         <div className="wrapper">
@@ -492,10 +492,10 @@ const ProductDetails = () => {
                                                             <a id="description-tab" data-bs-toggle="pill" href="#description" role="tab"
                                                                 aria-controls="description" aria-selected="false">Description</a>
                                                         </li>
-                                                        <li role="presentation">
+                                                        {/* <li role="presentation">
                                                             <a id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab" aria-controls="reviews"
                                                                 aria-selected="false">Reviews (05)</a>
-                                                        </li>
+                                                        </li> */}
                                                     </ul>
                                                     <div className="tab-content product-tab-content" id="ReviewTabContent">
                                                         <div className="tab-pane fade show active" id="information" role="tabpanel"
@@ -509,7 +509,7 @@ const ProductDetails = () => {
                                                                 <p>{product?.description2}</p>
                                                             </div>
                                                         </div>
-                                                        <div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                                        {/* <div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                                             <div className="product-review-content">
                                                                 <div className="comment-author">
                                                                     <div className="comment-thumb">
@@ -557,7 +557,7 @@ const ProductDetails = () => {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                             </div>
