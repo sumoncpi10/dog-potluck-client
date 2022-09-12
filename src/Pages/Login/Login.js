@@ -12,13 +12,8 @@ const Login = () => {
         const password = e.target.password.value;
         // const user = { username, password }
         fetch(`http://localhost:5000/user/${username}`)
-            // , {
-            //     method: 'GET',
-            //     headers: {
-            //         'content-type': 'application/json',
-            //     },
-            //     // body: JSON.stringify(user)
-            // })
+
+
             .then(res => res.json())
             .then(data => {
                 setDuser(data);
