@@ -85,8 +85,8 @@ const Footer = () => {
                                 <p className="copyright">© 2022 DogPotluck. Made with <i className="fa fa-heart"></i> by <a target="_blank"
                                     href="#">Robin.</a></p>
                                 <div className="payment">
-                                    <a href="index.html"><img src="assets/img/logo-light.webp" width="192" height="21"
-                                        alt="Payment Logo" /></a>
+                                    <Link to="/"><img src="assets/img/logo-light.webp" width="192" height="21"
+                                        alt="Payment Logo" /></Link>
                                 </div>
                             </div>
                         </div>
