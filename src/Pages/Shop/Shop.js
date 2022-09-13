@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Aside from '../Shared/Aside';
 import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 import Loading from '../Shared/Loading';
@@ -14,8 +15,8 @@ const Shop = () => {
     const path = pathname.split("/");
     // const categoryy = pathname[1];
     const [category, setCategory] = useState(path[1]);
-    console.log(page, size);
-    console.log(category);
+    // console.log(page, size);
+    // console.log(category);
     useEffect(() => {
         fetch(`http://localhost:5000/productCount?view=${'detail'}category=${category ? category : ''}`)
             .then(res => res.json())
@@ -1202,8 +1203,8 @@ const Shop = () => {
 
                 <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
 
-
-                <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
+                <Aside></Aside>
+                {/* <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-body">
@@ -1422,7 +1423,7 @@ const Shop = () => {
                             </ul>
                         </nav>
                     </div>
-                </aside>
+                </aside> */}
 
             </div>
         </div>

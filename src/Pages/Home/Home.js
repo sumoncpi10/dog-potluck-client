@@ -276,7 +276,7 @@ const Home = () => {
     })(window.jQuery);
     const [products, setProducts] = useState([]);
     const [dealsOfTheDay, setdealsOfTheDay] = useState([]);
-    console.log(products)
+    // console.log(products)
     useEffect(() => {
         fetch(`http://localhost:5000/productType/${'all'}`)
             .then(res => res.json())

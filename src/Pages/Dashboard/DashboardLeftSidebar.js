@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './DashboardLeftSidebar.css';
 import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
@@ -7,7 +7,11 @@ import ProductAdd from './Products/ProductAdd';
 import 'react-toastify/dist/ReactToastify.css';
 const DashboardLeftSidebar = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
+    const navigate = useNavigate();
+    const SignOut = (e) => {
+        sessionStorage.clear();
+        navigate('/');
+    }
     const onSubmit = (e) => {
         // e.preventDefault();
         console.log(e);
@@ -120,7 +124,7 @@ const DashboardLeftSidebar = () => {
                             <li><a href="#" className="link-dark rounded">New...</a></li>
                             <li><a href="#" className="link-dark rounded">Profile</a></li>
                             <li><a href="#" className="link-dark rounded">Settings</a></li>
-                            <li><a href="#" className="link-dark rounded">Sign out</a></li>
+                            <li><a href="" onClick={SignOut} className="link-dark rounded">Sign out</a></li>
                         </ul>
                     </div>
                 </li>

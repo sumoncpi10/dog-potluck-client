@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 const Login = ({ setuserV }) => {
     const [duser, setDuser] = useState();
-    console.log(duser);
+    // console.log(duser);
     const navigate = useNavigate();
     const btnLogin = (e) => {
         e.preventDefault();

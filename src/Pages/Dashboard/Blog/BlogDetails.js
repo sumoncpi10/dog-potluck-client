@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Footer from '../../Shared/Footer';
 import Header from '../../Shared/Header';
 import { Link } from 'react-router-dom';
+import Aside from '../../Shared/Aside';
 const BlogDetails = () => {
     const [blog, setBlog] = useState([]);
     const { id } = useParams();
@@ -183,8 +184,8 @@ const BlogDetails = () => {
 
                 <Footer></Footer>
                 <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
-
-
+                <Aside></Aside>
+                {/* 
                 <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
@@ -448,7 +449,7 @@ const BlogDetails = () => {
                             </ul>
                         </nav>
                     </div>
-                </aside>
+                </aside> */}
 
             </div>
         </div >
