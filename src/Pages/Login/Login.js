@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-const Login = () => {
+import { toast } from 'react-toastify';
+const Login = ({ setuserV }) => {
     const [duser, setDuser] = useState();
     console.log(duser);
     const navigate = useNavigate();
@@ -20,10 +21,13 @@ const Login = () => {
 
                 if (data?.username === username && data?.password === password) {
                     // console.log('vaild');
+                    sessionStorage.setItem('userValid', 'val');
+                    setuserV('val');
                     navigate(`/dashboard`);
                 }
                 else {
                     // console.log('invalid user')
+                    toast('Invaid Username Or Password!!!!!!')
                 }
 
 
