@@ -39,7 +39,7 @@ const BlogDetails = () => {
                                         <h2 className="title">Blog</h2>
                                         <nav className="breadcrumb-area">
                                             <ul className="breadcrumb">
-                                                <li><a href="index.html">Home</a></li>
+                                                <li><Link to="/">Home</Link></li>
                                                 <li className="breadcrumb-sep">//</li>
                                                 <li>Blog</li>
                                             </ul>

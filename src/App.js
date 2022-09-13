@@ -7,6 +7,7 @@ import Shop from "./Pages/Shop/Shop";
 import Products from "./Pages/Products/Products";
 import Blogs from "./Pages/Blog/Blogs";
 import Contact from "./Pages/Contact/Contact";
+import NotFound from "./Pages/NotFound/NotFound";
 import Login from "./Pages/Login/Login";
 import Dashboard from "./Pages/Dashboard/DashboardLeftSidebar";
 import ProductDetails from "./Pages/Shop/ProductDetails";
@@ -17,6 +18,7 @@ import ManageAllMassage from "./Pages/Dashboard/Message/ManageAllMassage";
 import { ToastContainer } from 'react-toastify';
 import AddBlog from "./Pages/Dashboard/Blog/AddBlog";
 import BlogDetails from "./Pages/Dashboard/Blog/BlogDetails";
+import Disclaimer from "./Pages/Disclaimer/Disclaimer";
 
 function App() {
 
@@ -27,7 +29,7 @@ function App() {
         <Route path="/products" element={<Shop />}>
 
         </Route>
-        <Route path='/:id' element={
+        <Route path='/product/:id' element={
           <ProductDetails></ProductDetails>
         }>
         </Route>
@@ -35,9 +37,10 @@ function App() {
         <Route path="/fish" element={<Shop />} />
         <Route path="/bird" element={<Shop />} />
         <Route path="/dog" element={<Shop />} />
-        <Route path="rabbit" element={<Shop />} />
+        <Route path="/rabbit" element={<Shop />} />
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/about-us" element={<AboutUs />}></Route>
+        <Route path="/disclaimer" element={<Disclaimer />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/blog/:id" element={<BlogDetails />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
@@ -48,6 +51,7 @@ function App() {
         <Route path="/updateProduct/:id" element={<UpdateProduct />}></Route>
         <Route path="/manageMessage" element={<ManageAllMassage />}></Route>
         <Route path="/add-blog" element={<AddBlog />}></Route>
+        <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer />
     </>

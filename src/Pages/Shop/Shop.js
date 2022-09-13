@@ -615,7 +615,7 @@ const Shop = () => {
                                                         </div>
                                                     </div> */}
                                                 </div>
-                                                <div className="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                                                {/* <div className="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
                                                     <div className="row">
                                                         <div className="col-12">
 
@@ -1093,7 +1093,7 @@ const Shop = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>

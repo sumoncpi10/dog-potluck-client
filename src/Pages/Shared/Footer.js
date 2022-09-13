@@ -31,8 +31,8 @@ const Footer = () => {
                                         <div className="widget-menu-wrap">
                                             <ul className="nav-menu">
                                                 <li><Link to="/about-us">About Us</Link></li>
-                                                <li><Link to="/">Privacy Policy</Link></li>
-                                                <li><Link to="/">Disclaimer</Link></li>
+                                                <li><Link to="/disclaimer">Privacy Policy</Link></li>
+                                                <li><Link to="/disclaimer">Disclaimer</Link></li>
                                                 <li><Link to="/contact">Contact Us</Link></li>
 
                                             </ul>

@@ -68,13 +68,13 @@ const Products = () => {
                                 <div className="col-12">
                                     <div className="page-header-content">
                                         <h2 className="title">Cat Food</h2>
-                                        <nav className="breadcrumb-area">
+                                        {/* <nav className="breadcrumb-area">
                                             <ul className="breadcrumb">
                                                 <li><a href="index.html">Home</a></li>
                                                 <li className="breadcrumb-sep">//</li>
                                                 <li><span className='uppercase'>Cat</span> Food</li>
                                             </ul>
-                                        </nav>
+                                        </nav> */}
                                     </div>
                                 </div>
                             </div>

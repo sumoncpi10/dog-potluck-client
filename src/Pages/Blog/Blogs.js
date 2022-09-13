@@ -3,6 +3,7 @@ import Footer from '../Shared/Footer';
 import Header from '../Shared/Header';
 import Aside from '../Shared/Aside';
 import Blog from './Blog';
+import { Link } from 'react-router-dom';
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -42,7 +43,7 @@ const Blogs = () => {
                                         <h2 className="title">Blog</h2>
                                         <nav className="breadcrumb-area">
                                             <ul className="breadcrumb">
-                                                <li><a href="index.html">Home</a></li>
+                                                <li><Link to="/">Home</Link></li>
                                                 <li className="breadcrumb-sep">//</li>
                                                 <li>Blog</li>
                                             </ul>

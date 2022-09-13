@@ -29,7 +29,7 @@ const AboutUs = () => {
                                         <h2 className="title">About Us</h2>
                                         <nav className="breadcrumb-area">
                                             <ul className="breadcrumb">
-                                                <li><a href="index.html">Home</a></li>
+                                                <li><Link to="/">Home</Link></li>
                                                 <li className="breadcrumb-sep">//</li>
                                                 <li>About Us</li>
                                             </ul>

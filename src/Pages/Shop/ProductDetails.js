@@ -284,6 +284,7 @@ const ProductDetails = () => {
     const [selectedProductImg, setselectedProductImg] = useState('');
     const today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    const pathname = window?.location?.pathname;
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
@@ -292,15 +293,18 @@ const ProductDetails = () => {
                 setProduct(data);
                 setselectedProductImg(data.img)
             })
-    }, []);
+    }, [pathname]);
     useEffect(() => {
-        fetch(`http://localhost:5000/products?category=${product?.category ? product.category : ''}`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-                console.log(data);
-            }
-            )
+        if (product?.category) {
+            fetch(`http://localhost:5000/products?category=${product?.category ? product.category : ''}`)
+                .then(res => res.json())
+                .then(data => {
+                    setProducts(data);
+                    // console.log(data);
+                }
+                )
+        }
+
 
     }, [product?.category]);
     // useEffect(() => {
@@ -311,14 +315,11 @@ const ProductDetails = () => {
     //             setReview(data);
     //         })
     // }, []);
-    useEffect(() => {
-        // 👇️ scroll to top on page load
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, []);
-    const selectedImg = (e) => {
-        setselectedProductImg(e);
 
-    }
+    // const selectedImg = (e) => {
+    //     setselectedProductImg(e);
+
+    // }
     // const addReview = (e) => {
     //     e.preventDefault();
 
@@ -345,6 +346,10 @@ const ProductDetails = () => {
     //             e.target.reset();
     //         })
     // }
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
     return (
 
         <div className="wrapper">
@@ -360,7 +365,7 @@ const ProductDetails = () => {
 
             <main className="main-content">
 
-                <div className="page-header-area" style={{ "backgroundImage": "url(assets/img/photos/bg1.webp)" }}>
+                <div className="page-header-area" style={{ "backgroundImage": "url(/assets/img/photos/bg1.webp)" }}>
                     <div className="container pt--0 pb--0">
                         <div className="row">
                             <div className="col-12">
@@ -368,7 +373,7 @@ const ProductDetails = () => {
                                     <h2 className="title">Products</h2>
                                     <nav className="breadcrumb-area">
                                         <ul className="breadcrumb">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><Link to="/">Home</Link></li>
                                             <li className="breadcrumb-sep">//</li>
                                             <li><Link to={'/shop'}>Products</Link></li>
                                             <li className="breadcrumb-sep">//</li>
@@ -399,46 +404,26 @@ const ProductDetails = () => {
                                                                     alt="Image-HasTech" />
                                                             </a>
                                                         </div>
-                                                        {/* <div className="swiper-slide">
-                                                            <a className="lightbox-image" data-fancybox="gallery"
-                                                                href={product?.imgUrl1}>
-                                                                <img src={product?.imgUrl1} width="570" height="675"
-                                                                    alt="Image-HasTech" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="swiper-slide">
-                                                            <a className="lightbox-image" data-fancybox="gallery"
-                                                                href={product?.imgUrl2}>
-                                                                <img src={product?.imgUrl2} width="570" height="675"
-                                                                    alt="Image-HasTech" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="swiper-slide">
-                                                            <a className="lightbox-image" data-fancybox="gallery"
-                                                                href={product?.imgUrl3}>
-                                                                <img src={product?.imgUrl3} width="570" height="675"
-                                                                    alt="Image-HasTech" />
-                                                            </a>
-                                                        </div> */}
+
                                                     </div>
                                                 </div>
                                                 <div className="product-single-swiper-wrap position-relative">
                                                     <div className="swiper single-product-nav single-product-nav-slider">
                                                         <div className="swiper-wrapper">
                                                             <div className="swiper-slide">
-                                                                <img src={product?.img} onClick={() => { selectedImg(product?.img) }} width="127" height="127"
+                                                                <img src={product?.img} onClick={() => { setselectedProductImg(product?.img) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div className="swiper-slide">
-                                                                <img src={product?.imgUrl1} onClick={() => { selectedImg(product?.imgUrl1) }} width="127" height="127"
+                                                                <img src={product?.imgUrl1} onClick={() => { setselectedProductImg(product?.imgUrl1) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div className="swiper-slide">
-                                                                <img src={product?.imgUrl2} onClick={() => { selectedImg(product?.imgUrl2) }} width="127" height="127"
+                                                                <img src={product?.imgUrl2} onClick={() => { setselectedProductImg(product?.imgUrl2) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                             <div className="swiper-slide">
-                                                                <img src={product?.imgUrl3} onClick={() => { selectedImg(product?.imgUrl3) }} width="127" height="127"
+                                                                <img src={product?.imgUrl3} onClick={() => { setselectedProductImg(product?.imgUrl3) }} width="127" height="127"
                                                                     alt="Image-HasTech" />
                                                             </div>
                                                         </div>
@@ -478,11 +463,11 @@ const ProductDetails = () => {
                                                     <ul>
                                                         <li><span>SKU:</span> {product?.size}</li>
                                                         <li><span>Categories:</span>
-                                                            <a href="shop.html"> {product?.category} Food, Pet Food. eCommerce</a>
+                                                            <Link to='/'> {product?.category} Food, Pet Food. eCommerce</Link>
                                                         </li>
                                                         <li><span>Tags:</span>
-                                                            <a href="shop.html">Petfood. Pet</a>,
-                                                            <a href="shop.html">Animal.</a>
+                                                            <Link to="/">Petfood. Pet</Link>,
+                                                            <Link to="/">Animal.</Link>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -593,16 +578,16 @@ const ProductDetails = () => {
                         </div>
                         <div className="row">
                             {
-                                products.map(product => <div className="col-sm-6 col-lg-3">
+                                products.map(pro => <div key={pro._id} className="col-sm-6 col-lg-3">
 
                                     <div className="product-item">
                                         <div className="product-thumb">
-                                            <Link to={product._id}>
-                                                <img src={product.img} width="270" height="320" alt="Image-HasTech" />
+                                            <Link to={`/product/${pro?._id}`}>
+                                                <img src={pro.img} width="270" height="320" alt="Image-HasTech" />
                                             </Link>
                                         </div>
                                         <div className="product-info">
-                                            <h4 className="title"><Link to={product._id}>{product.name}</Link></h4>
+                                            <h4 className="title"><Link to={`/product/${pro?._id}`}>{pro.name}</Link></h4>
                                             <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
                                                 <div className="rating-box">
                                                     <i className="fa fa-star"></i>
@@ -613,7 +598,7 @@ const ProductDetails = () => {
                                                 </div>
                                             </div>
                                             <button type="button" className="btn-product-cart" data-bs-toggle="modal"><Link
-                                                to={product?._id}>Buy Now</Link>
+                                                to={`/product/${pro?._id}`}>Buy Now</Link>
                                             </button>
                                         </div>
 
@@ -622,87 +607,7 @@ const ProductDetails = () => {
                                 </div>)
                             }
 
-                            {/* <div className="col-sm-6 col-lg-3">
 
-                                <div className="product-item">
-                                    <div className="product-thumb">
-                                        <a href="single-product.html">
-                                            <img src="assets/img/shop/6.webp" width="270" height="320" alt="Image-HasTech" />
-                                        </a>
-                                    </div>
-                                    <div className="product-info">
-                                        <h4 className="title"><a href="single-product.html">Savvy Shoulder Tote</a></h4>
-                                        <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                            <div className="rating-box">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
-                                            href="single-product.html">Buy Now</a>
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div className="col-sm-6 col-lg-3">
-
-                                <div className="product-item">
-                                    <div className="product-thumb">
-                                        <a href="single-product.html">
-                                            <img src="assets/img/shop/7.webp" width="270" height="320" alt="Image-HasTech" />
-                                        </a>
-                                    </div>
-                                    <div className="product-info">
-                                        <h4 className="title"><a href="single-product.html">Voyage Yoga Bag</a></h4>
-                                        <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                            <div className="rating-box">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
-                                            href="single-product.html">Buy Now</a>
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div className="col-sm-6 col-lg-3">
-
-                                <div className="product-item">
-                                    <div className="product-thumb">
-                                        <a href="single-product.html">
-                                            <img src="assets/img/shop/8.webp" width="270" height="320" alt="Image-HasTech" />
-                                        </a>
-                                    </div>
-                                    <div className="product-info">
-                                        <h4 className="title"><a href="single-product.html">Wayfarer Messenger Bag</a></h4>
-                                        <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
-                                            <div className="rating-box">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <button type="button" className="btn-product-cart" data-bs-toggle="modal"><a
-                                            href="single-product.html">Buy Now</a>
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div> */}
                         </div>
                     </div>
                 </section>
@@ -710,99 +615,7 @@ const ProductDetails = () => {
             </main>
 
 
-            {/* <footer className="footer-area">
 
-                <div className="footer-main">
-                    <div className="container pt--0 pb--0">
-                        <div className="row">
-                            <div className="col-md-6 col-lg-4">
-                                <div className="widget-item widget-about">
-                                    <h4 className="widget-title">About Us</h4>
-                                    <p className="desc">Lorem ipsum dolor sit amet, consectel adipisicing elit, sed do eiusmod temp incidid ut
-                                        labore et dolo</p>
-                                    <div className="social-icons">
-                                        <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i className="fa fa-facebook"></i></a>
-                                        <a href="https://instagram.com/" target="_blank" rel="noopener"><i className="fa fa-instagram"></i></a>
-                                        <a href="https://www.pinterest.com/" target="_blank" rel="noopener"><i
-                                            className="fa fa-pinterest-p"></i></a>
-                                        <a href="https://twitter.com/" target="_blank" rel="noopener"><i className="fa fa-twitter"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-4">
-                                <div className="widget-item nav-menu-item1">
-                                    <h4 className="widget-title">Information</h4>
-                                    <h4 className="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-1">Our
-                                        Policy</h4>
-                                    <div id="widgetId-1" className="collapse widget-collapse-body">
-                                        <div className="collapse-body">
-                                            <div className="widget-menu-wrap">
-                                                <ul className="nav-menu">
-                                                    <li><a href="about-us.html">About Us</a></li>
-                                                    <li><a href="disclaimer.html">Privacy Policy</a></li>
-                                                    <li><a href="disclaimer.html">Disclaimer</a></li>
-                                                    <li><a href="contact.html">Contact Us</a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-md-6 col-lg-4">
-                                <div className="widget-item">
-                                    <h4 className="widget-title">Contact Info:</h4>
-                                    <h4 className="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-3">
-                                        Contact Info:</h4>
-                                    <div id="widgetId-3" className="collapse widget-collapse-body">
-                                        <div className="collapse-body">
-                                            <div className="widget-contact-info">
-                                                <p className="contact-info-desc">If you have any question.please contact us at <a
-                                                    href="mailto://dogpotluck@gmail.com">dogpotluck@gmail.com</a></p>
-                                                <div className="contact-item">
-                                                    <div className="icon">
-                                                        <i className="pe-7s-map-marker"></i>
-                                                    </div>
-                                                    <div className="info">
-                                                        <p>36-20 Summers Place <br />Saskatoon, SK, Canada.</p>
-                                                    </div>
-                                                </div>
-                                                <div className="contact-item phone-info">
-                                                    <div className="icon">
-                                                        <i className="pe-7s-phone"></i>
-                                                    </div>
-                                                    <div className="info">
-                                                        <p><span>Have any Question</span> <br /><a href="tel://+1 639 318 3375">+1 639 318 3375</a></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="footer-bottom">
-                    <div className="container pt--0 pb--0">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="footer-bottom-content">
-                                    <p className="copyright">© 2022 DogPotluck. Made with <i className="fa fa-heart"></i> by <a target="_blank"
-                                        href="#">Robin.</a></p>
-                                    <div className="payment">
-                                        <a href="index.html"><img src="assets/img/logo-light.webp" width="192" height="21"
-                                            alt="Payment Logo" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </footer> */}
 
             <Footer></Footer>
 

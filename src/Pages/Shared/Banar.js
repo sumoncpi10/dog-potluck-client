@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Banar = () => {
     return (
@@ -26,7 +27,7 @@ const Banar = () => {
                                                             <h2 className="title text-white">A Greate Meal With Your Pet</h2>
                                                         </div>
                                                         <div className="btn-box">
-                                                            <a className="btn-theme text-dark" href="shop.html">Shop Now</a>
+                                                            <Link className="btn-theme text-dark" to="/shop">Shop Now</Link>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -68,7 +69,7 @@ const Banar = () => {
                                                                 tempor incidid ut labore.</p>
                                                         </div>
                                                         <div className="btn-box">
-                                                            <a className="btn-theme text-dark" href="shop.html">Shop Now</a>
+                                                            <Link className="btn-theme text-dark" TO="/shop">Shop Now</Link>
                                                         </div>
                                                     </div>
                                                 </div>

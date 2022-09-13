@@ -19,7 +19,7 @@ const Aside = () => {
                                     <div className="thumb">
                                         <img src="assets/img/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320" />
                                     </div>
-                                    <h4 className="product-name"><Link to="single-product.html">Joust Duffle Bag</Link></h4>
+                                    <h4 className="product-name"><Link to="/">Joust Duffle Bag</Link></h4>
                                 </div>
                             </div>
                         </div>
@@ -68,11 +68,11 @@ const Aside = () => {
                                                     <ul>
                                                         <li><span>SKU:</span> Ch-256xl</li>
                                                         <li><span>Categories:</span>
-                                                            <Link to="shop.html">Pet Food. eCommerce</Link>
+                                                            <Link to="/">Pet Food. eCommerce</Link>
                                                         </li>
                                                         <li><span>Tags:</span>
-                                                            <Link to="shop.html">Petfood. Pet</Link>,
-                                                            <Link to="shop.html">Animal.</Link>
+                                                            <Link to="/">Petfood. Pet</Link>,
+                                                            <Link to="/">Animal.</Link>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -80,7 +80,7 @@ const Aside = () => {
 
                                                     <button type="button" className="btn-product-cart" data-bs-toggle="modal"
                                                         data-bs-target="#action-CartAddModal" style={{ "marginLeft": "0px" }}>
-                                                        <Link to="single-product.html">Buy Now</Link>
+                                                        <Link to="/">Buy Now</Link>
                                                     </button>
 
                                                 </div>
@@ -106,7 +106,7 @@ const Aside = () => {
                     <ul className="aside-cart-product-list">
                         <li className="aside-product-list-item">
                             <Link to="#/" className="remove">×</Link>
-                            <Link to="single-product.html">
+                            <Link to="/">
                                 <img src="/assets/img/shop/product-mini/1.webp" width="90" height="110" alt="Image-HasTech" />
                                 <span className="product-title">Leather Mens Slipper</span>
                             </Link>
@@ -114,7 +114,7 @@ const Aside = () => {
                         </li>
                         <li className="aside-product-list-item">
                             <Link to="#/" className="remove">×</Link>
-                            <Link to="single-product.html">
+                            <Link to="/">
                                 <img src="assets/img/shop/product-mini/2.webp" width="90" height="110" alt="Image-HasTech" />
                                 <span className="product-title">Quickiin Mens shoes</span>
                             </Link>
@@ -122,9 +122,9 @@ const Aside = () => {
                         </li>
                     </ul>
                     <p className="cart-total"><span>Subtotal:</span><span className="amount">£89.99</span></p>
-                    <Link className="btn-total" to="shop-cart.html">View cart</Link>
-                    <Link className="btn-total" to="shop-checkout.html">Checkout</Link>
-                    <Link className="d-block text-end lh-1" to="shop-checkout.html"><img src="assets/img/photos/paypal.webp" width="133"
+                    <Link className="btn-total" to="">View cart</Link>
+                    <Link className="btn-total" to="">Checkout</Link>
+                    <Link className="d-block text-end lh-1" to=""><img src="assets/img/photos/paypal.webp" width="133"
                         height="26" alt="Has-image" /></Link>
                 </div>
             </aside>
