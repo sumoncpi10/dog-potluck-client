@@ -285,6 +285,9 @@ const ProductDetails = () => {
     const today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     const pathname = window?.location?.pathname;
+
+
+
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
@@ -346,6 +349,11 @@ const ProductDetails = () => {
     //             e.target.reset();
     //         })
     // }
+    let description = '';
+    if (product) {
+        description = product?.description2?.split('#');
+        // console.log(description);
+    }
     useEffect(() => {
         // 👇️ scroll to top on page load
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -577,7 +585,12 @@ const ProductDetails = () => {
                                                         </div>
                                                         <div className="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                                                             <div className="product-description">
-                                                                <p>{product?.description2}</p>
+
+                                                                {
+                                                                    description?.map(d => <><li className='p-2 text-justify' style={{ "margin": "0", "textAlign": "justify" }}>{d}</li></>)
+                                                                }
+                                                                {/* <li>{product?.description2}</li> */}
+
                                                             </div>
                                                         </div>
                                                         {/* <div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
