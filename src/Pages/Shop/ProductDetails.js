@@ -356,6 +356,11 @@ const ProductDetails = () => {
         description = product?.description2?.split('#');
         // console.log(description);
     }
+    let information = '';
+    if (product) {
+        information = product?.information?.split('#');
+        // console.log(description);
+    }
     useEffect(() => {
         // 👇️ scroll to top on page load
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -594,7 +599,13 @@ const ProductDetails = () => {
                                                         <div className="tab-pane fade " id="information" role="tabpanel"
                                                             aria-labelledby="information-tab">
                                                             <div className="product-information">
-                                                                <p>{product?.information}</p>
+                                                                <ul>
+                                                                    {
+                                                                        information?.map(i => <><li className='p-2 text-justify' style={{ "margin": "0", "textAlign": "justify" }}><FontAwesomeIcon icon={faDog} /> {i} </li></>)
+                                                                    }
+                                                                    {/* <p>{product?.information}</p> */}
+                                                                </ul>
+
                                                             </div>
                                                         </div>
                                                         {/* <div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">

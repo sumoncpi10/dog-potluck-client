@@ -927,7 +927,7 @@ const Home = () => {
                             </div>
                         </section>
 
-                        <section className="about-area">
+                        {/* <section className="about-area">
                             <div className="container">
                                 <div className="about-item position-relative">
                                     <div className="row align-items-center">
@@ -954,7 +954,7 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section> */}
 
                         <section className="blog-area blog-default-area">
                             <div className="container pt--0">
