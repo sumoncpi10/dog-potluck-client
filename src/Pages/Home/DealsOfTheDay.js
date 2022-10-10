@@ -15,7 +15,7 @@ const DealsOfTheDay = ({ deals }) => {
                     <div className="col-lg-6">
                         <div className="product-thumb">
 
-                            <Link to={`/${deals?._id}`}>
+                            <Link to={`/product/${deals?._id}`}>
                                 <img src={deals?.img} width="270" height="320" alt="Image-HasTech" />
                             </Link>
                         </div>
@@ -26,7 +26,7 @@ const DealsOfTheDay = ({ deals }) => {
                                 <span className="countdown-title">End In:</span>
                                 <div className="ht-countdown ht-countdown-style1" data-date="1/10/2022"></div>
                             </div>
-                            <h4 className="title"><Link to={`/${deals?._id}`}>{deals.name}</Link></h4>
+                            <h4 className="title"><Link to={`/product/${deals?._id}`}>{deals.name}</Link></h4>
                             <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
                                 <div className="rating-box">
                                     <i className="fa fa-star"></i>
@@ -43,7 +43,7 @@ const DealsOfTheDay = ({ deals }) => {
                                 </div>
                             </div>
                             <div className="prices">
-                                <span className="price"><Link to={`/${deals?._id}`}>Buy Now</Link></span>
+                                <span className="price"><Link to={`/product/${deals?._id}`}>Buy Now</Link></span>
                             </div>
                             <div className="product-feature-list">
                                 <ul>
