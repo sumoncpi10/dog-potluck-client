@@ -15,6 +15,14 @@ const ProductAdd = () => {
         const description1 = e.target.description1.value;
         const description2 = e.target.description2.value;
         const brand = e.target.brand.value;
+        const flavour = e.target.flavour.value;
+        const itemForm = e.target.itemForm.value;
+        const specificUser = e.target.specificUser.value;
+        const ageRange = e.target.ageRange.value;
+        const itemWeight = e.target.itemWeight.value;
+        const unitCount = e.target.unitCount.value;
+        const numberOfItems = e.target.numberOfItems.value;
+        const modelName = e.target.modelName.value;
         const size = e.target.size.value;
         const rating = e.target.rating.value;
         const information = e.target.information.value;
@@ -27,7 +35,7 @@ const ProductAdd = () => {
         const imgUrl2 = e.target.imgUrl2.value;
         const imgUrl3 = e.target.imgUrl3.value;
         // console.log(name, email, password);
-        const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
+        const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, flavour, itemForm, specificUser, ageRange, itemWeight, unitCount, numberOfItems, modelName, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
         //console.log(product);
         // send data to the server 
 
@@ -98,6 +106,33 @@ const ProductAdd = () => {
                         </div>
                         <div className="row mb-2">
                             <input type="text" name='brand' className="form-control" placeholder="Brand name" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='flavour' className="form-control" placeholder="Flavour" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='itemForm' className="form-control" placeholder="Item Form" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='specificUser' className="form-control" placeholder="Specific uses for product" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='packageInfo' className="form-control" placeholder="Package Info" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='ageRange' className="form-control" placeholder="Age Range" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='itemWeight' className="form-control" placeholder="Item Weight" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='unitCount' className="form-control" placeholder="Unit Count" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='numberOfItems' className="form-control" placeholder="Number Of Items" />
+                        </div>
+                        <div className="row mb-2">
+                            <input type="text" name='modelName' className="form-control" placeholder="Model Name" />
                         </div>
                         <div className="row mb-2">
                             <input type="text" name='size' className="form-control" placeholder="Size" />

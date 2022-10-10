@@ -357,7 +357,7 @@ const Home = () => {
                                                         <div className="col-sm-6 col-md-6">
                                                             <div className="slider-thumb mousemove">
                                                                 <div className="thumb">
-                                                                    <img src="assets/img/slider/slider-01.webp" width="585" height="579" alt="Image-HasTech" />
+                                                                    <img src="/assets/img/slider/slider-01.webp" width="585" height="579" alt="Image-HasTech" />
                                                                     <div className="shape-one"></div>
                                                                 </div>
                                                             </div>

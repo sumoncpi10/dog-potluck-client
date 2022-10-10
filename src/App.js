@@ -15,12 +15,14 @@ import ProductAdd from "./Pages/Dashboard/Products/ProductAdd";
 import ManageProducts from "./Pages/Dashboard/Products/ManageProducts";
 import UpdateProduct from "./Pages/Dashboard/Products/UpdateProduct";
 import ManageAllMassage from "./Pages/Dashboard/Message/ManageAllMassage";
+import EditAboutPage from "./Pages/Dashboard/Page/EditAboutPage";
 import { toast, ToastContainer } from 'react-toastify';
 import AddBlog from "./Pages/Dashboard/Blog/AddBlog";
 import BlogDetails from "./Pages/Dashboard/Blog/BlogDetails";
 import Disclaimer from "./Pages/Disclaimer/Disclaimer";
 import { useEffect } from "react";
 import { useState } from "react";
+import ManageAboutPage from "./Pages/Dashboard/Page/ManageAboutPage";
 
 function App() {
   const [userV, setuserV] = useState('');
@@ -57,6 +59,9 @@ function App() {
             <Route path="/manageProduct" element={<ManageProducts />}></Route>
             <Route path="/updateProduct/:id" element={<UpdateProduct />}></Route>
             <Route path="/manageMessage" element={<ManageAllMassage />}></Route>
+            <Route path="/manageAboutPage" element={<ManageAboutPage />}></Route>
+            <Route path="/updateAbout/:id" element={<EditAboutPage />}></Route>
+            <Route path="/updateContact/:id" element={<ManageAllMassage />}></Route>
             <Route path="/add-blog" element={<AddBlog />}></Route></> : ''
 
 

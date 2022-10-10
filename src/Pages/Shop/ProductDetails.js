@@ -289,7 +289,7 @@ const ProductDetails = () => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
+                console.log(data);
                 setProduct(data);
                 setselectedProductImg(data.img)
             })
@@ -300,7 +300,7 @@ const ProductDetails = () => {
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data);
-                    // console.log(data);
+                    console.log(data);
                 }
                 )
         }
@@ -458,19 +458,94 @@ const ProductDetails = () => {
                                                         <a href="javascript:void(0)">(5 Customer Review)</a>
                                                     </div>
                                                 </div>
-                                                <p className='w-75 text-justify'>{product?.description1}</p>
-                                                <div className="product-single-meta">
+                                                {/* <p className='w-75 text-justify'>{product?.description1}</p> */}
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        {
+                                                            product?.brand ? <tr>
+                                                                <th scope="row">Brand</th>
+                                                                <td>{product?.brand}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.flavour ? <tr>
+                                                                <th scope="row">Flavour</th>
+                                                                <td>{product?.flavour}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.category ? <tr>
+                                                                <th scope="row">Target species</th>
+                                                                <td>{product?.category}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.itemForm ? <tr>
+                                                                <th scope="row">Item From</th>
+                                                                <td>{product?.itemForm}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.specificUser ? <tr>
+                                                                <th scope="row">Specific User for Product</th>
+                                                                <td>{product?.specificUser}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.packageInfo ? <tr>
+                                                                <th scope="row">Package information</th>
+                                                                <td>{product?.packageInfo}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.ageRange ? <tr>
+                                                                <th scope="row">Age range(description)</th>
+                                                                <td>{product?.ageRange}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.itemWeight ? <tr>
+                                                                <th scope="row">Item weight</th>
+                                                                <td>{product?.itemWeight}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.unitCount ? <tr>
+                                                                <th scope="row">Unit Count</th>
+                                                                <td>{product?.unitCount}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.numberOfItems ? <tr>
+                                                                <th scope="row">Number of Items</th>
+                                                                <td>{product?.numberOfItems}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.modelName ? <tr>
+                                                                <th scope="row">Model Name</th>
+                                                                <td>{product?.modelName}</td>
+                                                            </tr> : ''
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                                {/* <div className="product-single-meta">
                                                     <ul>
-                                                        <li><span>SKU:</span> {product?.size}</li>
-                                                        <li><span>Categories:</span>
-                                                            <Link to='/'> {product?.category} Food, Pet Food. eCommerce</Link>
-                                                        </li>
-                                                        <li><span>Tags:</span>
-                                                            <Link to="/">Petfood. Pet</Link>,
-                                                            <Link to="/">Animal.</Link>
-                                                        </li>
+                                                        <li><span>Brand: </span> {product?.brand}</li>
+                                                        <li><span>Flavour: </span> {product?.flavour}</li>
+                                                        <li><span>Target species: </span> {product?.category}</li>
+                                                        <li><span>Item From: </span> {product?.itemForm}</li>
+                                                        <li><span>Specific User for Product: </span> {product?.specificUser}</li>
+                                                        <li><span>Package information : </span> {product?.packageInfo}</li>
+                                                        <li><span>Age range(description): </span> {product?.ageRange}</li>
+                                                        <li><span>Item weight: </span> {product?.itemWeight}</li>
+                                                        <li><span>Unit count: </span> {product?.unitCount}</li>
+                                                        <li><span>Number of Items: </span> {product?.numberOfItems}</li>
+                                                        <li><span>Model name: </span> {product?.modelName}</li>
+
                                                     </ul>
-                                                </div>
+                                                </div> */}
                                                 <div className="product-quick-action">
 
                                                     <button type="button" className="btn-product-cart" data-bs-toggle="modal" style={{ "marginLeft": "0px" }}>
