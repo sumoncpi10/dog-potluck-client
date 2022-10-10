@@ -9,6 +9,8 @@ import Footer from '../Shared/Footer';
 // import Swiper from 'swiper';
 import $ from "jquery";
 import Swiper, { Navigation, Pagination } from 'swiper';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDog } from '@fortawesome/free-solid-svg-icons';
 const ProductDetails = () => {
     Swiper.use([Navigation, Pagination]);
 
@@ -563,13 +565,14 @@ const ProductDetails = () => {
                                                 </div>
                                                 <div className="product-review-tabs-content">
                                                     <ul className="nav product-tab-nav" id="ReviewTab" role="tablist">
+
                                                         <li role="presentation">
-                                                            <a className="active" id="information-tab" data-bs-toggle="pill" href="#information" role="tab"
-                                                                aria-controls="information" aria-selected="true">Information</a>
+                                                            <a className="active" id="description-tab" data-bs-toggle="pill" href="#description" role="tab"
+                                                                aria-controls="description" aria-selected="false">Description</a>
                                                         </li>
                                                         <li role="presentation">
-                                                            <a id="description-tab" data-bs-toggle="pill" href="#description" role="tab"
-                                                                aria-controls="description" aria-selected="false">Description</a>
+                                                            <a id="information-tab" data-bs-toggle="pill" href="#information" role="tab"
+                                                                aria-controls="information" aria-selected="true">Information</a>
                                                         </li>
                                                         {/* <li role="presentation">
                                                             <a id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab" aria-controls="reviews"
@@ -577,20 +580,21 @@ const ProductDetails = () => {
                                                         </li> */}
                                                     </ul>
                                                     <div className="tab-content product-tab-content" id="ReviewTabContent">
-                                                        <div className="tab-pane fade show active" id="information" role="tabpanel"
+
+                                                        <div className="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                                            <div className="product-description">
+                                                                <ul>
+                                                                    {
+                                                                        description?.map(d => <><li className='p-2 text-justify' style={{ "margin": "0", "textAlign": "justify" }}><FontAwesomeIcon icon={faDog} /> {d} </li></>)
+                                                                    }
+                                                                    {/* <li>{product?.description2}</li> */}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div className="tab-pane fade " id="information" role="tabpanel"
                                                             aria-labelledby="information-tab">
                                                             <div className="product-information">
                                                                 <p>{product?.information}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
-                                                            <div className="product-description">
-
-                                                                {
-                                                                    description?.map(d => <><li className='p-2 text-justify' style={{ "margin": "0", "textAlign": "justify" }}>{d}</li></>)
-                                                                }
-                                                                {/* <li>{product?.description2}</li> */}
-
                                                             </div>
                                                         </div>
                                                         {/* <div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">

@@ -1,22 +1,20 @@
+
 import React, { useEffect, useState } from 'react';
-import Footer from '../Shared/Footer';
-import Header from '../Shared/Header';
-import Aside from '../Shared/Aside';
-import Blog from './Blog';
+import { useParams } from 'react-router-dom';
+import Footer from '../../Shared/Footer';
+import Header from '../../Shared/Header';
 import { Link } from 'react-router-dom';
-
-const Blogs = () => {
-    const [blogs, setBlogs] = useState([]);
-
+import Aside from '../../Shared/Aside';
+const BlogDetails = () => {
+    const [blog, setBlog] = useState([]);
+    const { id } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`http://localhost:5000/blog/${id}`)
             .then(res => res.json())
             .then(data => {
-                setBlogs(data);
-                // console.log(data);
-            }
-            )
-
+                // console.log(data)
+                setBlog(data);
+            })
     }, []);
     return (
         <div>
@@ -35,7 +33,7 @@ const Blogs = () => {
 
                 <main className="main-content">
 
-                    <div className="page-header-area" style={{ "backgroundImage": "url(assets/img/photos/bg1.webp)" }}>
+                    <div className="page-header-area" style={{ "backgroundImage": "url(/assets/img/photos/bg1.webp)" }}>
                         <div className="container pt--0 pb--0">
                             <div className="row">
                                 <div className="col-12">
@@ -53,25 +51,130 @@ const Blogs = () => {
                             </div>
                         </div>
                     </div>
-
-                    <section className="blog-area blog-inner-area">
+                    <section className="blog-details-area">
                         <div className="container">
-                            <div className="row">
-                                <h1>The Best Dry Dog Foods October 2022</h1>
-                                {
-                                    blogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
-                                }
+                            <div className="row justify-content-between">
+                                <div className="col-12">
+                                    <div className="blog-details-content-wrap">
+                                        <div className="blog-details-item">
+                                            <div className="blog-details-thumb">
+                                                <img src={blog?.img} width="1100" height="590" alt="Image-HasTech" />
+                                            </div>
+                                            <div className="blog-details-content">
+                                                <div className="meta">
+                                                    <ul>
+                                                        <li className="author-info"><span>By:</span> <a href="blog.html">Admin</a></li>
+                                                        <li className="post-date"><a href="blog.html">{blog?.date}</a></li>
+                                                    </ul>
+                                                </div>
+                                                <h3 className="main-title">{blog?.Tittle1}</h3>
+                                                <p>
+                                                    {blog?.description1}
+                                                </p>
+                                                <blockquote>
+                                                    <div className="inner-content">
+                                                        <p>{blog?.boldDescription}</p>
+                                                        <img className="inner-shape" src="assets/img/icons/quote2.webp" width="111" height="81" alt="Image-HasTech" />
+                                                    </div>
+                                                </blockquote>
+                                                <h3 className="main-title sub-title">{blog?.Tittle2}</h3>
+                                                <p>{blog?.description2}</p>
+                                                <p>{blog?.description3}</p>
+                                                <div className="blog-details-footer">
+                                                    <div className="tage-list">
+                                                        <span>Tags:</span>
+                                                        <Link to={`/${blog?.category}`} className='uppercase' >{blog?.category}</Link>
+                                                        <a href="blog.html">Animal</a>
+                                                        <a href="blog.html">Dog</a>
+                                                    </div>
+                                                    <div className="social-icons">
+                                                        <span>Share:</span>
+                                                        <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i className="fa fa-facebook"></i></a>
+                                                        <a href="https://instagram.com/" target="_blank" rel="noopener"><i className="fa fa-instagram"></i></a>
+                                                        <a href="https://www.pinterest.com/" target="_blank" rel="noopener"><i className="fa fa-pinterest-p"></i></a>
+                                                        <a href="https://twitter.com/" target="_blank" rel="noopener"><i className="fa fa-twitter"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                {/* <div className="col-12">
-                                    <div className="pagination-items pagination-items-style1">
-                                        <ul className="pagination justify-content-center mb--0">
-                                            <li><a className="active" href="shop.html">1</a></li>
-                                            <li><a href="shop-four-columns.html">2</a></li>
-                                            <li><a href="shop-three-columns.html">3</a></li>
-                                            <li><a href="shop.html" className="icon"><i className="fa fa-angle-right"></i></a></li>
-                                        </ul>
+
+                                        {/* <div className="comment-view-area">
+                                            <h4 className="title-main">Comments (03)</h4>
+                                            <div className="comment-view-content">
+                                                <div className="single-comment">
+                                                    <div className="author-pic">
+                                                        <a href="blog.html"><img src="assets/img/blog/author1.webp" width="120" height="120" alt="Image-HasTech" /></a>
+                                                    </div>
+                                                    <div className="author-info">
+                                                        <h4 className="title"><a href="blog.html">Monroe Bond</a></h4>
+                                                        <h6 className="comment-date"><a href="blog.html">21 July 2021</a></h6>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod teml incidid ut labore et dolor magna aliqua. Ut enim ad minim veniam, quis nostru exercita ullamc laboris nisi ut aliquip ex ea comm consequat.</p>
+                                                        <a className="comment-reply" href="#/">Reply <i className="fa fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div className="single-comment reply-comment">
+                                                    <div className="author-pic">
+                                                        <a href="blog.html"><img src="assets/img/blog/author2.webp" width="120" height="120" alt="Image-HasTech" /></a>
+                                                    </div>
+                                                    <div className="author-info">
+                                                        <h4 className="title"><a href="blog.html">Audrina Finn</a></h4>
+                                                        <h6 className="comment-date"><a href="blog.html">21 July 2021</a></h6>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod teml incidid ut labore et dolor magna aliqua. Ut enimlk ad minim veniam, quis nostru exercita.</p>
+                                                        <a className="comment-reply" href="#/">Reply <i className="fa fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div className="single-comment mb--0">
+                                                    <div className="author-pic">
+                                                        <a href="blog.html"><img src="assets/img/blog/author3.webp" width="120" height="120" alt="Image-HasTech" /></a>
+                                                    </div>
+                                                    <div className="author-info">
+                                                        <h4 className="title"><a href="blog.html">Gregorio Meier</a></h4>
+                                                        <h6 className="comment-date"><a href="blog.html">21 July 2021</a></h6>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod teml incidid ut labore et dolor magna aliqua. Ut enim ad minim veniam, quis nostru exercita ullamc laboris nisi ut aliquip ex ea comm consequat.</p>
+                                                        <a className="comment-reply" href="#/">Reply <i className="fa fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="comment-form-area">
+                                            <h4 className="title-main">Leave a Comments</h4>
+                                            <div className="comment-form">
+                                                <form action="#">
+                                                    <div className="row ">
+                                                        <div className="col-md-6">
+                                                            <div className="form-group">
+                                                                <input className="form-control" type="text" placeholder="Name *" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <div className="form-group">
+                                                                <input className="form-control" type="email" placeholder="Email *" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <div className="form-group">
+                                                                <input className="form-control" type="text" placeholder="Subject (Optinal)" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <div className="form-group mb--0">
+                                                                <textarea className="form-control" placeholder="Message"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-12">
+                                                            <div className="form-group mb--0">
+                                                                <button type="submit" className="btn-theme">Send Comments</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div> */}
+
                                     </div>
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -82,10 +185,9 @@ const Blogs = () => {
 
                 <Footer></Footer>
                 <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
-
                 <Aside></Aside>
-
-                {/* <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
+                {/* 
+                <aside className="product-action-modal modal fade" id="action-WishlistModal" tabindex="-1" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-body">
@@ -351,8 +453,8 @@ const Blogs = () => {
                 </aside> */}
 
             </div>
-        </div>
+        </div >
     );
 };
 
-export default Blogs;
+export default BlogDetails;

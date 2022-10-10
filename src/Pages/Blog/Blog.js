@@ -11,7 +11,7 @@ const Blog = ({ blog }) => {
             <div className="post-item">
                 <div className="thumb">
                     <a href="blog-details.html">
-                        <img src={blog?.img} width="350" height="250" alt="Image-HasTech" />
+                        <img src={blog?.img || blog?.img1} width="350" height="250" alt="Image-HasTech" />
                     </a>
                 </div>
                 <div className="content">
