@@ -23,7 +23,7 @@ const Blog = ({ blog }) => {
                         </ul>
                     </div>
                     <h4 className="title"><Link to={`/blog/${blog?._id}`}>{blog?.Tittle1}</Link></h4>
-                    {/* <p>{blog?.description11}</p> */}
+                    <p>{blog?.description11.s}</p>
                     <Link className="btn-theme btn-sm" to={`/blog/${blog?._id}`}>Read More</Link>
                 </div>
             </div>

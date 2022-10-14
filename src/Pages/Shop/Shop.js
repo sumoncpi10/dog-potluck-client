@@ -51,19 +51,23 @@ const Shop = () => {
     if (category) {
         console.log(category);
         if (category === 'cat') {
-            bgImg = 'cat.jpg';
+            bgImg = 'https://i.ibb.co/1vfNcPL/cat.jpg';
+
         }
         else if (category === 'rabbit') {
-            bgImg = 'rabbit.jpg';
+            bgImg = 'https://i.ibb.co/RvT8Qxh/rabbit.jpg';
+
         }
         else if (category === 'fish') {
-            bgImg = 'fish.jpg';
+            bgImg = 'https://i.ibb.co/tpJqZYx/fish.jpg';
+
         }
         else if (category === 'bird') {
-            bgImg = 'bird.jpg';
+            bgImg = 'https://i.ibb.co/wLpy33W/bird.jpg';
+
         }
         else {
-            bgImg = 'bg1.webp';
+            bgImg = '/assets/img/photos/bg1.webp';
         }
     }
     return (
@@ -79,7 +83,7 @@ const Shop = () => {
 
                 <main className="main-content">
 
-                    <div className="page-header-area " style={{ "backgroundImage": `url(assets/img/photos/${bgImg})` }} >
+                    <div className="page-header-area " style={{ "backgroundImage": `url(${bgImg})` }} >
 
                         <div className="container pt--0 pb--0">
                             <div className="row">
