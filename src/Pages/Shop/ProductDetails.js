@@ -490,14 +490,20 @@ const ProductDetails = () => {
                                                         }
                                                         {
                                                             product?.category ? <tr>
-                                                                <th scope="row">Target species</th>
-                                                                <td>{product?.category}</td>
+                                                                <th scope="row">Target Species</th>
+                                                                <td >{product.category.charAt(0).toUpperCase() + product.category.slice(1)}</td>
                                                             </tr> : ''
                                                         }
                                                         {
                                                             product?.itemForm ? <tr>
                                                                 <th scope="row">Item From</th>
                                                                 <td>{product?.itemForm}</td>
+                                                            </tr> : ''
+                                                        }
+                                                        {
+                                                            product?.breedRecommendation ? <tr>
+                                                                <th scope="row">Breed Recommendation</th>
+                                                                <td>{product?.breedRecommendation}</td>
                                                             </tr> : ''
                                                         }
                                                         {
@@ -508,7 +514,7 @@ const ProductDetails = () => {
                                                         }
                                                         {
                                                             product?.packageInfo ? <tr>
-                                                                <th scope="row">Package information</th>
+                                                                <th scope="row">Package Information</th>
                                                                 <td>{product?.packageInfo}</td>
                                                             </tr> : ''
                                                         }

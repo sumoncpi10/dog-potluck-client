@@ -17,6 +17,7 @@ const ProductAdd = () => {
         const brand = e.target.brand.value;
         const flavour = e.target.flavour.value;
         const itemForm = e.target.itemForm.value;
+        const breedRecommendation = e.target.breedRecommendation.value;
         const specificUser = e.target.specificUser.value;
         const ageRange = e.target.ageRange.value;
         const itemWeight = e.target.itemWeight.value;
@@ -35,7 +36,7 @@ const ProductAdd = () => {
         const imgUrl2 = e.target.imgUrl2.value;
         const imgUrl3 = e.target.imgUrl3.value;
         // console.log(name, email, password);
-        const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, flavour, itemForm, specificUser, ageRange, itemWeight, unitCount, numberOfItems, modelName, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
+        const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, flavour, itemForm, breedRecommendation, specificUser, ageRange, itemWeight, unitCount, numberOfItems, modelName, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
         //console.log(product);
         // send data to the server 
 
@@ -113,6 +114,10 @@ const ProductAdd = () => {
                         <div className="row mb-2">
                             <input type="text" name='itemForm' className="form-control" placeholder="Item Form" />
                         </div>
+                        <div className="row mb-2">
+                            <input type="text" name='breedRecommendation' className="form-control" placeholder="Breed Recommendation" />
+                        </div>
+
                         <div className="row mb-2">
                             <input type="text" name='specificUser' className="form-control" placeholder="Specific uses for product" />
                         </div>
