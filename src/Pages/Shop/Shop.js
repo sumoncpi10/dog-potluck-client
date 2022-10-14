@@ -15,6 +15,8 @@ const Shop = () => {
     const path = pathname.split("/");
     // const categoryy = pathname[1];
     const [category, setCategory] = useState(path[1]);
+    // const [bgImg, setBgImg] = useState();
+    let bgImg = '';
     // console.log(page, size);
     // console.log(category);
     useEffect(() => {
@@ -46,6 +48,24 @@ const Shop = () => {
     if (!products) {
         return <Loading></Loading>
     }
+    if (category) {
+        console.log(category);
+        if (category === 'cat') {
+            bgImg = 'cat.jpg';
+        }
+        else if (category === 'rabbit') {
+            bgImg = 'rabbit.jpg';
+        }
+        else if (category === 'fish') {
+            bgImg = 'fish.jpg';
+        }
+        else if (category === 'bird') {
+            bgImg = 'bird.jpg';
+        }
+        else {
+            bgImg = 'bg1.webp';
+        }
+    }
     return (
         <div>
             <div className="wrapper">
@@ -56,62 +76,16 @@ const Shop = () => {
                     </div>
                 </div>
                 <Header></Header>
-                {/* 
-                <header className="header-area transparent">
-                    <div className="container">
-                        <div className="row no-gutter align-items-center position-relative">
-                            <div className="col-12">
-                                <div className="header-align">
-                                    <div className="header-align-start">
-                                        <div className="header-logo-area">
-                                            <a href="index.html">
-                                                <img className="logo-main" src="assets/img/logo-light.webp" width="158" height="36" alt="Logo" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className="header-align-center">
-                                        <div className="header-navigation-area position-relative">
-                                            <ul className="main-menu nav">
-                                                <li><a href="index.html"><span>Home</span></a></li>
-                                                <li><a href="about-us.html"><span>About</span></a></li>
-                                                <li><a href="shop.html"><span>Shop</span></a></li>
-                                                <li><a href="blog.html"><span>Blog</span></a>
-
-                                                </li>
-
-                                                <li><a href="contact.html"><span>Contact</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className="header-align-end">
-                                        <div className="header-action-area">
-                                            <div className="shopping-search">
-                                                <button className="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
-                                                    data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i
-                                                        className="pe-7s-search icon"></i></button>
-                                            </div>
-
-                                            <button className="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
-                                                aria-controls="AsideOffcanvasMenu">
-                                                <i className="pe-7s-menu"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header> */}
-
 
                 <main className="main-content">
 
-                    <div className="page-header-area" style={{ "backgroundImage": "url(assets/img/photos/bg1.webp)" }} >
+                    <div className="page-header-area " style={{ "backgroundImage": `url(assets/img/photos/${bgImg})` }} >
+
                         <div className="container pt--0 pb--0">
                             <div className="row">
                                 <div className="col-12">
                                     <div className="page-header-content">
-                                        <h2 className="title">Products</h2>
+                                        <h2 className="title text-secondary">Products</h2>
                                         <nav className="breadcrumb-area">
                                             <ul className="breadcrumb">
                                                 <li><Link to="/">Home</Link></li>

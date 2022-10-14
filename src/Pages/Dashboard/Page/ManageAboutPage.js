@@ -65,7 +65,7 @@ const ManageAboutPage = () => {
                             <th scope="col ">Description1</th>
                             <th scope="col ">Description2</th>
                             <th scope="col ">Edit</th>
-                            <th scope="col ">Delete</th>
+                            {/* <th scope="col ">Delete</th> */}
                         </tr>
                     </thead>
                     <tbody className='table-light'>
@@ -78,7 +78,7 @@ const ManageAboutPage = () => {
                                 <td>{a?.description2}</td>
 
                                 <td><button className='border-0 rounded-circle delete-button' onClick={() => btnEdit(a._id)}><FontAwesomeIcon icon={faEdit} /></button></td>
-                                <td><button className='border-0 rounded-circle delete-button ' onClick={() => handleRemoveProduct(a)} ><FontAwesomeIcon className='delete-icon' icon={faTrashAlt}></FontAwesomeIcon></button></td>
+                                {/* <td><button className='border-0 rounded-circle delete-button ' onClick={() => handleRemoveProduct(a)} ><FontAwesomeIcon className='delete-icon' icon={faTrashAlt}></FontAwesomeIcon></button></td> */}
                             </tr>)
                         }
 

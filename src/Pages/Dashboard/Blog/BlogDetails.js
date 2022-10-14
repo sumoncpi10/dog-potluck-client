@@ -55,7 +55,8 @@ const BlogDetails = () => {
                             <div className="row justify-content-between">
                                 <div className="col-12">
                                     <div className="blog-details-content-wrap">
-                                        <h1 className='text-center pb-3'>The Best Dry Dog Foods October 2022</h1>
+                                        <h1 className='text-center pb-3'>{blog?.mh1}</h1>
+                                        <h6 className='text-center pb-3'>{blog?.mh2}</h6>
                                         <div className="blog-details-item mb-3">
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img || blog?.img1} width="1100" height="590" alt="Image-HasTech" />

@@ -57,7 +57,7 @@ const Blogs = () => {
                     <section className="blog-area blog-inner-area">
                         <div className="container">
                             <div className="row">
-                                <h1>The Best Dry Dog Foods October 2022</h1>
+                                {/* <h1>The Best Dry Dog Foods October 2022</h1> */}
                                 {
                                     blogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
                                 }

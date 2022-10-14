@@ -242,41 +242,13 @@ const EditAboutPage = () => {
                             <input onChange={boldTittleChange} value={product.boldTittle} type="text" name='boldTittle' className="form-control" placeholder="Bold Tittle" required />
                         </div>
 
-                        {/* <div className="row mb-2">
-                            <select name='category' onChange={categoryChange} value={product?.category} className="form-select form-control" aria-label="Default select example">
-                                <option selected>Category</option>
-                                <option value="cat">Cat Food</option>
-                                <option value="fish">Fish Food</option>
-                                <option value="bird">Bird Food</option>
-                                <option value="dog">Dog Food</option>
-                                <option value="rabbit">Rabbit Food</option>
-                            </select>
-                        </div> */}
-                        {/* <div className="row mb-2">
-                             <select name='collection_type' onChange={collectionTypeChange} value={product?.collection_type} className="form-select form-control" aria-label="Default select example">
-                                <option selected>Collection Type</option>
-                                <option value="avg">AVERAGE</option>
-                                <option value="all">All</option>
-                                <option value="new">NEW</option>
-                                <option value="bestSeller">BEST SELLERS</option>
-                                <option value="featured">FEATURED</option>
-                                <option value="onSall">ON SALL</option>
-                            </select>
-                        </div> */}
-                        {/* 
-                        <div className="row mb-2">
-                            <select name='dealsOfDay' onChange={dealsChange} value={product?.dealsOfDay} className="form-select form-control" aria-label="Default select example">
 
-                                <option value="none" selected>None</option>
-                                <option value="deals" >Deals Of The Day</option>
-                            </select>
-                        </div> */}
                         <div className="row mb-2">
-                            {/* <input type="textarea" name='description' className="form-control" placeholder="Description" /> */}
+
                             <textarea type="text" onChange={descriptionChange1} value={product.description1} name='description1' className="form-control" placeholder="Description1" ></textarea>
                         </div>
                         <div className="row mb-2">
-                            {/* <input type="textarea" name='description' className="form-control" placeholder="Description" /> */}
+
                             <textarea type="text" onChange={descriptionChange2} value={product.description2} name='description2' className="form-control" placeholder="Description2" ></textarea>
                         </div>
 
