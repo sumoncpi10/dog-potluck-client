@@ -131,17 +131,19 @@ const Shop = () => {
                                                                     <li><a href="shop-four-columns.html">3</a></li>
                                                                     <li><a href="shop-four-columns.html" className="icon"><i className="fa fa-angle-right"></i></a>
                                                                     </li> */}
-                                                                    <li>
-                                                                        <select onChange={e => setSize(e.target.value)}>
-                                                                            <option value="4" >4</option>
-                                                                            <option value="8" selected>8</option>
-                                                                            <option value="16">16</option>
-                                                                            <option value="32">32</option>
-                                                                            <option value="64">66</option>
-                                                                            <option value="128">128</option>
-                                                                            <option value="256">256</option>
-                                                                        </select>
-                                                                    </li>
+                                                                    {
+                                                                        products ? <li>
+                                                                            <select onChange={e => setSize(e.target.value)}>
+                                                                                <option value="4" >4</option>
+                                                                                <option value="8" selected>8</option>
+                                                                                <option value="16">16</option>
+                                                                                <option value="32">32</option>
+                                                                                <option value="64">66</option>
+                                                                                <option value="128">128</option>
+                                                                                <option value="256">256</option>
+                                                                            </select>
+                                                                        </li> : ''
+                                                                    }
                                                                 </ul>
 
                                                             </div>
