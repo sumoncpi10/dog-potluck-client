@@ -61,6 +61,27 @@ const BlogDetails = () => {
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img || blog?.img1} width="1100" height="590" alt="Image-HasTech" />
                                             </div>
+
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating1 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating1 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating1 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating1 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating1 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
+                                            </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle1}</h3>
                                                 <div className='px-5 '>
@@ -79,6 +100,26 @@ const BlogDetails = () => {
                                         <div className="blog-details-item mb-3">
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img2} width="1100" height="590" alt="Image-HasTech" />
+                                            </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating2 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating2 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating2 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating2 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating2 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
                                             </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle2}</h3>
@@ -99,6 +140,26 @@ const BlogDetails = () => {
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img3} width="1100" height="590" alt="Image-HasTech" />
                                             </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating3 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating3 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating3 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating3 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating3 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
+                                            </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle3}</h3>
                                                 <div className='px-5 '>
@@ -117,6 +178,26 @@ const BlogDetails = () => {
                                         <div className="blog-details-item mb-3">
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img4} width="1100" height="590" alt="Image-HasTech" />
+                                            </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating4 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating4 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating4 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating4 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating4 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
                                             </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle4}</h3>
@@ -137,6 +218,26 @@ const BlogDetails = () => {
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img5} width="1100" height="590" alt="Image-HasTech" />
                                             </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating5 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating5 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating5 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating5 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating5 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
+                                            </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle5}</h3>
                                                 <div className='px-5 '>
@@ -155,6 +256,26 @@ const BlogDetails = () => {
                                         <div className="blog-details-item mb-3">
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img6} width="1100" height="590" alt="Image-HasTech" />
+                                            </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating6 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating6 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating6 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating6 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating6 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
                                             </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle6}</h3>
@@ -175,6 +296,26 @@ const BlogDetails = () => {
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img7} width="1100" height="590" alt="Image-HasTech" />
                                             </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating7 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating7 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating7 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating7 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating7 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
+                                            </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle7}</h3>
                                                 <div className='px-5 '>
@@ -193,6 +334,26 @@ const BlogDetails = () => {
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img8} width="1100" height="590" alt="Image-HasTech" />
                                             </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating8 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating8 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating8 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating8 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating8 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
+                                            </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle8}</h3>
                                                 <div className='px-5 '>
@@ -210,6 +371,26 @@ const BlogDetails = () => {
                                         <div className="blog-details-item mb-3">
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img9} width="1100" height="590" alt="Image-HasTech" />
+                                            </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating9 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating9 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating9 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating9 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating9 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
                                             </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle9}</h3>
@@ -230,6 +411,26 @@ const BlogDetails = () => {
                                         <div className="blog-details-item mb-3">
                                             <div className="blog-details-thumb">
                                                 <img className='w-50 rounded mx-auto d-block' src={blog?.img10} width="1100" height="590" alt="Image-HasTech" />
+                                            </div>
+                                            <div className="rating-box-wrap text-center">
+                                                <div className="rating-box">
+                                                    {
+                                                        blog?.rating10 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating10 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating10 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating10 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                    {
+                                                        blog?.rating10 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+                                                </div>
+
                                             </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle10}</h3>

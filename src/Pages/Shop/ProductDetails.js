@@ -463,14 +463,24 @@ const ProductDetails = () => {
 
                                                 <div className="rating-box-wrap">
                                                     <div className="rating-box">
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
+                                                        {
+                                                            product?.rating >= 1 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        }
+                                                        {
+                                                            product?.rating >= 2 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        }
+                                                        {
+                                                            product?.rating >= 3 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        }
+                                                        {
+                                                            product?.rating >= 4 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        }
+                                                        {
+                                                            product?.rating == 5 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        }
                                                     </div>
                                                     <div className="review-status">
-                                                        <a href="javascript:void(0)">(5 Customer Review)</a>
+                                                        <a href="javascript:void(0)">(Customer Review)</a>
                                                     </div>
                                                 </div>
                                                 {/* <p className='w-75 text-justify'>{product?.description1}</p> */}
@@ -731,7 +741,7 @@ const ProductDetails = () => {
             <div id="scroll-to-top" className="scroll-to-top"><span className="fa fa-angle-up"></span></div>
 
             <aside></aside>
-        </div>
+        </div >
 
 
     );

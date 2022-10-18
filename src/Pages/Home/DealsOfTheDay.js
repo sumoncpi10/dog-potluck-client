@@ -29,15 +29,22 @@ const DealsOfTheDay = ({ deals }) => {
                             <h4 className="title"><Link to={`/product/${deals?._id}`}>{deals.name}</Link></h4>
                             <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
                                 <div className="rating-box">
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
-                                    <i className="fa fa-star"></i>
                                     {
-                                        deals?.rating > 3 ? <i className="fa fa-star"></i> : ''
+                                        deals?.rating >= 1 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                     }
                                     {
-                                        deals?.rating > 4 ? <i className="fa fa-star checked"></i> : ''
+                                        deals?.rating >= 2 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                     }
+                                    {
+                                        deals?.rating >= 3 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                    }
+                                    {
+                                        deals?.rating >= 4 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                    }
+                                    {
+                                        deals?.rating == 5 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                    }
+
 
 
                                 </div>

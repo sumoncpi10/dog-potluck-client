@@ -1,3 +1,5 @@
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 const Product = ({ product }) => {
@@ -19,11 +21,22 @@ const Product = ({ product }) => {
                     <h4 className="title"><Link to={`/product/${product?._id}`}>{product.name}</Link></h4>
                     <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
                         <div className="rating-box">
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
+                            {
+                                product?.rating >= 1 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                            }
+                            {
+                                product?.rating >= 2 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                            }
+                            {
+                                product?.rating >= 3 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                            }
+                            {
+                                product?.rating >= 4 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                            }
+                            {
+                                product?.rating == 5 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                            }
+
                         </div>
                     </div>
                     <button onClick={NevigateToDtail} type="button" className="btn-product-cart" data-bs-toggle="modal">Buy Now
