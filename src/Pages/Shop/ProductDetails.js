@@ -467,16 +467,17 @@ const ProductDetails = () => {
                                                             product?.rating >= 1 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                         }
                                                         {
-                                                            product?.rating >= 2 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                            product?.rating == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : product?.rating >= 2 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        }
+
+                                                        {
+                                                            product?.rating == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : product?.rating >= 3 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                         }
                                                         {
-                                                            product?.rating >= 3 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                            product?.rating == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : product?.rating >= 4 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                         }
                                                         {
-                                                            product?.rating >= 4 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                        }
-                                                        {
-                                                            product?.rating == 5 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                            product?.rating == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : product?.rating == 5 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                         }
                                                     </div>
                                                     <div className="review-status">

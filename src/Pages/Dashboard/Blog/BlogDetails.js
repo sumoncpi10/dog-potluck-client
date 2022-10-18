@@ -68,18 +68,20 @@ const BlogDetails = () => {
                                                         blog?.rating1 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating1 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating1 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating1 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating1 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating1 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating1 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating1 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating1 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating1 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating1 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating1 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating1 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
+
 
                                             </div>
                                             <div className="blog-details-content">
@@ -107,19 +109,19 @@ const BlogDetails = () => {
                                                         blog?.rating2 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating2 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating2 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating2 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating2 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating2 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating2 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating2 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating2 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating2 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating2 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating2 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating2 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
-
                                             </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle2}</h3>
@@ -146,16 +148,17 @@ const BlogDetails = () => {
                                                         blog?.rating3 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating3 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating3 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating3 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating3 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating3 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating3 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating3 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating3 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating3 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating3 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating3 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating3 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
 
@@ -185,16 +188,17 @@ const BlogDetails = () => {
                                                         blog?.rating4 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating4 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating4 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating4 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating4 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating4 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating4 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating4 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating4 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating4 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating4 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating4 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating4 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
 
@@ -224,16 +228,17 @@ const BlogDetails = () => {
                                                         blog?.rating5 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating5 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating5 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating5 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating5 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating5 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating5 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating5 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating5 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating5 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating5 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating5 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating5 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
 
@@ -263,16 +268,17 @@ const BlogDetails = () => {
                                                         blog?.rating6 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating6 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating6 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating6 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating6 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating6 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating6 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating6 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating6 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating6 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating6 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating6 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating6 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
 
@@ -302,19 +308,19 @@ const BlogDetails = () => {
                                                         blog?.rating7 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating7 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating7 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating7 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating7 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating7 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating7 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating7 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating7 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating7 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating7 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating7 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating7 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
-
                                             </div>
                                             <div className="blog-details-content">
                                                 <h3 className="main-title text-center">{blog?.Tittle7}</h3>
@@ -340,16 +346,17 @@ const BlogDetails = () => {
                                                         blog?.rating8 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating8 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating8 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating8 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating8 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating8 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating8 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating8 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating8 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating8 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating8 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating8 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating8 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
 
@@ -378,16 +385,17 @@ const BlogDetails = () => {
                                                         blog?.rating9 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating9 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating9 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating9 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating9 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating9 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating9 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating9 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating9 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating9 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating9 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating9 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating9 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
 
@@ -418,16 +426,17 @@ const BlogDetails = () => {
                                                         blog?.rating10 >= 1 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating10 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating10 == 1.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating10 >= 2 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                    }
+
+                                                    {
+                                                        blog?.rating10 == 2.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating10 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating10 >= 3 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating10 == 3.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating10 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                     {
-                                                        blog?.rating10 >= 4 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
-                                                    }
-                                                    {
-                                                        blog?.rating10 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
+                                                        blog?.rating10 == 4.5 ? <i class="fa fa-star-half-o" style={{ color: 'yellow' }}></i> : blog?.rating10 == 5 ? <i className="fa fa-star" style={{ color: 'yellow' }}></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                                     }
                                                 </div>
 
