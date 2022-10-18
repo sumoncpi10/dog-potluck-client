@@ -23,6 +23,7 @@ import Disclaimer from "./Pages/Disclaimer/Disclaimer";
 import { useEffect } from "react";
 import { useState } from "react";
 import ManageAboutPage from "./Pages/Dashboard/Page/ManageAboutPage";
+import ManageBlogs from "./Pages/Dashboard/Blog/ManageBlogs";
 
 function App() {
   const [userV, setuserV] = useState('');
@@ -62,6 +63,7 @@ function App() {
             <Route path="/manageAboutPage" element={<ManageAboutPage />}></Route>
             <Route path="/updateAbout/:id" element={<EditAboutPage />}></Route>
             <Route path="/updateContact/:id" element={<ManageAllMassage />}></Route>
+            <Route path="/manageBlog" element={<ManageBlogs />}></Route>
             <Route path="/add-blog" element={<AddBlog />}></Route></> : ''
 
 

@@ -11,11 +11,11 @@ const ManageBlogs = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?category=${'shop'}`)
+        fetch(`http://localhost:5000/blogs`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
-                // console.log(data);
+                console.log(data);
                 setProducts(data);
 
             }
@@ -23,20 +23,13 @@ const ManageBlogs = () => {
 
     }, []);
 
-    const btnEdit = id => {
-        const proceed = window.confirm('Are You Sure You Want To Delete The Product!');
-        // console.log(id)
-        if (proceed) {
-            navigate(`/updateProduct/${id}`)
-        }
-    }
 
 
-    const handleRemoveProduct = product => {
-        const proceed = window.confirm('Are You Sure You Want To Delete The Product!');
+    const handleRemoveBlog = product => {
+        const proceed = window.confirm('Are You Sure You Want To Delete The Blog!');
         //console.log(product)
         if (proceed) {
-            fetch(`http://localhost:5000/product/${product._id}`, {
+            fetch(`http://localhost:5000/blog/${product._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -61,9 +54,10 @@ const ManageBlogs = () => {
                         <tr>
                             <th scope="col ">Sl No</th>
                             <th scope="col ">Photo</th>
-                            <th scope="col ">Product Name</th>
+                            <th scope="col ">Tittle</th>
+                            <th scope="col ">Tittle 2</th>
                             <th scope="col ">Category</th>
-                            <th scope="col ">Edit</th>
+                            {/* <th scope="col ">Edit</th> */}
                             <th scope="col ">Delete</th>
                         </tr>
                     </thead>
@@ -71,12 +65,13 @@ const ManageBlogs = () => {
                         {
                             products.map((a, index) => <tr>
                                 <th scope="row">{index + 1}</th>
-                                <td><img style={{ "height": "90px" }} src={a?.img} alt="" /></td>
-                                <td>{a?.name}</td>
+                                <td><img style={{ "height": "90px" }} src={a?.img1} alt="" /></td>
+                                <td>{a?.Tittle1}</td>
+                                <td>{a?.Tittle2}</td>
                                 <td>{a?.category}</td>
 
-                                <td><button className='border-0 rounded-circle delete-button' onClick={() => btnEdit(a._id)}><FontAwesomeIcon icon={faEdit} /></button></td>
-                                <td><button className='border-0 rounded-circle delete-button ' onClick={() => handleRemoveProduct(a)} ><FontAwesomeIcon className='delete-icon' icon={faTrashAlt}></FontAwesomeIcon></button></td>
+                                {/* <td><button className='border-0 rounded-circle delete-button' onClick={() => btnEdit(a._id)}><FontAwesomeIcon icon={faEdit} /></button></td> */}
+                                <td><button className='border-0 rounded-circle delete-button ' onClick={() => handleRemoveBlog(a)} ><FontAwesomeIcon className='delete-icon' icon={faTrashAlt}></FontAwesomeIcon></button></td>
                             </tr>)
                         }
 
