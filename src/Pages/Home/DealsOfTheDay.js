@@ -54,10 +54,12 @@ const DealsOfTheDay = ({ deals }) => {
                             </div>
                             <div className="product-feature-list">
                                 <ul>
-                                    <li><span>Predecessor :</span> None.</li>
-                                    <li><span>Support Type :</span> Neutral.</li>
-                                    <li><span>Cushioning :</span> High Energizing.</li>
-                                    <li><span>Total Weight :</span> 300gm</li>
+                                    {
+                                        deals?.unitCount ? <li><span>Total Weight :</span> {deals?.unitCount}</li> : ''
+                                    }
+                                    {
+                                        deals?.numberOfItems ? <li><span>Number of Items:</span> {deals?.numberOfItems}</li> : ''
+                                    }
                                 </ul>
                             </div>
                         </div>
