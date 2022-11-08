@@ -17,7 +17,7 @@ const Blog = ({ blog }) => {
                 <div className="content">
                     <div className="meta">
                         <ul>
-                            <li className="author-info"><span>By:</span> <a href="/blog">Admin</a></li>
+                            {/* <li className="author-info"><span>By:</span> <a href="/blog">Admin</a></li> */}
                             {/* <li className="post-date"><a href="/blog">{blog?.date}</a></li> */}
 
                         </ul>

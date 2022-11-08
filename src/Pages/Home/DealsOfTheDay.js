@@ -22,10 +22,10 @@ const DealsOfTheDay = ({ deals }) => {
                     </div>
                     <div className="col-lg-6">
                         <div className="product-info">
-                            <div className="ht-countdown-wrap">
+                            {/* <div className="ht-countdown-wrap">
                                 <span className="countdown-title">End In:</span>
                                 <div className="ht-countdown ht-countdown-style1" data-date="1/10/2022"></div>
-                            </div>
+                            </div> */}
                             <h4 className="title"><Link to={`/product/${deals?._id}`}>{deals.name}</Link></h4>
                             <div className="rating-box-wrap" style={{ "color": "#ffde00" }}>
                                 <div className="rating-box">

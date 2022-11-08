@@ -18,7 +18,7 @@ const Contact = () => {
         // //console.log(product);
         // send data to the server 
 
-        fetch('http://localhost:5000/questAdd', {
+        fetch('https://obscure-forest-36360.herokuapp.com/questAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

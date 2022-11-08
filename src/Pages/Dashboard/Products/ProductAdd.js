@@ -40,7 +40,7 @@ const ProductAdd = () => {
         //console.log(product);
         // send data to the server 
 
-        fetch('http://localhost:5000/productAdd', {
+        fetch('https://obscure-forest-36360.herokuapp.com/productAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -146,7 +146,7 @@ const ProductAdd = () => {
                             <input type="text" name='rating' className="form-control" placeholder="Rating" />
                         </div>
                         <div className="row mb-2">
-                            <input type="text" name='information' className="form-control" placeholder="Information" />
+                            <textarea type="text" name='information' className="form-control" placeholder="Information" />
                         </div>
                         <div className="row mb-2">
                             <input type="text" name='review' className="form-control" placeholder="Review" />

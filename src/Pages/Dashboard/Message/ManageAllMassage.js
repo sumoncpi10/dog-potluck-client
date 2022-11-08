@@ -13,7 +13,7 @@ const ManageAllMassage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/message`)
+        fetch(`https://obscure-forest-36360.herokuapp.com/message`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
@@ -36,7 +36,7 @@ const ManageAllMassage = () => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Quest!');
         //console.log(product)
         if (proceed) {
-            fetch(`http://localhost:5000/quest/${product._id}`, {
+            fetch(`https://obscure-forest-36360.herokuapp.com/quest/${product._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

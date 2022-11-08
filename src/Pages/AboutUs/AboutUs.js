@@ -9,7 +9,7 @@ import { useState } from 'react';
 const AboutUs = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/abouts`)
+        fetch(`https://obscure-forest-36360.herokuapp.com/abouts`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);

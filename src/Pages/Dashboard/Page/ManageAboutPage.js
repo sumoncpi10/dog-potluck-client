@@ -11,7 +11,7 @@ const ManageAboutPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/abouts`)
+        fetch(`https://obscure-forest-36360.herokuapp.com/abouts`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
@@ -36,7 +36,7 @@ const ManageAboutPage = () => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Product!');
         //console.log(product)
         if (proceed) {
-            fetch(`http://localhost:5000/product/${product._id}`, {
+            fetch(`https://obscure-forest-36360.herokuapp.com/product/${product._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

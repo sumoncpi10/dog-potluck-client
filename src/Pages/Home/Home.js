@@ -278,13 +278,13 @@ const Home = () => {
     const [dealsOfTheDay, setdealsOfTheDay] = useState([]);
     // console.log(products)
     useEffect(() => {
-        fetch(`http://localhost:5000/productType/${'all'}`)
+        fetch(`https://obscure-forest-36360.herokuapp.com/productType/${'all'}`)
             .then(res => res.json())
             .then(data =>
                 setProducts(data))
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/dealsOfTheDay/${'deals'}`)
+        fetch(`https://obscure-forest-36360.herokuapp.com/dealsOfTheDay/${'deals'}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -294,7 +294,7 @@ const Home = () => {
     }, []);
     const LoadAllProducts = (collection_type) => {
 
-        fetch(`http://localhost:5000/productType/${collection_type}`, {
+        fetch(`https://obscure-forest-36360.herokuapp.com/productType/${collection_type}`, {
             method: 'GET'
         })
             .then(res => res.json())
@@ -304,7 +304,7 @@ const Home = () => {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs?limit=${'3'}`)
+        fetch(`https://obscure-forest-36360.herokuapp.com/blogs?limit=${'3'}`)
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);
@@ -956,8 +956,8 @@ const Home = () => {
                             </div>
                         </section> */}
 
-                        <section className="blog-area blog-default-area">
-                            <div className="container pt--0">
+                        <section className="blog-area blog-default-area ">
+                            <div className="container pt--1">
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="section-title shape-center text-center">
