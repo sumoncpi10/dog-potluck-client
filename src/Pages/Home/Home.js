@@ -276,6 +276,7 @@ const Home = () => {
     })(window.jQuery);
     const [products, setProducts] = useState([]);
     const [dealsOfTheDay, setdealsOfTheDay] = useState([]);
+    const [blogs, setBlogs] = useState([]);
     // console.log(products)
     useEffect(() => {
         fetch(`https://obscure-forest-36360.herokuapp.com/productType/${'all'}`)
@@ -290,10 +291,8 @@ const Home = () => {
                 // console.log(data);
                 setdealsOfTheDay(data)
             })
-
     }, []);
     const LoadAllProducts = (collection_type) => {
-
         fetch(`https://obscure-forest-36360.herokuapp.com/productType/${collection_type}`, {
             method: 'GET'
         })
@@ -301,8 +300,6 @@ const Home = () => {
             .then(data =>
                 setProducts(data))
     }
-    const [blogs, setBlogs] = useState([]);
-
     useEffect(() => {
         fetch(`https://obscure-forest-36360.herokuapp.com/blogs?limit=${'3'}`)
             .then(res => res.json())
@@ -311,9 +308,8 @@ const Home = () => {
                 // console.log(data);
             }
             )
-
     }, []);
-    if (!products) {
+    if (!products && !dealsOfTheDay && !blogs) {
         return <Loading></Loading>
     }
     return (
