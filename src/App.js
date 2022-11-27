@@ -14,6 +14,7 @@ import ProductDetails from "./Pages/Shop/ProductDetails";
 import ProductAdd from "./Pages/Dashboard/Products/ProductAdd";
 import ManageProducts from "./Pages/Dashboard/Products/ManageProducts";
 import UpdateProduct from "./Pages/Dashboard/Products/UpdateProduct";
+import UpdateBlog from "./Pages/Dashboard/Blog/UpdateBlog";
 import ManageAllMassage from "./Pages/Dashboard/Message/ManageAllMassage";
 import EditAboutPage from "./Pages/Dashboard/Page/EditAboutPage";
 import { toast, ToastContainer } from 'react-toastify';
@@ -35,13 +36,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/products" element={<Shop />}>
-
-        </Route>
-        <Route path='/product/:id' element={
-          <ProductDetails></ProductDetails>
-        }>
-        </Route>
+        <Route path="/products" element={<Shop />}></Route>
+        <Route path='/product/:id' element={<ProductDetails></ProductDetails>}></Route>
         <Route path="/cat" element={<Shop />} />
         <Route path="/fish" element={<Shop />} />
         <Route path="/bird" element={<Shop />} />
@@ -59,17 +55,14 @@ function App() {
             <Route path="/add-product" element={<ProductAdd />}></Route>
             <Route path="/manageProduct" element={<ManageProducts />}></Route>
             <Route path="/updateProduct/:id" element={<UpdateProduct />}></Route>
+            <Route path="/updateBlog/:id" element={< UpdateBlog />}></Route >
             <Route path="/manageMessage" element={<ManageAllMassage />}></Route>
             <Route path="/manageAboutPage" element={<ManageAboutPage />}></Route>
             <Route path="/updateAbout/:id" element={<EditAboutPage />}></Route>
             <Route path="/updateContact/:id" element={<ManageAllMassage />}></Route>
             <Route path="/manageBlog" element={<ManageBlogs />}></Route>
             <Route path="/add-blog" element={<AddBlog />}></Route></> : ''
-
-
         }
-
-
         <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer />

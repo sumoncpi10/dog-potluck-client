@@ -23,7 +23,13 @@ const ManageBlogs = () => {
 
     }, []);
 
-
+    const btnEdit = id => {
+        const proceed = window.confirm('Are You Sure You Want To Update The Blog!');
+        // console.log(id)
+        if (proceed) {
+            navigate(`/updateBlog/${id}`)
+        }
+    }
 
     const handleRemoveBlog = product => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Blog!');
@@ -57,7 +63,7 @@ const ManageBlogs = () => {
                             <th scope="col ">Tittle</th>
                             <th scope="col ">Tittle 2</th>
                             <th scope="col ">Category</th>
-                            {/* <th scope="col ">Edit</th> */}
+                            <th scope="col ">Edit</th>
                             <th scope="col ">Delete</th>
                         </tr>
                     </thead>
@@ -70,7 +76,7 @@ const ManageBlogs = () => {
                                 <td>{a?.Tittle2}</td>
                                 <td>{a?.category}</td>
 
-                                {/* <td><button className='border-0 rounded-circle delete-button' onClick={() => btnEdit(a._id)}><FontAwesomeIcon icon={faEdit} /></button></td> */}
+                                <td><button className='border-0 rounded-circle delete-button' onClick={() => btnEdit(a._id)}><FontAwesomeIcon icon={faEdit} /></button></td>
                                 <td><button className='border-0 rounded-circle delete-button ' onClick={() => handleRemoveBlog(a)} ><FontAwesomeIcon className='delete-icon' icon={faTrashAlt}></FontAwesomeIcon></button></td>
                             </tr>)
                         }
