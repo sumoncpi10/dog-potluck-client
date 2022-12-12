@@ -9,7 +9,7 @@ const EditAboutPage = () => {
     let [product, setProduct] = useState([]);
     // let [quantity, setQuantity] = useState(1);
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/about/${params.id}`)
+        fetch(`http://localhost:5000/about/${params.id}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -32,7 +32,7 @@ const EditAboutPage = () => {
         // console.log(name, email, password);
         const product = { tittle, boldTittle, description1, description2, btnUrl, img };
         //console.log(product);
-        fetch(`https://obscure-forest-36360.herokuapp.com/about/${params.id}`, {
+        fetch(`http://localhost:5000/about/${params.id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

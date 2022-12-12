@@ -83,7 +83,7 @@ const Footer = () => {
                         <div className="col-12">
                             <div className="footer-bottom-content">
                                 <p className="copyright">© 2022 DogPotluck. Made with <i className="fa fa-heart"></i> by <a target="_blank"
-                                    href="#">Robin.</a></p>
+                                    href="#">Dawdujjaman Sumon && N M Shohel.</a></p>
                                 <div className="payment">
                                     <Link to="/"><img src="assets/img/logo-light.webp" width="192" height="21"
                                         alt="Payment Logo" /></Link>

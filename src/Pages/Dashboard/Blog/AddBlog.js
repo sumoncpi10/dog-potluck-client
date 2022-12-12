@@ -98,7 +98,7 @@ const AddBlog = () => {
         console.log(product);
         // send data to the server 
 
-        fetch('https://obscure-forest-36360.herokuapp.com/blogAdd', {
+        fetch('http://localhost:5000/blogAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

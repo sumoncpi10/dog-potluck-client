@@ -8,7 +8,7 @@ const AddBlog = () => {
     const [blog, setBlog] = useState([]);
     const { id } = useParams();
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/blog/${id}`)
+        fetch(`http://localhost:5000/blog/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -123,7 +123,7 @@ const AddBlog = () => {
                 e.target.reset();
                 toast("Blog Update Successfully!");
             })
-        // fetch('https://obscure-forest-36360.herokuapp.com/blogAdd', {
+        // fetch('http://localhost:5000/blogAdd', {
         //     method: 'POST',
         //     headers: {
         //         'content-type': 'application/json'

@@ -8,7 +8,7 @@ const BlogDetails = () => {
     const [blog, setBlog] = useState([]);
     const { id } = useParams();
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/blog/${id}`)
+        fetch(`http://localhost:5000/blog/${id}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)

@@ -279,13 +279,13 @@ const Home = () => {
     const [blogs, setBlogs] = useState([]);
     // console.log(products)
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/productType/${'all'}`)
+        fetch(`http://localhost:5000/productType/${'all'}`)
             .then(res => res.json())
             .then(data =>
                 setProducts(data))
     }, []);
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/dealsOfTheDay/${'deals'}`)
+        fetch(`http://localhost:5000/dealsOfTheDay/${'deals'}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -293,7 +293,7 @@ const Home = () => {
             })
     }, []);
     const LoadAllProducts = (collection_type) => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/productType/${collection_type}`, {
+        fetch(`http://localhost:5000/productType/${collection_type}`, {
             method: 'GET'
         })
             .then(res => res.json())
@@ -301,7 +301,7 @@ const Home = () => {
                 setProducts(data))
     }
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/blogs?limit=${'3'}`)
+        fetch(`http://localhost:5000/blogs?limit=${'3'}`)
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);

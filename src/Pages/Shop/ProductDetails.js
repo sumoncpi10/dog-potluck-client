@@ -291,7 +291,7 @@ const ProductDetails = () => {
 
 
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/product/${id}`)
+        fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -301,7 +301,7 @@ const ProductDetails = () => {
     }, [pathname]);
     useEffect(() => {
         if (product?.category) {
-            fetch(`https://obscure-forest-36360.herokuapp.com/products?category=${product?.category ? product.category : ''}`)
+            fetch(`http://localhost:5000/products?category=${product?.category ? product.category : ''}`)
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data);
@@ -313,7 +313,7 @@ const ProductDetails = () => {
 
     }, [product?.category]);
     // useEffect(() => {
-    //     fetch(`https://obscure-forest-36360.herokuapp.com/review/${id}`)
+    //     fetch(`http://localhost:5000/review/${id}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             // console.log(data)
@@ -336,7 +336,7 @@ const ProductDetails = () => {
     //     const review = { ReviewComment, Reviewname, Reviewemail, ProductID: id, today };
     //     // send data to the server 
     //     //console.log(product)
-    //     fetch('https://obscure-forest-36360.herokuapp.com/reviewAdd', {
+    //     fetch('http://localhost:5000/reviewAdd', {
     //         method: 'POST',
     //         headers: {
     //             'content-type': 'application/json'
