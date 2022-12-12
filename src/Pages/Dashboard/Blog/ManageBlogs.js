@@ -11,7 +11,7 @@ const ManageBlogs = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`https://dog-potluck.onrender.com/blogs`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
@@ -35,7 +35,7 @@ const ManageBlogs = () => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Blog!');
         //console.log(product)
         if (proceed) {
-            fetch(`http://localhost:5000/blog/${product._id}`, {
+            fetch(`https://dog-potluck.onrender.com/blog/${product._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

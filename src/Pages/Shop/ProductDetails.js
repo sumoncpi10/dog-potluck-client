@@ -291,7 +291,7 @@ const ProductDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${id}`)
+        fetch(`https://dog-potluck.onrender.com/product/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -301,7 +301,7 @@ const ProductDetails = () => {
     }, [pathname]);
     useEffect(() => {
         if (product?.category) {
-            fetch(`http://localhost:5000/products?category=${product?.category ? product.category : ''}`)
+            fetch(`https://dog-potluck.onrender.com/products?category=${product?.category ? product.category : ''}`)
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data);
@@ -313,7 +313,7 @@ const ProductDetails = () => {
 
     }, [product?.category]);
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/review/${id}`)
+    //     fetch(`https://dog-potluck.onrender.com/review/${id}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             // console.log(data)
@@ -336,7 +336,7 @@ const ProductDetails = () => {
     //     const review = { ReviewComment, Reviewname, Reviewemail, ProductID: id, today };
     //     // send data to the server 
     //     //console.log(product)
-    //     fetch('http://localhost:5000/reviewAdd', {
+    //     fetch('https://dog-potluck.onrender.com/reviewAdd', {
     //         method: 'POST',
     //         headers: {
     //             'content-type': 'application/json'

@@ -98,7 +98,7 @@ const AddBlog = () => {
         console.log(product);
         // send data to the server 
 
-        fetch('http://localhost:5000/blogAdd', {
+        fetch('https://dog-potluck.onrender.com/blogAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

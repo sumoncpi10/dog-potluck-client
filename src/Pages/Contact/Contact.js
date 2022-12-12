@@ -18,7 +18,7 @@ const Contact = () => {
         // //console.log(product);
         // send data to the server 
 
-        fetch('http://localhost:5000/questAdd', {
+        fetch('https://dog-potluck.onrender.com/questAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

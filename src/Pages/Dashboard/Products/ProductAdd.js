@@ -40,7 +40,7 @@ const ProductAdd = () => {
         //console.log(product);
         // send data to the server 
 
-        fetch('http://localhost:5000/productAdd', {
+        fetch('https://dog-potluck.onrender.com/productAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

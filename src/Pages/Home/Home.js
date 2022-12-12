@@ -279,13 +279,13 @@ const Home = () => {
     const [blogs, setBlogs] = useState([]);
     // console.log(products)
     useEffect(() => {
-        fetch(`http://localhost:5000/productType/${'all'}`)
+        fetch(`https://dog-potluck.onrender.com/productType/${'all'}`)
             .then(res => res.json())
             .then(data =>
                 setProducts(data))
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/dealsOfTheDay/${'deals'}`)
+        fetch(`https://dog-potluck.onrender.com/dealsOfTheDay/${'deals'}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -293,7 +293,7 @@ const Home = () => {
             })
     }, []);
     const LoadAllProducts = (collection_type) => {
-        fetch(`http://localhost:5000/productType/${collection_type}`, {
+        fetch(`https://dog-potluck.onrender.com/productType/${collection_type}`, {
             method: 'GET'
         })
             .then(res => res.json())
@@ -301,7 +301,7 @@ const Home = () => {
                 setProducts(data))
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/blogs?limit=${'3'}`)
+        fetch(`https://dog-potluck.onrender.com/blogs?limit=${'3'}`)
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);

@@ -20,7 +20,7 @@ const Shop = () => {
     // console.log(page, size);
     // console.log(category);
     useEffect(() => {
-        fetch(`http://localhost:5000/productCount?view=${'detail'}category=${category ? category : ''}`)
+        fetch(`https://dog-potluck.onrender.com/productCount?view=${'detail'}category=${category ? category : ''}`)
             .then(res => res.json())
             .then(data => {
                 const count = data?.count;
@@ -31,7 +31,7 @@ const Shop = () => {
     }, [size]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?page=${page}&size=${size}&category=${category ? category : ''}`)
+        fetch(`https://dog-potluck.onrender.com/products?page=${page}&size=${size}&category=${category ? category : ''}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
