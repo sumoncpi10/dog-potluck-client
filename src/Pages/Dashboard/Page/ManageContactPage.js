@@ -6,7 +6,7 @@ const ManageContactPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/abouts`)
+        fetch(`https://dog-potluck.onrender.com/abouts`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
@@ -31,7 +31,7 @@ const ManageContactPage = () => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Product!');
         //console.log(product)
         if (proceed) {
-            fetch(`https://obscure-forest-36360.herokuapp.com/product/${product._id}`, {
+            fetch(`https://dog-potluck.onrender.com/product/${product._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -277,15 +277,16 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     const [dealsOfTheDay, setdealsOfTheDay] = useState([]);
     const [blogs, setBlogs] = useState([]);
+    const [buttonLink, setButtonLink] = useState([]);
     // console.log(products)
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/productType/${'all'}`)
+        fetch(`https://dog-potluck.onrender.com/productType/${'all'}`)
             .then(res => res.json())
             .then(data =>
                 setProducts(data))
     }, []);
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/dealsOfTheDay/${'deals'}`)
+        fetch(`https://dog-potluck.onrender.com/dealsOfTheDay/${'deals'}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -293,7 +294,7 @@ const Home = () => {
             })
     }, []);
     const LoadAllProducts = (collection_type) => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/productType/${collection_type}`, {
+        fetch(`https://dog-potluck.onrender.com/productType/${collection_type}`, {
             method: 'GET'
         })
             .then(res => res.json())
@@ -301,13 +302,21 @@ const Home = () => {
                 setProducts(data))
     }
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/blogs?limit=${'3'}`)
+        fetch(`https://dog-potluck.onrender.com/blogs?limit=${'3'}`)
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);
                 // console.log(data);
             }
             )
+    }, []);
+    useEffect(() => {
+        fetch(`https://dog-potluck.onrender.com/ButtonLink/sumoncpi10@gmail.com`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setButtonLink(data);
+            })
     }, []);
     if (!products && !dealsOfTheDay && !blogs) {
         return <Loading></Loading>
@@ -345,7 +354,7 @@ const Home = () => {
                                                                         <h2 className="title">A Greate Meal With Your Pet</h2>
                                                                     </div>
                                                                     <div className="btn-box">
-                                                                        <Link className="btn-theme text-dark" to="/dog">Shop Now</Link>
+                                                                        <Link className="btn-theme text-dark" to={`/${buttonLink?.SliderButtonLink}`}>Shop Now</Link>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -381,7 +390,7 @@ const Home = () => {
                                                                         <p className="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, seddo do eiusmod tempor incidid ut labore.</p>
                                                                     </div>
                                                                     <div className="btn-box">
-                                                                        <Link className="btn-theme text-dark" to="/cat">Shop Now</Link>
+                                                                        <Link className="btn-theme text-dark" to={`/${buttonLink?.SliderButtonLink2}`}>Shop Now</Link>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -508,7 +517,7 @@ const Home = () => {
                                             <div className="content">
                                                 <h5 className="sub-title">50% Off</h5>
                                                 <h5 className="title">Dog Food</h5>
-                                                <Link className="btn-theme btn-theme-color btn-sm" to='/dog'>Buy Now</Link>
+                                                <Link className="btn-theme btn-theme-color btn-sm" to={`/${buttonLink?.DogFoodButtonLink}`}>Buy Now</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -522,7 +531,7 @@ const Home = () => {
                                             <div className="content">
                                                 <h5 className="sub-title">50% Off</h5>
                                                 <h5 className="title">Cat Food</h5>
-                                                <Link className="btn-theme btn-theme-color btn-sm" to='/cat'>Buy Now</Link>
+                                                <Link className="btn-theme btn-theme-color btn-sm" to={`/${buttonLink?.CatFoodButtonLink}`}>Buy Now</Link>
 
                                             </div>
                                         </div>
@@ -800,7 +809,7 @@ const Home = () => {
                                             <h2 className="title">Best Deal Offer</h2>
                                             <p className="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                                 incididunt ut labore etlop.</p>
-                                            <Link className="btn-theme text-dark" to="/shop">Buy Now</Link>
+                                            <Link className="btn-theme text-dark" to={`/${buttonLink?.BestDealOfferButtonLink}`}>Buy Now</Link>
                                             <img className="shape-object" src="assets/img/shape/object1.webp" width="316" height="302"
                                                 alt="Image-HasTech" />
                                         </div>

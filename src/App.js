@@ -25,13 +25,30 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ManageAboutPage from "./Pages/Dashboard/Page/ManageAboutPage";
 import ManageBlogs from "./Pages/Dashboard/Blog/ManageBlogs";
+import EditButtonLink from "./Pages/Dashboard/Page/EditButtonLink";
+import Loading from "./Pages/Shared/Loading";
 
 function App() {
   const [userV, setuserV] = useState('');
+  const [pload, setProducts] = useState([]);
   useEffect(() => {
     setuserV(sessionStorage.getItem('userValid'));
   }, [window?.location?.pathname]);
   // console.log(userV);
+  useEffect(() => {
+    fetch(`https://dog-potluck.onrender.com/abouts`)
+      .then(res => res.json())
+      .then(data => {
+        // setProducts(data);
+        console.log(data);
+        setProducts(data);
+      }
+      )
+
+  }, [pload]);
+  if (!pload) {
+    return <Loading></Loading>
+  }
   return (
     <>
       <Routes>
@@ -59,6 +76,7 @@ function App() {
             <Route path="/manageMessage" element={<ManageAllMassage />}></Route>
             <Route path="/manageAboutPage" element={<ManageAboutPage />}></Route>
             <Route path="/updateAbout/:id" element={<EditAboutPage />}></Route>
+            <Route path="/updateButtonLink" element={<EditButtonLink />}></Route>
             <Route path="/updateContact/:id" element={<ManageAllMassage />}></Route>
             <Route path="/manageBlog" element={<ManageBlogs />}></Route>
             <Route path="/add-blog" element={<AddBlog />}></Route></> : ''

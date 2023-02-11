@@ -13,7 +13,7 @@ const ManageAllMassage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/message`)
+        fetch(`https://dog-potluck.onrender.com/message`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
@@ -36,7 +36,7 @@ const ManageAllMassage = () => {
         const proceed = window.confirm('Are You Sure You Want To Delete The Quest!');
         //console.log(product)
         if (proceed) {
-            fetch(`https://obscure-forest-36360.herokuapp.com/quest/${product._id}`, {
+            fetch(`https://dog-potluck.onrender.com/quest/${product._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

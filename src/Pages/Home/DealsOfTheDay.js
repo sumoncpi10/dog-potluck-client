@@ -44,9 +44,6 @@ const DealsOfTheDay = ({ deals }) => {
                                     {
                                         deals?.rating == 5 ? <i className="fa fa-star"></i> : <i class="fa fa-star" style={{ color: 'gray' }}></i>
                                     }
-
-
-
                                 </div>
                             </div>
                             <div className="prices">

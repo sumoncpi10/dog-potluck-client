@@ -9,13 +9,12 @@ import { useState } from 'react';
 const AboutUs = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/abouts`)
+        fetch(`https://dog-potluck.onrender.com/abouts`)
             .then(res => res.json())
             .then(data => {
                 // setProducts(data);
                 console.log(data);
                 setProducts(data);
-
             }
             )
 

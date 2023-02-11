@@ -98,7 +98,7 @@ const AddBlog = () => {
         console.log(product);
         // send data to the server 
 
-        fetch('https://obscure-forest-36360.herokuapp.com/blogAdd', {
+        fetch('https://dog-potluck.onrender.com/blogAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

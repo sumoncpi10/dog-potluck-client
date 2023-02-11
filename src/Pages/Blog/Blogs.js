@@ -9,11 +9,11 @@ const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/blogs`)
+        fetch(`https://dog-potluck.onrender.com/blogs`)
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);
-                // console.log(data);
+                console.log(data);
             }
             )
 

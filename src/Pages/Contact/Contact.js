@@ -18,7 +18,7 @@ const Contact = () => {
         // //console.log(product);
         // send data to the server 
 
-        fetch('https://obscure-forest-36360.herokuapp.com/questAdd', {
+        fetch('https://dog-potluck.onrender.com/questAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

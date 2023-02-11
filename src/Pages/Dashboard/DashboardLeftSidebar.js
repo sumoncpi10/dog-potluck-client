@@ -123,6 +123,7 @@ const DashboardLeftSidebar = () => {
                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><Link to="/manageAboutPage" className="link-dark rounded">Manage About</Link></li>
                             <li><a href="#" className="link-dark rounded">Manage Contact</a></li>
+                            <li><a href="/updateButtonLink" className="link-dark rounded">Manage Button Link</a></li>
                             {/* <li><a href="#" className="link-dark rounded">Settings</a></li> */}
                             {/* <li><a href="" onClick={SignOut} className="link-dark rounded">Sign out</a></li> */}
                         </ul>

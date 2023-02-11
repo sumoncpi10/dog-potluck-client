@@ -8,7 +8,7 @@ const AddBlog = () => {
     const [blog, setBlog] = useState([]);
     const { id } = useParams();
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/blog/${id}`)
+        fetch(`https://dog-potluck.onrender.com/blog/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -110,7 +110,7 @@ const AddBlog = () => {
         const product = { category, mh1, mh2, img1, rating1, Tittle1, description11, description21, description31, priceUrl1, img2, rating2, Tittle2, description12, description22, description32, priceUrl2, img3, rating3, Tittle3, description13, description23, description33, priceUrl3, img4, rating4, Tittle4, description14, description24, description34, priceUrl4, img5, rating5, Tittle5, description15, description25, description35, priceUrl5, img6, rating6, Tittle6, description16, description26, description36, priceUrl6, img7, rating7, Tittle7, description17, description27, description37, priceUrl7, img8, rating8, Tittle8, description18, description28, description38, priceUrl8, img9, rating9, Tittle9, description19, description29, description39, priceUrl9, img10, rating10, Tittle10, description110, description210, description310, priceUrl10 };
         console.log(product);
         // send data to the server 
-        fetch(`http://localhost:5000/blog/${id}`, {
+        fetch(`https://dog-potluck.onrender.com/blog/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -123,7 +123,7 @@ const AddBlog = () => {
                 e.target.reset();
                 toast("Blog Update Successfully!");
             })
-        // fetch('https://obscure-forest-36360.herokuapp.com/blogAdd', {
+        // fetch('https://dog-potluck.onrender.com/blogAdd', {
         //     method: 'POST',
         //     headers: {
         //         'content-type': 'application/json'

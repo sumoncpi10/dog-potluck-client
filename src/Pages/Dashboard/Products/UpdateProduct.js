@@ -10,7 +10,7 @@ const UpdateProduct = () => {
     let [product, setProduct] = useState([]);
     // let [quantity, setQuantity] = useState(1);
     useEffect(() => {
-        fetch(`https://obscure-forest-36360.herokuapp.com/product/${params.id}`)
+        fetch(`https://dog-potluck.onrender.com/product/${params.id}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
@@ -42,7 +42,7 @@ const UpdateProduct = () => {
         // console.log(name, email, password);
         const product = { name, category, collection_type, dealsOfDay, description1, description2, brand, size, rating, information, review, tag, pcode, img, imgUrl1, imgUrl2, imgUrl3, priceUrl };
         //console.log(product);
-        fetch(`https://obscure-forest-36360.herokuapp.com/product/${params.id}`, {
+        fetch(`https://dog-potluck.onrender.com/product/${params.id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

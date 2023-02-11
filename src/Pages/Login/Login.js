@@ -12,7 +12,7 @@ const Login = ({ setuserV }) => {
         const username = e.target.email.value;
         const password = e.target.password.value;
         // const user = { username, password }
-        fetch(`https://obscure-forest-36360.herokuapp.com/user/${username}`)
+        fetch(`https://dog-potluck.onrender.com/user/${username}`)
 
 
             .then(res => res.json())

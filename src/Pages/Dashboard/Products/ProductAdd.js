@@ -40,7 +40,7 @@ const ProductAdd = () => {
         //console.log(product);
         // send data to the server 
 
-        fetch('https://obscure-forest-36360.herokuapp.com/productAdd', {
+        fetch('https://dog-potluck.onrender.com/productAdd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
